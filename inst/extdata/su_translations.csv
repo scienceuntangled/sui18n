@@ -1,5 +1,9 @@
+@@ note: general comments are marked with @, sections marked with @@
 en, fr
-hello, bonjour
+@@ For package tests
+hello, bonjour @ comment here
+
+@@ Contents section
 team report,
 contents,
 data set summary,
@@ -35,8 +39,8 @@ on poor reception,
 with setter call,
 no setter call,
 perfect/good reception only,
-setter shifted to 2 (perfect (#)/positive (+)/ok (!) reception only),
-setter shifted to 4 (perfect (#)/positive (+)/ok (!) reception only),
+"setter shifted to 2 (perfect (#)/positive (+)/ok (!) reception only)",
+"setter shifted to 4 (perfect (#)/positive (+)/ok (!) reception only)",
 in transition,
 perfect/good dig only,
 attack,
@@ -58,7 +62,7 @@ blocking key,
 by attack code/zone,
 settings used for this report,
 
-## data set summary
+@@ Data set summary section
 team,
 played,
 won,
@@ -70,37 +74,157 @@ points for,
 points against,
 points ratio,
 
-## team roster
+@@ Team roster section
 number,
 player name,
 player id,
 listed roles,
-matches, # as in shorthand for "number of matches"
-Opp, # as abbreviation for opposite
-S, # abbrev for setter
-M, # abbrev for middle
-OH, # abbrev for outside hitter
-L, # abbrev for libero
+matches, @ as in shorthand for "number of matches"
+Opp, @ as abbreviation for opposite
+S, @ abbrev for setter
+M, @ abbrev for middle
+OH, @ abbrev for outside hitter
+L, @ abbrev for libero
 matches played,
 
-## team worksheet
+@@ Team worksheet section (and corresponding key entries)
+@@ Sideouts
 sideouts,
 N OPP SRV,
-SO, # abbrev for sideouts
-SO%, # sideout %
+Number of serves by the opposition,
+SO, @ abbrev for sideouts
+Number of sideouts (points won on reception),
+Sideout percentage (percentage of points won on reception),
 OPP SRV ERRS,
+Number of serve errors made by the opposition,
 OPP SRV ERR%,
-mod SO%, # modified SO%
-EXP SO%, # expected SO%
+Opposition serve error percentage,
+mod SO%, @ modified SO%
+Modified sideout percentage (sideout percentage excluding serve errors),
+EXP SO%, @ expected SO%
+"The expected sideout rate based on the receiver's pass ratings and the dataset-wide sideout rates by rating. For example, 'perfect' receptions might correspond to a dataset-wide sideout rate of 0.7, and 'poor' to 0.4. If a given receiver had one 'perfect' reception and one 'poor' one, their expected sideout rate would be 0.55.",
 reception,
-N, # as in "number of receptions" etc
-%perf, # abbrev for %perfect
-%pos+perf, # abbrev for %positive + %perfect
-%err,
-%poor,
-eff, # abbrev for efficiency
-eff j, # abbrev for efficiency on jump serves
-eff f, # abbrev for efficiency on float/jump-float serves
+N, @ as in 'number of receptions' etc
+Number of serve receptions,
+perf, @ abbrev for perfect
+Percentage of serve receptions rated as perfect,
+pos+perf, @ abbrev for positive + perfect
+Percentage of serve receptions rated as perfect or positive,
+err,
+Reception error percentage,
+poor,
+Percentage of serve receptions rated as poor,
+eff, @ abbrev for efficiency
+"Serve reception efficiency [(number of receptions rated perfect or positive - number of errors - number of receptions rated negative)/(number of receptions)]",
+eff j, @ abbrev for efficiency on jump serves
+Reception efficiency on jump serves,
+eff f, @ abbrev for efficiency on float/jump-float serves
+Reception efficiency on float/jump-float serves,
 
-## reception attack
-kill%,
+@@ reception attack
+kill,
+Number of attacks during serve reception phase,
+Attack kill percentage,
+"Attack efficiency [(number of kills - number of errors and blocked attacks)/(number of attacks)]",
+All receptions
+"Receptions rated as perfect/positive/OK (no first tempo attack possible)/negative/poor (no attack possible)"
+
+@@ reception sideout
+reception sideout,
+SO% TOT,
+Overall sideout percentage,
+SO% JUMP,
+Sideout percentage on jump serves,
+SO% FLOAT,
+Sideout percentage on float/jump-float serves,
+tot, @ abbrev for total
+rec, @ abbrev for reception
+TOT excluding serve errors,
+in sets won,
+in sets lost,
+
+@@ Reception first ball sideout
+reception first ball sideout,
+FBSO, @ abbrev for first ball sideout
+FBSO% TOT,
+Attack kill percentage on first-ball attacks (attacks on serve reception),
+FBSO% JUMP,
+First-ball sideout percentage on jump serves,
+FBSO% FLOAT,
+First-ball sideout percentage on float/jump-float serves,
+OPP FBSO% TOT,
+"The opposition's first-ball sideout percentage",
+
+@@ Breakpoints
+Number of serve attempts,
+breakpoints,
+BP, @ abbrev for breakpoints
+Number of breakpoints (points won on serve),
+Breakpoint percentage (percentage of serves won),
+SRV ERRS,
+Number of serve errors,
+BP% JUMP,
+Breakpoint percentage on jump serves,
+BP% FLOAT,
+Breakpoint percentage on float/jump-float serves,
+EXP BP%,
+"The expected breakpoint rate based on the server's serve ratings and the dataset-wide breakpoint rates by rating. For example, 'negative' serves might correspond to a dataset-wide breakpoint rate of 0.3, and an ace to 1.0. If a given server had one 'negative' serve and one ace, their expected breakpoint rate would be 0.65.",
+EXP OPP SO%,
+aces,
+Number of serve aces,
+ace,
+Percentage of serves that were aces,
+jump,
+float,
+blocks,
+Number of points won with block kills,
+block,
+Block kills as a percentage of the number of attacks,
+pos, @ abbrev for positive
+ser r, @ abbrev for 'serve reception', i.e. block kills on opposition reception attack
+trans, @ abbrev for transition
+
+@@ Breakpoint transition attack
+breakpoint transition attack,
+att/s,
+att/d,
+Number of attacks as a percentage of defensive opportunities,
+k/d,
+Number of attack kills as a percentage of defensive opportunities,
+
+@@ Attack
+opp kill,
+
+
+@@ Scoring by rotation
+scoring by rotation (including serve errors),
+opp n srv,
+Number of serves attempted by the opposition,
+n srv,
+P1/P2/etc,
+Setter in position 1/2/etc,
+
+@@ Freeballs
+freeballs,
+Number of freeballs received,
+Percentage of freeballs on which an attack kill was made,
+Number of freeball points won,
+Percentage of freeball points won,
+All freeballs,
+Freeballs rated as perfect,
+Freeballs rated as positive,
+
+@@ Errors and points won
+errors and points won,
+errs,
+"Number of errors made (attack, serve, set, freeball errors plus block net touches)",
+errs/100,
+Number of errors made per 100 rallies,
+errs2/100,
+Number of errors made (excluding serve errors) per 100 rallies,
+pts,
+Number of points won (serve aces plus block and attack kills),
+pts/100,
+Number of points won per 100 rallies,
+rally, @ used in 'rally%', percentage of rallies won
+usage rate,
