@@ -1,2 +1,106 @@
 en, fr
 hello, bonjour
+team report,
+contents,
+data set summary,
+team roster,
+team worksheet,
+team comparisons,
+comparison table,
+continued,
+SO% win breakdown,
+SO% loss breakdown,
+BP% win breakdown,
+BP% loss breakdown,
+serve
+serve evaluation,
+expected breakpoint %,
+serve efficiency,
+breakpoint %,
+individual,
+reception
+reception evaluation,
+expected sideout %,
+reception efficiency,
+sideout %,
+by serve type,
+reception evaluation,
+expected sideout %,
+reception efficiency,
+setting,
+set distribution,
+on perfect or good reception,
+on ok reception,
+on poor reception,
+with setter call,
+no setter call,
+perfect/good reception only,
+setter shifted to 2 (perfect (#)/positive (+)/ok (!) reception only),
+setter shifted to 4 (perfect (#)/positive (+)/ok (!) reception only),
+in transition,
+perfect/good dig only,
+attack,
+all attacks,
+reception attack,
+reception attack after own reception,
+transition attack,
+middle attack,
+attack charts,
+blocking,
+all players,
+by attack code,
+middle blocking,
+keys,
+worksheet key,
+attacking key,
+middle attackers,
+blocking key,
+by attack code/zone,
+settings used for this report,
+
+## data set summary
+team,
+played,
+won,
+win rate,
+sets played,
+sets won,
+set win rate,
+points for,
+points against,
+points ratio,
+
+## team roster
+number,
+player name,
+player id,
+listed roles,
+matches, # as in shorthand for "number of matches"
+Opp, # as abbreviation for opposite
+S, # abbrev for setter
+M, # abbrev for middle
+OH, # abbrev for outside hitter
+L, # abbrev for libero
+matches played,
+
+## team worksheet
+sideouts,
+N OPP SRV,
+SO, # abbrev for sideouts
+SO%, # sideout %
+OPP SRV ERRS,
+OPP SRV ERR%,
+mod SO%, # modified SO%
+EXP SO%, # expected SO%
+reception,
+N, # as in "number of receptions" etc
+%perf, # abbrev for %perfect
+%pos+perf, # abbrev for %positive + %perfect
+%err,
+%poor,
+eff, # abbrev for efficiency
+eff j, # abbrev for efficiency on jump serves
+eff f, # abbrev for efficiency on float/jump-float serves
+
+## reception attack
+kill%,
