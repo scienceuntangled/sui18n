@@ -78,10 +78,10 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
                     if (length(temp1) == length(temp)) out[idx2] <- paste0(temp, temp1)
                 }
             }
-            ## now check for matches but discarding punctuation at the start or end of the text
+            ## now check for matches but discarding punctuation and spaces at the start or end of the text
             naidx <- is.na(out)
             if (any(naidx)) {
-                txt_parts <- str_match_all(txt[naidx], "^([[:punct:]]*)([^[:punct:]]*)([[:punct:]]*)$")
+                txt_parts <- str_match_all(txt[naidx], "^([[:punct:][:space:]]*)([^[:punct:]]*)([[:punct:][:space:]]*)$")
                 trx <- vapply(txt_parts, function(this) {
                     if (!any(nzchar(this))) return("")
                     idx <- which(tolower(this[3]) == tolower(tdata[[opts$from]]))
