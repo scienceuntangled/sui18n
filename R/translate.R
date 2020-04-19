@@ -51,10 +51,13 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
 
         t = function(txt) {
             if (opts$to == opts$from) return(txt)
+            txt0 <- txt
             ## first try for exact (but case-insensitive) match
             out <- match_to_table(txt, tdata = tdata, from = opts$from, to = opts$to)
             naidx <- is.na(out)
             if (any(naidx)) {
+                ## allow for underscores instead of spaces
+                txt <- gsub("_", " ", txt)
                 ## check for match but ignoring any of "%#+!-/=" at start or end of string
                 pcodes <- "[%#+!/=-][[:space:]]*"
                 idx2 <- naidx & grepl(paste0("^", pcodes), txt)
@@ -95,11 +98,11 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
                 out[naidx] <- trx
             }
             ## and catch anything that did not match above and replace with input
-            idx <- (!nzchar(out) | is.na(out)) & nzchar(txt) & !is.na(txt)
+            idx <- (!nzchar(out) | is.na(out)) & nzchar(txt0) & !is.na(txt0)
             if (any(idx) && opts$warn_unmatched) {
                 warning("inputs without matching entries in the i18n data:\n", paste(txt[idx], sep = "\n"))
             }
-            out[idx] <- txt[idx]
+            out[idx] <- txt0[idx]
             out
         },
 
