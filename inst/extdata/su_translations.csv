@@ -1,10 +1,12 @@
 @@ note: general comments are marked with @, sections marked with @@,
 en, fr,
-@@ For package tests,,
+@@ For package tests
 hello, bonjour @ comment here,
+@@ app text elements,,
 ,,
-@@ Contents section,,
-team report,Compte rendu d’equipe,
+volleyball team reports,compte rendus d’équipe volley,
+@@ Contents section
+team report,compte rendu d’équipe,
 contents,Sommaire,
 data set summary,Recapitulatif des donnees,
 team roster,Liste des joueurs,
@@ -61,8 +63,8 @@ middle attackers,Centraux,
 blocking key,Lexique du contre,
 by attack code/zone,Par zone/code d’attaque,
 settings used for this report,Parametres utilises dans ce compte-rendu,
-,,
-@@ Data set summary section,,
+
+@@ Data set summary section
 team,equipe,
 played,joues,
 won,gagnes,
@@ -73,22 +75,22 @@ set win rate,taux de sets gagne,
 points for,Points gagnes,
 points against,points perdus,
 points ratio,Ratio de points,
-,,
-@@ Team roster section,,
+
+@@ Team roster section
 number,Numero,
 player name,Nom du joueur,
 player id,ID du joueur,
 listed roles,Positions,
-matches,"Matches @ as in shorthand for ""number of matches""",
+matches,Matches @ as in shorthand for 'number of matches',
 Opp,Opp @ as abbreviation for opposite,
 S,P @ abbrev for setter,
 M,C @ abbrev for middle,
 OH,R/A @ abbrev for outside hitter,
 L,L @ abbrev for libero,
 matches played,maches joues,
-,,
-@@ Team worksheet section (and corresponding key entries),,
-@@ Sideouts,,
+
+@@ Team worksheet section (and corresponding key entries)
+@@ Sideouts
 sideouts,sideouts,
 N OPP SRV,N SRV ADV,
 Number of serves by the opposition,Nombre de services de l’adversaire,
@@ -120,16 +122,16 @@ eff j,eff ss @ abbrev for efficiency on jump serves,
 Reception efficiency on jump serves,Efficacite de la reception sur service smashe,
 eff f,eff sf @ abbrev for efficiency on float/jump-float serves,
 Reception efficiency on float/jump-float serves,Efficacite de la reception sur service saute flottant,
-,,
-@@ reception attack,,
+
+@@ reception attack
 kill,gagnante,
 Number of attacks during serve reception phase,nombre d’attaque sur reception,
 Attack kill percentage,pourcentage d’attaque gagnante,
 Attack efficiency [(number of kills - number of errors and blocked attacks)/(number of attacks)],Efficacite de l’attaque [(nombre d’attaques gagnantes – nombre d’erreurs et contrees)/(nombre d’attaques)],
 All receptions,Toutes les receptions,
 Receptions rated as perfect/positive/OK (no first tempo attack possible)/negative/poor (no attack possible),Receptions jugees parfaites/positive/moyennes (pas d’attaque rapide possible)/mauvaise (pas d’attaque possible),
-,,
-@@ reception sideout,,
+
+@@ reception sideout
 reception sideout,sideout sur reception,
 SO% TOT,%SO TOT,
 Overall sideout percentage,Pourcentage de sideout total,
@@ -142,8 +144,8 @@ rec,rec @ abbrev for reception,
 TOT excluding serve errors,TOT excluant les erreurs de service,
 in sets won,dans les sets gagnes,
 in sets lost,dans les sets perdus,
-,,
-@@ Reception first ball sideout,,
+
+@@ Reception first ball sideout
 reception first ball sideout,Sideout sur premiere attaque,
 FBSO,SOPA @ abbrev for first ball sideout,
 FBSO% TOT,%SOPA TOT,
@@ -154,8 +156,8 @@ FBSO% FLOAT,SOPA% FLOT,
 First-ball sideout percentage on float/jump-float serves,pourcentage de premiere attaque gagnante sur service flottant/saute flottant,
 OPP FBSO% TOT,SOPA% TOT ADV,
 The opposition's first-ball sideout percentage,pourcentage de premiere attaque gagnante de l’adversaire,
-,,
-@@ Breakpoints,,
+
+@@ Breakpoints
 Number of serve attempts,Nombre de services,
 breakpoints,breakpoints,
 BP,BP @ abbrev for breakpoints,
@@ -183,28 +185,28 @@ Block kills as a percentage of the number of attacks,Pourcentage de contre gagna
 pos,pos @ abbrev for positive,
 ser r,rec s @ abbrev for 'serve reception', i.e. block kills on opposition reception attack
 trans,trans @ abbrev for transition,
-,,
-@@ Breakpoint transition attack,,
+
+@@ Breakpoint transition attack
 breakpoint transition attack,attaque en transition (breakpoint),
 att/s,att/s,
 att/d,att/d,
 Number of attacks as a percentage of defensive opportunities,Nombre d’attaques par opportunite de defense,
 k/d,g/d,
 Number of attack kills as a percentage of defensive opportunities,Nombre d’attaques gagnantes par opportunite de defense,
-,,
-@@ Attack,,
+
+@@ Attack
 opp kill,att gagnante adv,
-,,
-,,
-@@ Scoring by rotation,,
+
+
+@@ Scoring by rotation
 scoring by rotation (including serve errors),Score par rotation (incluant les erreurs de services),
 opp n srv,srv n adv,
 Number of serves attempted by the opposition,Nombre de services de l’adversaire,
 n srv,n srv,
 P1/P2/etc,P1/P2/etc,
 Setter in position 1/2/etc,Passeur en position 1/2/etc,
-,,
-@@ Freeballs,,
+
+@@ Freeballs
 freeballs,relances,
 Number of freeballs received,nombre de relances recues,
 Percentage of freeballs on which an attack kill was made,Pourcentage de relances sur lesquelles une attaques gagnante a ete effectuee,
@@ -213,8 +215,8 @@ Percentage of freeball points won,Pourcentage de points gagne sur relance,
 All freeballs,Relances,
 Freeballs rated as perfect,Relances parfaites,
 Freeballs rated as positive,Bonnes relances,
-,,
-@@ Errors and points won,,
+
+@@ Errors and points won
 errors and points won,erreurs et points gagnes,
 errs,errs,
 "Number of errors made (attack, serve, set, freeball errors plus block net touches)","Nombre d’erreurs (attaque, service, passe, relance et faute de filet)",

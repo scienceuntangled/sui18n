@@ -16,7 +16,9 @@
 #' @export
 sui_translator <- function(to, csv_path = system.file("extdata/su_translations.csv", package = "sui18n")) {
     tdata <- read.csv(csv_path, stringsAsFactors = FALSE, comment.char = "@")
+    tdata <- tdata[, !grepl("^X", colnames(tdata))] ## drop unnamed cols
     for (ci in seq_len(ncol(tdata))) tdata[[ci]] <- str_trim(tdata[[ci]])
+    tdata <- tdata[!apply(tdata, 1, function(z) all(is.na(z) | !nzchar(z))), ] ## drop empty rows
     lng <- colnames(tdata)
     opts <- list(languages = lng, to = lng[1], from = lng[1]) ## always from en
     if (!missing(to)) {
@@ -28,6 +30,7 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
     }
 
     list(
+        languages = function() opts$languages,
         set_target = function(to) {
             if (to %in% opts$languages) {
                 opts$to <<- to
