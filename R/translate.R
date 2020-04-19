@@ -20,7 +20,7 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
     for (ci in seq_len(ncol(tdata))) tdata[[ci]] <- str_trim(tdata[[ci]])
     tdata <- tdata[!apply(tdata, 1, function(z) all(is.na(z) | !nzchar(z))), ] ## drop empty rows
     lng <- colnames(tdata)
-    opts <- list(languages = lng, to = lng[1], from = lng[1]) ## always from en
+    opts <- list(languages = lng, to = lng[1], from = lng[1], warn_unmatched = FALSE) ## always from en
     if (!missing(to)) {
         if (to %in% lng) {
             opts$to <- to
@@ -40,6 +40,14 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
         },
 
         target = function() opts$to,
+
+        warn_unmatched = function(x) {
+            if (!missing(x)) {
+                stopifnot(is.logical(x) && length(x) == 1 & !is.na(x))
+                opts$warn_unmatched <<- x
+            }
+            opts$warn_unmatched
+        },
 
         t = function(txt) {
             if (opts$to == opts$from) return(txt)
@@ -81,14 +89,17 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
                         ## match capitalization
                         paste0(this[2], match_case(tdata[[opts$to]][idx], match_to = this[3], locale = opts$to), this[4])
                     } else {
-                        paste0(this[2], this[3], this[4])
+                        NA_character_
                     }
                 }, FUN.VALUE = "", USE.NAMES = FALSE)
                 out[naidx] <- trx
             }
             ## and catch anything that did not match above and replace with input
             idx <- (!nzchar(out) | is.na(out)) & nzchar(txt) & !is.na(txt)
-            out[idx] <- txt[(!nzchar(out) | is.na(out)) & nzchar(txt) & !is.na(txt)]
+            if (any(idx) && opts$warn_unmatched) {
+                warning("inputs without matching entries in the i18n data:\n", paste(txt[idx], sep = "\n"))
+            }
+            out[idx] <- txt[idx]
             out
         },
 

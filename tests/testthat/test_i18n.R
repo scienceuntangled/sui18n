@@ -20,6 +20,10 @@ test_that("general tests", {
     expect_equal(tr$t(c("hi", "hello!", "HELLO", "Hello")),
                  c("hi", "bonjour!", "BONJOUR", "Bonjour"))
 
+    ## warnings
+    tr$warn_unmatched(TRUE)
+    expect_warning(tr$t("unknownword"), "inputs without matching entries")
+
     ## cope with % and other symbols
     test_tdata <- data.frame(en = c("err"), fr = c("grr"), stringsAsFactors = FALSE)
     assign("tdata", test_tdata, envir = environment(tr$t))
