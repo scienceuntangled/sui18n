@@ -17,7 +17,7 @@
 sui_translator <- function(to, csv_path = system.file("extdata/su_translations.csv", package = "sui18n")) {
     tdata <- read.csv(csv_path, stringsAsFactors = FALSE, comment.char = "@")
     tdata <- tdata[, !grepl("^X", colnames(tdata))] ## drop unnamed cols
-    for (ci in seq_len(ncol(tdata))) tdata[[ci]] <- str_trim(tdata[[ci]])
+    for (ci in seq_len(ncol(tdata))) tdata[[ci]] <- str_trim(gsub("\\\\n", "\n", tdata[[ci]]))
     tdata <- tdata[!apply(tdata, 1, function(z) all(is.na(z) | !nzchar(z))), ] ## drop empty rows
     lng <- colnames(tdata)
     opts <- list(languages = lng, to = lng[1], from = lng[1], warn_unmatched = FALSE) ## always from en
@@ -34,6 +34,7 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
         set_target = function(to) {
             if (to %in% opts$languages) {
                 opts$to <<- to
+                invisible(to)
             } else {
                 stop("language '", to, "' not available")
             }
@@ -46,14 +47,19 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
                 stopifnot(is.logical(x) && length(x) == 1 & !is.na(x))
                 opts$warn_unmatched <<- x
             }
-            opts$warn_unmatched
+            invisible(opts$warn_unmatched)
         },
 
         t = function(txt) {
             if (opts$to == opts$from) return(txt)
             txt0 <- txt
-            ## first try for exact (but case-insensitive) match
-            out <- match_to_table(txt, tdata = tdata, from = opts$from, to = opts$to)
+            ## first try for exact match
+            out <- match_to_table(txt, tdata = tdata, from = opts$from, to = opts$to, ignore_case = FALSE)
+            naidx <- is.na(out)
+            if (any(naidx)) {
+                ## then exact (but case-insensitive) match
+                out[naidx] <- match_to_table(txt[naidx], tdata = tdata, from = opts$from, to = opts$to)
+            }
             naidx <- is.na(out)
             if (any(naidx)) {
                 ## allow for underscores instead of spaces
@@ -100,7 +106,7 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
             ## and catch anything that did not match above and replace with input
             idx <- (!nzchar(out) | is.na(out)) & nzchar(txt0) & !is.na(txt0)
             if (any(idx) && opts$warn_unmatched) {
-                warning("inputs without matching entries in the i18n data:\n", paste(txt[idx], sep = "\n"))
+                warning("inputs without matching entries in the i18n data:\n", paste(txt[idx], collapse = "\n", sep = "\n"))
             }
             out[idx] <- txt0[idx]
             out
@@ -115,7 +121,9 @@ match_to_table <- function(txt, tdata, from, to, ignore_case = TRUE) {
     vapply(txt, function(z) {
         idx <- if (ignore_case) which(tolower(z) == this_tdata) else which(z == this_tdata)
         if (length(idx) == 1) {
-            match_case(tdata[[to]][idx], match_to = z, locale = to)
+            out <- tdata[[to]][idx]
+            if (ignore_case) out <- match_case(out, match_to = z, locale = to)
+            out
         } else {
             NA_character_
         }
