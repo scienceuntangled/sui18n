@@ -40,14 +40,14 @@ Note that the default translation data is probably of no value to you, and you w
 
 ```{r example2}
 library(tibble)
-my_data <- tribble(~en, ~fr, ~it,
-                   "goodbye", "au revior", "ciao")
-tr <- sui_translator(to = "fr", csv_path = my_data)
+my_data <- tribble(~key, ~en, ~fr, ~es, ~cat,
+                   "greeting", "hello", "bonjour", "hola", "miaow")
+tr <- sui_translator(to = "en", csv_path = my_data)
 
-tr$t("goodbye")
+tr$t("greeting")
 
-tr$set_target("it")
-tr$t("goodbye")
+tr$set_target("cat")
+tr$t("greeting")
 
 ```
 

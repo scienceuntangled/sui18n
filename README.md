@@ -29,16 +29,16 @@ and you will probably want to create your own:
 
 ``` r
 library(tibble)
-my_data <- tribble(~en, ~fr, ~it,
-                   "goodbye", "au revior", "ciao")
-tr <- sui_translator(to = "fr", csv_path = my_data)
+my_data <- tribble(~key, ~en, ~fr, ~es, ~cat,
+                   "greeting", "hello", "bonjour", "hola", "miaow")
+tr <- sui_translator(to = "en", csv_path = my_data)
 
-tr$t("goodbye")
-#> [1] "au revior"
+tr$t("greeting")
+#> [1] "hello"
 
-tr$set_target("it")
-tr$t("goodbye")
-#> [1] "ciao"
+tr$set_target("cat")
+tr$t("greeting")
+#> [1] "miaow"
 ```
 
 (Or point `csv_path` to a CSV file with similar structure.)
