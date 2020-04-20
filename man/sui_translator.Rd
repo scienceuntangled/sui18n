@@ -12,7 +12,7 @@ sui_translator(
 \arguments{
 \item{to}{string: language to translate to, defaults to "en" (i.e. no translation)}
 
-\item{csv_path}{string: path to the translation CSV file}
+\item{csv_path}{string: path to the translation CSV file. \code{csv_path} can also be provided directly as a data.frame}
 }
 \value{
 A list

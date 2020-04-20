@@ -1,7 +1,8 @@
 #' Construct SU i18n translator
 #'
 #' @param to string: language to translate to, defaults to "en" (i.e. no translation)
-#' @param csv_path string: path to the translation CSV file
+#' @param csv_path string: path to the translation CSV file. \code{csv_path} can also be provided directly as a data.frame
+#'
 #' @return A list
 #'
 #' @examples
@@ -15,8 +16,12 @@
 #'
 #' @export
 sui_translator <- function(to, csv_path = system.file("extdata/su_translations.csv", package = "sui18n")) {
-    tdata <- read.csv(csv_path, stringsAsFactors = FALSE, comment.char = "@")
-    tdata <- tdata[, !grepl("^X", colnames(tdata))] ## drop unnamed cols
+    if (is.data.frame(csv_path)) {
+        tdata <- csv_path
+    } else {
+        tdata <- read.csv(csv_path, stringsAsFactors = FALSE, comment.char = "@")
+        tdata <- tdata[, !grepl("^X", colnames(tdata))] ## drop unnamed cols
+    }
     for (ci in seq_len(ncol(tdata))) tdata[[ci]] <- str_trim(gsub("\\\\n", "\n", tdata[[ci]]))
     tdata <- tdata[!apply(tdata, 1, function(z) all(is.na(z) | !nzchar(z))), ] ## drop empty rows
     lng <- colnames(tdata)
