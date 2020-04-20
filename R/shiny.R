@@ -39,12 +39,12 @@ sui_shinymod_ui <- function(id) {
 #' @export
 sui_shinymod_server <- function(input, output, session, csv_path = NULL) {
     this_i18n <- if (is.null(csv_path)) sui_translator() else sui_translator(csv_path = csv_path)
-    this_i18n_lang <- reactiveVal(this_i18n$languages()[1])
+    this_i18n_lang <- reactiveVal(this_i18n$target())
     shiny::addResourcePath("sui_flags", system.file("extdata/flags", package = "sui18n"))
 
     ## update choices
     observe({
-        langs <- tryCatch(this_i18n$languages(), error = function(e) NULL)
+        langs <- tryCatch(setdiff(this_i18n$languages(), "key"), error = function(e) NULL)
         if (!is.null(langs)) {
             isolate(sel <- input$select_lang)
             if (is.null(sel) || !sel %in% langs) sel <- langs[1]

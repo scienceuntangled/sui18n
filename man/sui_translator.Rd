@@ -18,7 +18,7 @@ sui_translator(
 A list
 }
 \description{
-Construct SU i18n translator
+The CSV data should contain one column per language.
 }
 \examples{
 

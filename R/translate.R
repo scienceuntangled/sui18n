@@ -1,5 +1,7 @@
 #' Construct SU i18n translator
 #'
+#' The CSV data should contain one column per language.
+#'
 #' @param to string: language to translate to, defaults to "en" (i.e. no translation)
 #' @param csv_path string: path to the translation CSV file. \code{csv_path} can also be provided directly as a data.frame
 #'
@@ -25,7 +27,8 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
     for (ci in seq_len(ncol(tdata))) tdata[[ci]] <- str_trim(gsub("\\\\n", "\n", tdata[[ci]]))
     tdata <- tdata[!apply(tdata, 1, function(z) all(is.na(z) | !nzchar(z))), ] ## drop empty rows
     lng <- colnames(tdata)
-    opts <- list(languages = lng, to = lng[1], from = lng[1], warn_unmatched = FALSE) ## always from en
+    opts <- list(languages = lng, to = if (length(lng) > 1) setdiff(lng, "key")[1] else lng[1],
+                 from = if ("key" %in% lng) "key" else lng[1], warn_unmatched = FALSE)
     if (!missing(to)) {
         if (to %in% lng) {
             opts$to <- to
@@ -44,8 +47,17 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
                 stop("language '", to, "' not available")
             }
         },
-
         target = function() opts$to,
+
+        set_from = function(from) {
+            if (from %in% opts$languages) {
+                opts$from <<- from
+                invisible(from)
+            } else {
+                stop("language '", from, "' not available")
+            }
+        },
+        from = function() opts$from,
 
         warn_unmatched = function(x) {
             if (!missing(x)) {
@@ -155,7 +167,7 @@ is_uppercase <- function(z) {
 
 is_titlecase <- function(z) {
     if (!nzchar(z)) return(FALSE)
-    !is_uppercase(z) && !any(grepl("\\<[[:lower:]]", z))
+    !is_uppercase(z) && !any(grepl("\\<[[:lower:]]", z)) && grepl("[[:space:]]", str_trim(z)) ## needs to be more than one word, too
 }
 
 is_firstupper <- function(z) {

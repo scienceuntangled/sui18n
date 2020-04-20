@@ -262,6 +262,9 @@ no data,
 perfect,parfait
 positive,positive
 errors,erreurs
+all players,tous les joueurs
+all teams,toutes les équipes
+overall,
 
 @@ report settings
 serving, service
@@ -370,6 +373,18 @@ straight, de face
 from the receiver's right, depuis la droite du receptionneur
 % of passes, % de reception
 
+@@ setting section
+by rotation,par rotation
+"'Shifted to 2' means that the pass went to zone 2 and the setter sets from there",
+"'Shifted to 4' means that the pass went to zones 4, 3C, or 3D and the setter sets from there",
+in crunch time,
+crunch time is defined as,
+"in sets 1-4: scores of 18-18 or higher, and a margin of two points or less (e.g. scores of 18-20 or 23-22 are crunch time, but 16-18 and 18-21 are not)",
+"in sets 5: scores of 8-8 or higher, and a margin of two points or less (e.g. scores of 11-10 or 9-11 are crunch time, but 13-9 is not)",
+point win, @ in the sense of point win %
+win, @ in the sense of point win %
+setter pos,passeur pos
+
 @@ app text elements - these are case-sensitive
 Volleyball team reports,Compte rendus d’équipe pour le volleyball
 Download report, Telecharger le compte rendu
@@ -378,6 +393,8 @@ Note that you may need to enable popups in your browser if you choose to open th
 Dismiss, Annuler
 Cancel, Annuler
 Generate report, Creer le compte rendu
+Generating report,
+Please wait,"S'il vous plaît, attendez"
 Dataset selection, Sélection des données
 Select dataset:, Sélectionner les données:
 Report settings,Paramètres de compte rendu
@@ -394,4 +411,5 @@ generating individual serve charts, generation des graphiques de service par jou
 generating reception report, generation du compte rendu sur la reception
 generating other reception reports, generation des autres compte rendu sur la reception
 generating individual reception charts, generation des graphiques de reception par joueur
+generating setting report,
 converting to, conversion
