@@ -25,8 +25,7 @@ test_that("general tests", {
     expect_warning(tr$t("unknownword"), "inputs without matching entries")
 
     ## cope with % and other symbols
-    test_tdata <- data.frame(en = c("err"), fr = c("grr"), stringsAsFactors = FALSE)
-    assign("tdata", test_tdata, envir = environment(tr$t))
+    tr <- sui_translator("fr", csv_path = data.frame(en = c("err"), fr = c("grr"), stringsAsFactors = FALSE))
     expect_equal(tr$t(c("%err", "% err", "%  ERR", "err%", "ERR %", "err  %", "=err", "eRr =")),
                  c("%grr", "% grr", "%  GRR", "grr%", "GRR %", "grr  %", "=grr", "grr ="))
 })
