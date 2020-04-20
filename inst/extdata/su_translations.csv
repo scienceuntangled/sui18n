@@ -265,129 +265,129 @@ positive,positive,
 errors,erreurs,
 
 @@ report settings
-serving,
-minimum number of serves required for a player to be included,
-serve position data from,
-generate individual serve charts,
-cone,
-cones,
-zone,
-zones,
-subzones,
-coordinates,
-guess,
-coordinates (directions),
-coordinates (heatmap),
-minimum number of receptions required for a player to be included,
-reception position data from,
-setters reported on,
-minimum number of sets required for a player to be included,
-include set distribution by setter calls,
-report on individual setters,
-minimum number of attacks required for a player to have charts shown,
-attack chart style,
-no attack charts,
-attack codes shown on charts,
-attack codes excluded from charts,
-errors into net/net touches,
-attacks to show on charts,
-attack types shown on charts,
-block inference method,
-number of blockers from,
-scouted number of blockers,
-probability table,
-report on attacks by,
-attack code,code d’attaque,
-attack start zone,
-attack code then attack start zone,
-attack codes to report on,
+serving, service
+minimum number of serves required for a player to be included, nombre minimum de services pour qu'un joueur soit inclus
+serve position data from, position du service obtenus par
+generate individual serve charts, generation des graphiques de service individuels
+cone, cone
+cones, cones
+zone, zone
+zones, zones
+subzones, sous-zones
+coordinates, coordonnees
+guess, deviner
+coordinates (directions), coordonnees (directions)
+coordinates (heatmap), coordonnees (densite spatial)
+minimum number of receptions required for a player to be included, nombre minimum de receptions pour qu'un joueur soit inclus
+reception position data from, position de receptions obtenus par
+setters reported on, passeurs reportes
+minimum number of sets required for a player to be included, nombre minimum de passes pour qu'un joueur soit inclus
+include set distribution by setter calls, inclure les choix de passe par annonce du passeur
+report on individual setters, compte rendu pour chaque passeur
+minimum number of attacks required for a player to have charts shown, nombre minimum d'attaques pour qu'un joueur soit inclus
+attack chart style, style du graphique d'attaque 
+no attack charts, pas de graphique d'attaque
+attack codes shown on charts, codes d'attaques presentes dans le graphique
+attack codes excluded from charts, codes d'attaques non presentes dans le graphique
+errors into net/net touches, fautes de filet
+attacks to show on charts, Attaques a montrer
+attack types shown on charts, Type d'attaques montrees
+block inference method, methode d'inference pour le contre
+number of blockers from, nombre de contreurs obtenus par
+scouted number of blockers, nombre de contreurs enregistres 
+probability table, table de probabilite
+report on attacks by, analyser les attaques par
+attack code, code d’attaque,
+attack start zone, zone de depart de l'attaque
+attack code then attack start zone, code de l'attaque puis zone de depart de l'attaque
+attack codes to report on, code d'attaque a reporter
 
 @@ comparisons
-opp serve err,
-Rec att kill R#,
-Rec att kill R+,
-Rec att kill R!,
-Rec att kill R-,
-trans att kill,
-opp trans att err,
-trans block,
+opp serve err, service err adv
+Rec att kill R#, Rec att gagn R#
+Rec att kill R+, Rec att gagn R+
+Rec att kill R!, Rec att gagn R!
+Rec att kill R-, Rec att gagn R-
+trans att kill, att trans gagn
+opp trans att err, att trans gagn adv
+trans block, contre trans
 other, autres,
 
-opp serve ace,
-rec att err,
-opp rec att block,
-opp trans att kill,
-trans att err,
-opp trans block,
+opp serve ace, serv gagn adv
+rec att err, rec att err
+opp rec att block, rec att contre adv
+opp trans att kill, trans att gagn adv
+trans att err, att trans err
+opp trans block, contre trans adv
 
-serve ace,
-opp rec att err,
-rec att block,
-opp trans att err,
+serve ace, serv gagn
+opp rec att err, att rec err adv
+rec att block, att rec contre
+opp trans att err, att tran err adv
 
-serve err,
-Opp rec att kill R#,
-Opp rec att kill R+,
-Opp rec att kill R!,
-Opp rec att kill R-,
+serve err, serv err
+Opp rec att kill R#, rec att gagn adv R#
+Opp rec att kill R+, rec att gagn adv R+
+Opp rec att kill R!, rec att gagn adv R!
+Opp rec att kill R-, rec att gagn adv R-
 
 @@ serve section
-"Expected percentage of points won on serve, given this server's serve evaluations and the league-wide BP% for each of those evaluations",
+"Expected percentage of points won on serve, given this server's serve evaluations and the league-wide BP% for each of those evaluations", "Pourcentage attendu de points gagnes au service, etant donne la qualite de service du serveur et le taux de BP dans la ligue pour chacune des evaluations"
 "Expected\nBP%","%BP\nattendu",
 efficiency,efficacite
 value,valeur,
 "(Aces + positive - errors - negative)/(N serves)","(Service gagnants + positive - erreurs - mauvaises)/(N services)"
-all (potentially including serves with missing position information),
-all (with position information),
-serves from the left (zones 5/7,
-serves from the centre (zone 6,
-serves from the right (zones 9/1,
-all serves with position information,
-by opposition rotation,
-serve distribution,
-receiving team,
-serves,services,
-jump serves,service smashe,
-jump serve,service smash,
-% of passes,
+all (potentially including serves with missing position information), Tous (en incluant les services sans information de position)
+all (with position information), tous (uniquement les services avec information de position)
+serves from the left (zones 5/7, services depuis la gauche (zones 5/7
+serves from the centre (zone 6, services depuis le centre (zone 6
+serves from the right (zones 9/1, services depuis la droite (zones 9/1
+all serves with position information, tous les services avec information de position
+by opposition rotation, par rotation de l'adversaire
+serve distribution, distribution des services
+receiving team, equipe en reception
+serves,services, 
+jump serves,services smashes,
+jump serve,service smashe,
+% of passes, % de reception
 
 @@ reception section
-"'Exp SO%' is the expected sideout percentage when a given receiver is passing, based on that receiver's pass evaluations and the league-wide SO% for each of those evaluations",
+"'Exp SO%' is the expected sideout percentage when a given receiver is passing, based on that receiver's pass evaluations and the league-wide SO% for each of those evaluations", "'%SO att' est le pourcentage de sideout attendu quand un joueur particulier receptionne, calcule a partir des evaulations de reception de ce joueur et du niveau de SO general de la ligue pour chaque evaluation"
 percent,pourcentage,
 Expected SO%,%SO attendu,
 SO%,%SO,
-overpasses,
+overpasses, reception directement dans le camp adverse
 N receptions,N reception,
 percentage of points won on reception,pourcentage de points gagnes sur reception
-all other serve types (float/jump-float/standing topspin),
-all receptions with position information,
-receptions on serves coming from the receiver's left,
-receptions on serves coming straight (i.e. parallel to the sidelines,
-receptions on serves coming from the receiver's right,
-all (potentially including receptions with missing position information),
-all (with position information),
-from the receiver's left,
-straight,
-from the receiver's right,
-% of passes,
+all other serve types (float/jump-float/standing topspin), tout autre type de service (flottant/saute flottant/topspin sans saut)
+all receptions with position information, toutes receptions incluant les information de position
+receptions on serves coming from the receiver's left, receptions sur des services venant de la gauche du receptionneur
+receptions on serves coming straight (i.e. parallel to the sidelines, receptions sur des services venant de face (parallele au lignes du terrain
+receptions on serves coming from the receiver's right,receptions sur des services venant de la droite du receptionneur
+all (potentially including receptions with missing position information), toutes (incluant les receptionneur avec ou sans position)
+all (with position information), toutes (avec les information de position)
+from the receiver's left, depuis la gauche du receptionneur
+straight, de face
+from the receiver's right, depuis la droite du receptionneur
+% of passes, % de reception
 
 @@ app text elements,,
-volleyball team reports,compte rendus d’équipe volley,
-download report,
-open report in a new tab,
-note that you may need to enable popups in your browser if you choose to open the report in a new tab,
-dismiss,
-generate report,
+volleyball team reports,compte rendus d’équipe  pour le  volleyball,
+download report, telecharger le compte rendu
+open report in a new tab, ouvrir le document dans un nouvel onglet
+note that you may need to enable popups in your browser if you choose to open the report in a new tab, il peut etre necessaire d'autoriser les popups 
+dismiss, annuler
+generate report, creer le compte rendu
 
 @@ progress messages in app
-generating dataset summary,
-generating team roster,
-generating worksheets,
-generating team comparisons,
-generating serve report,
-generating other serve reports,
-generating individual serve charts,
-generating reception report,
-generating other reception reports,
-generating individual reception charts,
-converting to,
+generating dataset summary, generation du recapitulatif des donnees
+generating team roster, generation des listes d'equipe
+generating worksheets, generation des fiches techniques
+generating team comparisons, generation des comparaison d'equipe
+generating serve report, generation du compte rendu sur le service
+generating other serve reports, generation des autres compte rendu sur le service
+generating individual serve charts, generation des graphiques de service par joueur
+generating reception report, generation du compte rendu sur la reception
+generating other reception reports, generation des autres compte rendu sur la reception
+generating individual reception charts, generation des graphiques de reception par joueur
+converting to, conversion
