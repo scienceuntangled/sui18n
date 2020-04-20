@@ -383,9 +383,12 @@ in crunch time,in crunch time,
 crunch time is defined as,crunch time is defined as,
 "in sets 1-4: scores of 18-18 or higher, and a margin of two points or less (e.g. scores of 18-20 or 23-22 are crunch time, but 16-18 and 18-21 are not)","in sets 1-4: scores of 18-18 or higher, and a margin of two points or less (e.g. scores of 18-20 or 23-22 are crunch time, but 16-18 and 18-21 are not)",
 "in sets 5: scores of 8-8 or higher, and a margin of two points or less (e.g. scores of 11-10 or 9-11 are crunch time, but 13-9 is not)","in sets 5: scores of 8-8 or higher, and a margin of two points or less (e.g. scores of 11-10 or 9-11 are crunch time, but 13-9 is not)",
-point win,point win, @ in the sense of point win %
-win,win, @ in the sense of point win %
+point win,point win,point gagnes @ in the sense of point win %
 setter pos,setter pos,passeur pos
+shortattkill,Kill,AG @ inset 'kill' text in setting plots
+shortptwin,win,PG @ inset 'win' text in setting plots
+attkill,kill,att gagn @ used in the 'overall' text below setting plots
+ptwin,point win,point gagn @ used in the 'overall' text below setting plots
 
 @@ app text elements - these are case-sensitive
 Volleyball team reports,Volleyball team reports,Compte rendus d’équipe pour le volleyball
