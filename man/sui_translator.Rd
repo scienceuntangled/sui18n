@@ -2,7 +2,7 @@
 % Please edit documentation in R/translate.R
 \name{sui_translator}
 \alias{sui_translator}
-\title{Construct SU i18n translator}
+\title{Construct i18n translator}
 \usage{
 sui_translator(
   to,
@@ -15,7 +15,14 @@ sui_translator(
 \item{csv_path}{string: path to the translation CSV file. \code{csv_path} can also be provided directly as a data.frame}
 }
 \value{
-A list
+A list object. The translation functionality is provided by the \code{t} component. The \code{t} function will first look for an exact match between the input text and the reference data. If no exact match is found, further matching behaviour is controlled by the following options, which are applied in order:
+\itemize{
+ \item \code{underscores_as_spaces} (default = \code{TRUE}) - underscores in the input will be converted to spaces
+ \item \code{as_regexp} (default = \code{FALSE}) - the input is treated as a regular expression. Note that the regular expression must match the entire input string
+ \item \code{ignore_case} (default = \code{TRUE}) - allow case-insensitive matching
+ \item \code{allow_punct} (default = \code{TRUE}) - allow additional punctuation and space characters at the beginning and end of the input
+}
+The \code{t} function also takes an \code{output_match_case} parameter. If \code{TRUE} an attempt will be made to match the case style of the output to the input (i.e. all upper case, titlecase, first-letter-only uppercase).
 }
 \description{
 The CSV data should contain one column per language.

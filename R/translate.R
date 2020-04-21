@@ -1,11 +1,18 @@
-#' Construct SU i18n translator
+#' Construct i18n translator
 #'
 #' The CSV data should contain one column per language.
 #'
 #' @param to string: language to translate to, defaults to "en" (i.e. no translation)
 #' @param csv_path string: path to the translation CSV file. \code{csv_path} can also be provided directly as a data.frame
 #'
-#' @return A list
+#' @return A list object. The translation functionality is provided by the \code{t} component. The \code{t} function will first look for an exact match between the input text and the reference data. If no exact match is found, further matching behaviour is controlled by the following options, which are applied in order:
+#' \itemize{
+#'  \item \code{underscores_as_spaces} (default = \code{TRUE}) - underscores in the input will be converted to spaces
+#'  \item \code{as_regexp} (default = \code{FALSE}) - the input is treated as a regular expression. Note that the regular expression must match the entire input string
+#'  \item \code{ignore_case} (default = \code{TRUE}) - allow case-insensitive matching
+#'  \item \code{allow_punct} (default = \code{TRUE}) - allow additional punctuation and space characters at the beginning and end of the input
+#' }
+#' The \code{t} function also takes an \code{output_match_case} parameter. If \code{TRUE} an attempt will be made to match the case style of the output to the input (i.e. all upper case, titlecase, first-letter-only uppercase).
 #'
 #' @examples
 #'
@@ -71,57 +78,37 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
             invisible(opts$warn_unmatched)
         },
 
-        t = function(txt, as_regexp = FALSE) {
+        t = function(txt, underscores_as_spaces = TRUE, as_regexp = FALSE, ignore_case = TRUE, allow_punct = TRUE, output_match_case = TRUE) {
             if (opts$to == opts$from) return(txt)
+            assert_that(is.flag(ignore_case), !is.na(ignore_case))
+            assert_that(is.flag(as_regexp), !is.na(as_regexp))
+            assert_that(is.flag(underscores_as_spaces), !is.na(underscores_as_spaces))
+            assert_that(is.flag(allow_punct), !is.na(allow_punct))
+            assert_that(is.flag(output_match_case), !is.na(output_match_case))
             txt0 <- txt
             ## first try for exact match
-            out <- match_to_table(txt, tdata = tdata, from = opts$from, to = opts$to, ignore_case = FALSE)
+            out <- match_to_table(txt, tdata = tdata, from = opts$from, to = opts$to, ignore_case = FALSE, output_match_case = output_match_case)
+            if (underscores_as_spaces) txt <- gsub("_", " ", txt) ## treat underscores as spaces
             naidx <- is.na(out)
-            if (any(naidx) && isTRUE(as_regexp)) {
-                out[naidx] <- match_to_table(txt[naidx], tdata = tdata, from = opts$from, to = opts$to, as_regexp = TRUE)
+            if (any(naidx) && as_regexp) {
+                out[naidx] <- match_to_table(txt[naidx], tdata = tdata, from = opts$from, to = opts$to, as_regexp = TRUE, output_match_case = output_match_case)
                 naidx <- is.na(out)
             }
-            if (any(naidx)) {
+            if (any(naidx) && ignore_case) {
                 ## then exact (but case-insensitive) match
-                out[naidx] <- match_to_table(txt[naidx], tdata = tdata, from = opts$from, to = opts$to)
+                out[naidx] <- match_to_table(txt[naidx], tdata = tdata, from = opts$from, to = opts$to, ignore_case = TRUE, output_match_case = output_match_case)
                 naidx <- is.na(out)
-            }
-            if (any(naidx)) {
-                ## allow for underscores instead of spaces
-                txt <- gsub("_", " ", txt)
-                ## check for match but ignoring any of "%#+!-/=" at start or end of string
-                pcodes <- "[%#+!/=-][[:space:]]*"
-                idx2 <- naidx & grepl(paste0("^", pcodes), txt)
-                if (any(idx2)) {
-                    idx2 <- which(idx2)
-                    temp <- match_to_table(sub(paste0("^", pcodes), "", txt[idx2]), tdata = tdata, from = opts$from, to = opts$to) ## matched text
-                    ## discard NA's in temp, which are non-matches
-                    idx2 <- idx2[!is.na(temp)]
-                    temp <- temp[!is.na(temp)]
-                    temp1 <- str_match(txt[idx2], paste0("^(", pcodes, ")"))[, 2]
-                    if (length(temp1) == length(temp)) out[idx2] <- paste0(temp1, temp)
-                }
-                pcodes <- "[[:space:]]*[%#+!/=-]"
-                idx2 <- naidx & grepl(paste0(pcodes, "$"), txt)
-                if (any(idx2)) {
-                    idx2 <- which(idx2)
-                    temp <- match_to_table(sub(paste0(pcodes, "$"), "", txt[idx2]), tdata = tdata, from = opts$from, to = opts$to) ## matched text
-                    idx2 <- idx2[!is.na(temp)]
-                    temp <- temp[!is.na(temp)]
-                    temp1 <- str_match(txt[idx2], paste0("(", pcodes, ")$"))[, 2]
-                    if (length(temp1) == length(temp)) out[idx2] <- paste0(temp, temp1)
-                }
             }
             ## now check for matches but discarding punctuation and spaces at the start or end of the text
-            naidx <- is.na(out)
-            if (any(naidx)) {
-                txt_parts <- str_match_all(txt[naidx], "^([[:punct:][:space:]]*)([^[:punct:]]*)([[:punct:][:space:]]*)$")
+            if (any(naidx) && allow_punct) {
+                txt_parts <- str_match_all(txt[naidx], "^([[:punct:]=[:space:]]*)(.+?)([[:punct:]=[:space:]]*)$") ## why isn't = considered part of punct here?
                 trx <- vapply(txt_parts, function(this) {
                     if (!any(nzchar(this))) return(NA_character_)
-                    idx <- which(tolower(this[3]) == tolower(tdata[[opts$from]]))
+                    idx <- if (ignore_case) which(tolower(this[3]) == tolower(tdata[[opts$from]])) else which(this[3] == tdata[[opts$from]])
                     if (length(idx) == 1 && !is.na(tdata[[opts$to]][idx])) {
                         ## match capitalization
-                        paste0(this[2], match_case(tdata[[opts$to]][idx], match_to = this[3], locale = opts$to), this[4])
+print(   tdata[[opts$to]][idx])                     
+                        paste0(this[2], if (output_match_case) match_case(tdata[[opts$to]][idx], match_to = this[3], locale = opts$to) else tdata[[opts$to]][idx], this[4])
                     } else {
                         NA_character_
                     }
@@ -141,7 +128,7 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
     )
 }
 
-match_to_table <- function(txt, tdata, from, to, ignore_case = TRUE, as_regexp = FALSE) {
+match_to_table <- function(txt, tdata, from, to, ignore_case = TRUE, as_regexp = FALSE, output_match_case = TRUE) {
     this_tdata <- if (ignore_case && !as_regexp) tolower(tdata[[from]]) else tdata[[from]]
     vapply(txt, function(z) {
         if (as_regexp) {
@@ -158,7 +145,7 @@ match_to_table <- function(txt, tdata, from, to, ignore_case = TRUE, as_regexp =
             } else {
                 out <- tdata[[to]][idx]
             }
-            if (ignore_case) out <- match_case(out, match_to = z, locale = to)
+            if (output_match_case) out <- match_case(out, match_to = z, locale = to)
             out
         } else {
             NA_character_
