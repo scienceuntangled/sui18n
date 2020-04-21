@@ -24,8 +24,9 @@ tr$t("hello")
 #> [1] "bonjour"
 ```
 
-Note that the default translation data is probably of no value to you,
-and you will probably want to create your own:
+Note that the default translation data is probably of no value to you
+(unless you have an unhealthy interest in volleyball), and you will
+probably want to create your own:
 
 ``` r
 library(tibble)
@@ -57,8 +58,8 @@ somewhere to inject the required javascript and
 sui_shinymod_ui(id = "something")
 ```
 
-to insert the language selector UI element at an appropriate place in
-the UI.
+to insert the language selector UI element at an appropriate spot in the
+UI.
 
 Then in your server function:
 
@@ -66,27 +67,37 @@ Then in your server function:
 my_i18n <- callModule(sui_shinymod_server, id = "something", csv_path = "/path/to/csv")
 ```
 
-With that scaffolding in place, you can then use elements in the UI with
-a `lang_key` attribute:
+With those pieces in place, you can then use elements in the UI with a
+`lang_key` attribute:
 
 ``` r
 tags$p(lang_key = "hello")
 ```
 
-And the content of that tag will be populated with the translation of
-`lang_key` value. You can also use the `my_i18n` object directly in the
-server:
+The content of that `p` tag will be automatically populated with the
+translation of `lang_key` value, and it will change whenever the user
+changes their selected language. This approach doesn’t require any extra
+reactive code, so it keeps your apps uncluttered. However, it is limited
+to simple tags (the translated text is inserted into the
+`element.innerHTML` attribute of the tag). If you need more complex UI
+structures, you can also use the `my_i18n` object directly. In your UI:
 
 ``` r
-output$some_element <- renderText({
+uiOutput("some_element")
+```
+
+And in the server:
+
+``` r
+output$some_element <- renderUI({
     blah <- mi18n$i18n_lang() ## make this expression reactive to the selected language
-    my_i18n$i18n$t("hello")
+    tags$p(my_i18n$i18n$t("hello"))
 })
 ```
 
 -----
 
-`sui18n` uses:
+`sui18n` makes use of:
 
   - the [i18njs](https://github.com/roddeh/i18njs) internationalisation
     library for JS projects. MIT License. Copyright (c) 2013-2018 Simon
