@@ -24,8 +24,12 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
         tdata <- read.csv(csv_path, stringsAsFactors = FALSE, comment.char = "@")
         tdata <- tdata[, !grepl("^X", colnames(tdata))] ## drop unnamed cols
     }
-    for (ci in seq_len(ncol(tdata))) tdata[[ci]] <- str_trim(gsub("\\\\n", "\n", tdata[[ci]]))
+    for (ci in seq_len(ncol(tdata))) {
+        tdata[[ci]] <- str_trim(gsub("\\\\n", "\n", tdata[[ci]]))
+        tdata[[ci]] <- gsub("\\\\\\\\", "\\\\", tdata[[ci]])
+    }
     tdata <- tdata[!apply(tdata, 1, function(z) all(is.na(z) | !nzchar(z))), ] ## drop empty rows
+    tdata <- unique(tdata) ## drop duplicate rows
     lng <- colnames(tdata)
     opts <- list(languages = lng, to = if (length(lng) > 1) setdiff(lng, "key")[1] else lng[1],
                  from = if ("key" %in% lng) "key" else lng[1], warn_unmatched = FALSE)
@@ -67,17 +71,21 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
             invisible(opts$warn_unmatched)
         },
 
-        t = function(txt) {
+        t = function(txt, as_regexp = FALSE) {
             if (opts$to == opts$from) return(txt)
             txt0 <- txt
             ## first try for exact match
             out <- match_to_table(txt, tdata = tdata, from = opts$from, to = opts$to, ignore_case = FALSE)
             naidx <- is.na(out)
+            if (any(naidx) && isTRUE(as_regexp)) {
+                out[naidx] <- match_to_table(txt[naidx], tdata = tdata, from = opts$from, to = opts$to, as_regexp = TRUE)
+                naidx <- is.na(out)
+            }
             if (any(naidx)) {
                 ## then exact (but case-insensitive) match
                 out[naidx] <- match_to_table(txt[naidx], tdata = tdata, from = opts$from, to = opts$to)
+                naidx <- is.na(out)
             }
-            naidx <- is.na(out)
             if (any(naidx)) {
                 ## allow for underscores instead of spaces
                 txt <- gsub("_", " ", txt)
@@ -109,9 +117,9 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
             if (any(naidx)) {
                 txt_parts <- str_match_all(txt[naidx], "^([[:punct:][:space:]]*)([^[:punct:]]*)([[:punct:][:space:]]*)$")
                 trx <- vapply(txt_parts, function(this) {
-                    if (!any(nzchar(this))) return("")
+                    if (!any(nzchar(this))) return(NA_character_)
                     idx <- which(tolower(this[3]) == tolower(tdata[[opts$from]]))
-                    if (length(idx) == 1) {
+                    if (length(idx) == 1 && !is.na(tdata[[opts$to]][idx])) {
                         ## match capitalization
                         paste0(this[2], match_case(tdata[[opts$to]][idx], match_to = this[3], locale = opts$to), this[4])
                     } else {
@@ -121,7 +129,7 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
                 out[naidx] <- trx
             }
             ## and catch anything that did not match above and replace with input
-            idx <- (!nzchar(out) | is.na(out)) & nzchar(txt0) & !is.na(txt0)
+            idx <- is.na(out) & nzchar(txt0) & !is.na(txt0)
             if (any(idx) && opts$warn_unmatched) {
                 warning("inputs without matching entries in the i18n data:\n", paste(txt[idx], collapse = "\n", sep = "\n"))
             }
@@ -133,12 +141,23 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
     )
 }
 
-match_to_table <- function(txt, tdata, from, to, ignore_case = TRUE) {
-    this_tdata <- if (ignore_case) tolower(tdata[[from]]) else tdata[[from]]
+match_to_table <- function(txt, tdata, from, to, ignore_case = TRUE, as_regexp = FALSE) {
+    this_tdata <- if (ignore_case && !as_regexp) tolower(tdata[[from]]) else tdata[[from]]
     vapply(txt, function(z) {
-        idx <- if (ignore_case) which(tolower(z) == this_tdata) else which(z == this_tdata)
+        if (as_regexp) {
+            idx <- which(vapply(this_tdata, function(re) tryCatch(grepl(paste0("^", re, "$"), z, ignore.case = ignore_case), error = function(e) FALSE), FUN.VALUE = TRUE, USE.NAMES = FALSE))
+        } else {
+            idx <- if (ignore_case) which(tolower(z) == this_tdata) else which(z == this_tdata)
+        }
         if (length(idx) == 1) {
-            out <- tdata[[to]][idx]
+            if (as_regexp) {
+                out <- sub(this_tdata[idx], tdata[[to]][idx], z)
+                ##print(this_tdata[idx])
+                ##print(tdata[[to]][idx])
+                ##print(out)
+            } else {
+                out <- tdata[[to]][idx]
+            }
             if (ignore_case) out <- match_case(out, match_to = z, locale = to)
             out
         } else {
@@ -147,7 +166,9 @@ match_to_table <- function(txt, tdata, from, to, ignore_case = TRUE) {
     }, FUN.VALUE = "", USE.NAMES = FALSE)
 }
 
+## operates on single string input txt
 match_case <- function(txt, match_to, locale) {
+    if (is.na(txt) || !nzchar(txt)) return(txt)
     if (is_uppercase(match_to)) {
         str_to_upper(txt, locale = locale)
     } else if (is_titlecase(match_to)) {
