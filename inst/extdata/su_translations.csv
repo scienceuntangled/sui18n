@@ -49,14 +49,14 @@ transition attack,transition attack,attaque sur defense/relance
 middle attack,middle attack,attaque au centre
 attack charts,attack charts,graphique des attaques
 blocking,blocking,contre
-all players,all players,tous les joueurs
-by attack code,by attack code,par code d’attaque
 middle blocking,middle blocking,contre des centraux
 keys,keys,lexique
 worksheet key,worksheet key,lexique de la fiche technique
 attacking key,attacking key,lexique d’attaque
 middle attackers,middle attackers,centraux
 blocking key,blocking key,lexique du contre
+by attack code,by attack code,par code d’attaque
+by attack zone,by attack zone,par zone d’attaque
 by attack code/zone,by attack code/zone,par zone/code d’attaque
 settings used for this report,settings used for this report,parametres utilises dans ce compte rendu
 
@@ -102,7 +102,6 @@ mod SO%,mod SO%,SO% mod @ modified SO%
 Modified sideout percentage (sideout percentage excluding serve errors),Modified sideout percentage (sideout percentage excluding serve errors),Pourcentage sideout modifie (pourcentage de sideout excluant les erreurs de service)
 EXP SO%,EXP SO%,SO% ATT @ expected SO%
 "The expected sideout rate based on the receiver's pass ratings and the dataset-wide sideout rates by rating. For example, 'perfect' receptions might correspond to a dataset-wide sideout rate of 0.7, and 'poor' to 0.4. If a given receiver had one 'perfect' reception and one 'poor' one, their expected sideout rate would be 0.55.","The expected sideout rate based on the receiver's pass ratings and the dataset-wide sideout rates by rating. For example, 'perfect' receptions might correspond to a dataset-wide sideout rate of 0.7, and 'poor' to 0.4. If a given receiver had one 'perfect' reception and one 'poor' one, their expected sideout rate would be 0.55.","Le taux de sideout attendu en fonction de la qualite de reception et de l’ensemble des sideout des données par qualite de reception. Par exemple, une reception parfaite peut avoir un taux de sideout de 0.7, et une mauvaise reception un taux de sideout de 0.4. Dans ce cas, un receptionneur avec une mauvaise recpetion et une reception parfaite a un taux de sideout attendu de 0.55."
-reception,reception,reception
 N,N,N @ as in 'number of receptions' etc
 number of serve receptions,number of serve receptions,nombre de reception de service
 perf,perf,parf @ abbrev for perfect
@@ -121,7 +120,7 @@ eff f,eff f,eff sf @ abbrev for efficiency on float/jump-float serves
 reception efficiency on float/jump-float serves,reception efficiency on float/jump-float serves,efficacite de la reception sur service saute flottant
 
 @@ reception attack
-kill,kill,gagnante
+kill,kill,att gagn
 number of attacks during serve reception phase,number of attacks during serve reception phase,nombre d’attaque sur reception
 attack kill percentage,attack kill percentage,pourcentage d’attaque gagnante
 Attack efficiency [(number of kills - number of errors and blocked attacks)/(number of attacks)],Attack efficiency [(number of kills - number of errors and blocked attacks)/(number of attacks)],Efficacite de l’attaque [(nombre d’attaques gagnantes – nombre d’erreurs et contrees)/(nombre d’attaques)]
@@ -232,41 +231,40 @@ usage rate,usage rate,taux d’utilisation
 @@ miscellaneous
 yes,yes,oui
 no,no,non
-player report,player report,
-contact,contact,
-report by,report by,
-date unknown,date unknown,
-match summary,match summary,
-report generated on,report generated on,
-player roles from,player roles from,
+player report,player report,NA
+contact,contact,NA
+report by,report by,NA
+date unknown,date unknown,NA
+match summary,match summary,NA
+report generated on,report generated on,NA
+player roles from,player roles from,NA
 roles,roles,positions
-Fixed rotation (S-H-M),Fixed rotation (S-H-M),
-Fixed rotation (S-M-H),Fixed rotation (S-M-H),
+Fixed rotation (S-H-M),Fixed rotation (S-H-M),NA
+Fixed rotation (S-M-H),Fixed rotation (S-M-H),NA
 statistic,statistic,statistique
 explanation,explanation,explication
-modified breakpoint percentage (breakpoint percentage excluding serve errors and aces),modified breakpoint percentage (breakpoint percentage excluding serve errors and aces),
+modified breakpoint percentage (breakpoint percentage excluding serve errors and aces),modified breakpoint percentage (breakpoint percentage excluding serve errors and aces),NA
 mod BP%,mod BP%,%BP mod
-"The expected opposition sideout rate. (This is effectively the same as 100-(EXP BP%), but excluding serve errors).","The expected opposition sideout rate. (This is effectively the same as 100-(EXP BP%), but excluding serve errors).",
+"The expected opposition sideout rate. (This is effectively the same as 100-(EXP BP%), but excluding serve errors).","The expected opposition sideout rate. (This is effectively the same as 100-(EXP BP%), but excluding serve errors).",NA
 transition attacks,transition attacks,attaques sur defense/relance
 number of attacks,number of attacks,nombre d’attaques
-continued,continued,a continué
-values in brackets give the rank of each team for that statistic,values in brackets give the rank of each team for that statistic,
+values in brackets give the rank of each team for that statistic,values in brackets give the rank of each team for that statistic,NA
 ATT/D TOT,ATT/D TOT,ATT/D TOT
 ATT/D BP,ATT/D BP,ATT/D BP
 sets lost,sets lost,sets perdus
 all,all,toutes
 OPP FBSO%,OPP FBSO%,SOPA% ADV
-REC ATT KILL%,REC ATT KILL%,
-REC ATT EFF,REC ATT EFF,
+REC ATT KILL%,REC ATT KILL%,REC ATT GAGN%
+REC ATT EFF,REC ATT EFF,REC ATT EFF
 BP% TOT,BP% TOT,%BP TOT
-BLOCK% SER R,BLOCK% SER R,
-no data,no data,
+BLOCK% SER R,BLOCK% SER R,NA
+no data,no data,NA
 perfect,perfect,parfait
 positive,positive,positive
 errors,errors,erreurs
 all players,all players,tous les joueurs
 all teams,all teams,toutes les équipes
-overall,overall,
+overall,overall,NA
 
 @@ report settings
 serving,serving,service
@@ -313,7 +311,6 @@ Rec att kill R+,Rec att kill R+,Rec att gagn R+
 Rec att kill R!,Rec att kill R!,Rec att gagn R!
 Rec att kill R-,Rec att kill R-,Rec att gagn R-
 trans att kill,trans att kill,att trans gagn
-opp trans att err,opp trans att err,att trans gagn adv
 trans block,trans block,contre trans
 other,other,autres
 opp serve ace,opp serve ace,serv gagn adv
@@ -325,7 +322,7 @@ opp trans block,opp trans block,contre trans adv
 serve ace,serve ace,serv gagn
 opp rec att err,opp rec att err,att rec err adv
 rec att block,rec att block,att rec contre
-opp trans att err,opp trans att err,att tran err adv
+opp trans att err,opp trans att err,att trans err adv
 serve err,serve err,serv err
 Opp rec att kill R#,Opp rec att kill R#,rec att gagn adv R#
 Opp rec att kill R+,Opp rec att kill R+,rec att gagn adv R+
@@ -334,15 +331,11 @@ Opp rec att kill R-,Opp rec att kill R-,rec att gagn adv R-
 
 @@ serve section
 "Expected percentage of points won on serve, given this server's serve evaluations and the league-wide BP% for each of those evaluations","Expected percentage of points won on serve, given this server's serve evaluations and the league-wide BP% for each of those evaluations","Pourcentage attendu de points gagnes au service, etant donne la qualite de service du serveur et le taux de BP dans la ligue pour chacune des evaluations"
-"Expected
-BP%","Expected
-BP%","%BP
-attendu"
+"Expected\nBP%","Expected\nBP%","%BP\nattendu"
 efficiency,efficiency,efficacite
 value,value,valeur
 (Aces + positive - errors - negative)/(N serves),(Aces + positive - errors - negative)/(N serves),(Service gagnants + positive - erreurs - mauvaises)/(N services)
 all (potentially including serves with missing position information),all (potentially including serves with missing position information),Tous (en incluant les services sans information de position)
-all (with position information),all (with position information),tous (uniquement les services avec information de position)
 serves from the left (zones 5/7,serves from the left (zones 5/7,services depuis la gauche (zones 5/7
 serves from the centre (zone 6,serves from the centre (zone 6,services depuis le centre (zone 6
 serves from the right (zones 9/1,serves from the right (zones 9/1,services depuis la droite (zones 9/1
@@ -360,6 +353,7 @@ jump serve,jump serve,service smashe
 percent,percent,pourcentage
 Expected SO%,Expected SO%,%SO attendu
 SO%,SO%,%SO
+%SO,%SO,%SO
 overpasses,overpasses,reception directement dans le camp adverse
 N receptions,N receptions,N reception
 percentage of points won on reception,percentage of points won on reception,pourcentage de points gagnes sur reception
@@ -373,22 +367,109 @@ all (with position information),all (with position information),toutes (avec les
 from the receiver's left,from the receiver's left,depuis la gauche du receptionneur
 straight,straight,de face
 from the receiver's right,from the receiver's right,depuis la droite du receptionneur
-% of passes,% of passes,% de reception
 
 @@ setting section
 by rotation,by rotation,par rotation
-'Shifted to 2' means that the pass went to zone 2 and the setter sets from there,'Shifted to 2' means that the pass went to zone 2 and the setter sets from there,
-"'Shifted to 4' means that the pass went to zones 4, 3C, or 3D and the setter sets from there","'Shifted to 4' means that the pass went to zones 4, 3C, or 3D and the setter sets from there",
-in crunch time,in crunch time,
-crunch time is defined as,crunch time is defined as,
-"in sets 1-4: scores of 18-18 or higher, and a margin of two points or less (e.g. scores of 18-20 or 23-22 are crunch time, but 16-18 and 18-21 are not)","in sets 1-4: scores of 18-18 or higher, and a margin of two points or less (e.g. scores of 18-20 or 23-22 are crunch time, but 16-18 and 18-21 are not)",
-"in sets 5: scores of 8-8 or higher, and a margin of two points or less (e.g. scores of 11-10 or 9-11 are crunch time, but 13-9 is not)","in sets 5: scores of 8-8 or higher, and a margin of two points or less (e.g. scores of 11-10 or 9-11 are crunch time, but 13-9 is not)",
+"'Shifted to 2' means that the pass went to zone 2 and the setter sets from there","'Shifted to 2' means that the pass went to zone 2 and the setter sets from there",NA
+"'Shifted to 4' means that the pass went to zones 4, 3C, or 3D and the setter sets from there","'Shifted to 4' means that the pass went to zones 4, 3C, or 3D and the setter sets from there",NA
+in crunch time,in crunch time,NA
+crunch time is defined as,crunch time is defined as,NA
+crunchtime_def_sets14,"in sets 1-4: scores of 18-18 or higher, and a margin of two points or less (e.g. scores of 18-20 or 23-22 are crunch time, but 16-18 and 18-21 are not)",NA
+crunchtime_def_set5,"in sets 5: scores of 8-8 or higher, and a margin of two points or less (e.g. scores of 11-10 or 9-11 are crunch time, but 13-9 is not)",NA
 point win,point win,point gagnes @ in the sense of point win %
-setter pos,setter pos,passeur pos
+setter pos,setter pos,passeur pos @ AI check
 shortattkill,Kill,AG @ inset 'kill' text in setting plots
 shortptwin,win,PG @ inset 'win' text in setting plots
 attkill,kill,att gagn @ used in the 'overall' text below setting plots
 ptwin,point win,point gagn @ used in the 'overall' text below setting plots
+
+@@ attacking section
+teamrep_attack_intro,"This section gives an indication of the contribution that middles make to their team in attack. The values given here are for *team* attack outcomes when the middle player in question is front row. They are based on attacks by all players on the team, not the just the attacks of the middle player in question. See the key at the end of this report for a full explanation of the columns, but briefly `rec att` is reception attack, `att%` is attack kill percentage, `R#+` is perfect or good reception, `trans att` is transition attack, and `BP` is breakpoint phase (the team is serving)",NA
+"Only attackers with at least ([[:digit:]]+) attacks in total are shown in this section","Only attackers with at least \\1 attacks in total are shown in this section",NA
+"For each of those attackers, a breakdown by attack codes (X5, V5, etc) is given for those attack codes for which the player made at least ([[:digit:]]+) attacks", "For each of those attackers, a breakdown by attack codes (X5, V5, etc) is given for those attack codes for which the player made at least \\1 attacks",NA
+"Charts/tables are only shown for attack codes (X5, V5, etc) for which the player made at least ([[:digit:]]+) attacks", "Charts/tables are only shown for attack codes (X5, V5, etc) for which the player made at least \\1 attacks",NA
+"Note that each table below is based on all attacks with the given attack code. However, the charts do not show all attacks","Note that each table below is based on all attacks with the given attack code. However, the charts do not show all attacks",NA
+The charts only show attacks that had an outcome of,The charts only show attacks that had an outcome of,NA
+Not included in the charts are attacks with outcome,Not included in the charts are attacks with outcome,NA
+The charts only show attacks of type,The charts only show attacks of type,NA
+Not shown on the charts are attacks of type,Not shown on the charts are attacks of type,NA
+Hard spikes,Hard spikes,NA
+Soft spikes,Soft spikes,NA
+Tips,Tips,NA
+Kills,Kills,Attaques gagnantes @ AI check
+Blocked attacks,Blocked attacks,Contrees @ AI check
+Errors into net,Errors into net,NA
+Other errors,Other errors,NA
+All other attacks,All other attacks,NA
+N attacks,N attacks,N att
+N kills, N kills, N att gagn
+N errs, N errs, N errs
+N blocked, N blocked,N contres @ AI check
+Rally win %, Rally win %, Point gagn % @ AI check
+N rec att,N rec att,N rec att
+rec att%,rec att%, rec att gagn%
+N rec att R#+,N rec att R#+,N rec att R#+
+rec att% R#+,rec att% R#+,rec att gagn% R#+
+SO% R#+,SO% R#+,SO% R#+
+N trans att,N trans att,N att trans
+trans att%,trans att%,att trans gagn%
+trans win%,trans win%,trans point gagn% @ AI check
+N trans att BP,N trans att BP,N att trans BP @ this is N transition attacks in BP phase @ AI check
+trans att% BP,trans att% BP,att trans gagn% BP @ transition attack kill% in BP phase @ AI check
+BP%,BP%,%BP
+%BP,%BP,%BP
+
+@@ blocking section
+all opposition attack,all opposition attack,toutes les attaques de l’adversaire @ AI check
+opposition reception attack,opposition reception attack,attaque sur reception de l’adversaire @ AI check
+opposition transition attack,opposition transition attack,attaque en transition de l’adversaire @ AI check
+aA,aA,aA
+number of opposition attacks against this blocker,number of opposition attacks against this blocker,NA
+aA%,aA%,aA%
+opposition attack kill percentage against this blocker,opposition attack kill percentage against this blocker,NA
+aAeff,aAeff,aAeff
+opposition attack efficiency against this blocker,opposition attack efficiency against this blocker,NA
+BP_won,BP_won,BP_gagnes
+"Of the rallies during which the opposition attacked against this blocker, the percentage of rallies won by the blocking team","Of the rallies during which the opposition attacked against this blocker, the percentage of rallies won by the blocking team",NA
+"As for 'won' but only including rallies during which the blocking team was serving","As for 'won' but only including rallies during which the blocking team was serving",NA
+indiv_B%,indiv_B%,indiv_B% @ AI check
+B#% ind,B#% ind,B#% ind @ AI check
+block kills made by this individual blocker (i.e. block kills credited to this individual) as a percentage of opposition attacks against this blocker,block kills made by this individual blocker (i.e. block kills credited to this individual) as a percentage of opposition attacks against this blocker,NA
+tot att B%,tot att B%,tot att B%
+B#% team,B#% team,B#% équipe
+block kills (regardless of whether the kill was made by this individual player or the other blocking players) as a percentage of opposition attacks against this blocker,block kills (regardless of whether the kill was made by this individual player or the other blocking players) as a percentage of opposition attacks against this blocker,NA
+rec aA%,rec aA%,rec aA%
+opposition reception attack (the first attack directly after receiving serve) kill percentage against this blocker,opposition reception attack (the first attack directly after receiving serve) kill percentage against this blocker,NA
+N blockers,N blockers,N contreurs @ AI check
+Average number of blockers against each opposition XX attack,Average number of blockers against each opposition XX attack,NA
+rallies won,rallies won,NA
+TOT_XX,TOT_XX,TOT_XX
+Total number of attacks of type XX against this blocker,Total number of attacks of type XX against this blocker,NA
+XX%,XX%,XX%
+Attack percentage of TOT_XX attacks against this blocker,Attack percentage of TOT_XX attacks against this blocker,NA
+XXeff,XXeff,XXeff
+Attack efficiency of TOT_XX attacks against this blocker,Attack efficiency of TOT_XX attacks against this blocker,NA
+part%,part%,part% @ short for 'participation %' @ AI check
+XXpart%,XXpart%,XXpart% @ AI check
+Percentage of opposition XX attacks in which this blocker participated in the block,Percentage of opposition XX attacks in which this blocker participated in the block,NA
+"As for 'Rallies won' but only including rallies during which the blocking team was serving","As for 'Rallies won' but only including rallies during which the blocking team was serving",NA
+BP% Rxx,BP% Rxx,BP% Rxx
+"As for 'BP%', but where the reception evaluation code was xx","As for 'BP%', but where the reception evaluation code was xx",NA
+aA% HB/FB/1T,aA% HB/FB/1T,NA
+opposition attack kill percentage for high ball/fast ball/first tempo attacks against this blocker,opposition attack kill percentage for high ball/fast ball/first tempo attacks against this blocker,NA
+rec aA,rec aA,rec aA @ AI check
+number of opposition reception attacks (the first attack directly after receiving serve) against this blocker,number of opposition reception attacks (the first attack directly after receiving serve) against this blocker,NA
+opposition reception attack kill percentage against this blocker,opposition reception attack kill percentage against this blocker,NA
+rec aA% HB/FB/1T,rec aA% HB/FB/1T,NA
+opposition reception attack kill percentage for high ball/fast ball/first tempo attacks against this blocker,opposition reception attack kill percentage for high ball/fast ball/first tempo attacks against this blocker,NA
+rec aA% Rxx,rec aA% Rxx,rec aA% Rxx @ AI check
+opposition reception attack kill percentage against this blocker where the reception evaluation code was xx,opposition reception attack kill percentage against this blocker where the reception evaluation code was xx,NA
+trans aA,trans aA,trans aA @ AI check
+number of opposition transition attacks against this blocker,number of opposition transition attacks against this blocker,NA
+trans aA%,trans aA%,trans aA% @ AI check
+opposition transition attack kill percentage against this blocker,opposition transition attack kill percentage against this blocker,NA
+trans aA% HB/FB/1T,trans aA% HB/FB/1T,NA
+opposition transition attack kill percentage for high ball/fast ball/first tempo attacks against this blocker,opposition transition attack kill percentage for high ball/fast ball/first tempo attacks against this blocker,NA
 
 @@ app text elements - these are case-sensitive
 Volleyball team reports,Volleyball team reports,Compte rendus d’équipe pour le volleyball
@@ -398,12 +479,65 @@ Note that you may need to enable popups in your browser if you choose to open th
 Dismiss,Dismiss,Annuler
 Cancel,Cancel,Annuler
 Generate report,Generate report,Creer le compte rendu
-Generating report,Generating report,
-Please wait,Please wait,"S'il vous plaît, attendez"
-Dataset selection,Dataset selection,Sélection des données
-Select dataset:,Select dataset:,Sélectionner les données:
+Generating report,Generating report,NA
+Please wait,Please wait,"S'il vous plaît, attendez" @ AI check
+Dataset selection,Dataset selection,Sélection des données @ AI check
+Select dataset,Select dataset,Sélectionner les données @ AI check
 Report settings,Report settings,Paramètres de compte rendu
 or,or,ou
+Login,Login,NA
+See the 'About' tab for more information about this app,See the 'About' tab for more information about this app,NA
+Main tab,Main tab,NA
+Data administration,Data administration,NA
+Pricing/Sign up/Free trial,Pricing/Sign up/Free trial,NA
+About,About,NA
+These reports are generally quite slow to generate. If you just want to see an example, try this one for PGE Skra Bełchatów from the 2017-18 PlusLiga example data set,These reports are generally quite slow to generate. If you just want to see an example, try this one for PGE Skra Bełchatów from the 2017-18 PlusLiga example data set,NA
+Subscribers: log in to see your personal data sets,Subscribers: log in to see your personal data sets,NA
+You can also upload a file and it will be added to the datasets list,You can also upload a file and it will be added to the datasets list,NA
+Match filter:,Match filter:,Filtre de match @ AI check
+No filter applied,No filter applied,NA
+Select team,Select team,Sélectionner l’équipe @ AI check
+Select player,Select player,Sélectionner le joueur @ AI check
+Output format,Output format,NA
+Options,Options,NA
+Infer player positions from,Infer player positions from,NA
+Include worksheet,Include worksheet,NA
+Include team comparisons,Include team comparisons,NA
+Include serve report,Include serve report,NA
+Generate individual serve charts? (May be slow),Generate individual serve charts? (May be slow),NA
+Minimum number of serves,Minimum number of serves,NA
+Servers,Servers,NA @ as in number of servers
+Take serve/reception position data from,Take serve/reception position data from,NA
+Include reception report,Include reception report,NA
+Generate individual reception charts? (May be slow),Generate individual reception charts? (May be slow),NA
+Minimum number of receptions,Minimum number of receptions,NA
+Receivers,Receivers,NA @ as in number of receivers
+Include setting report,Include setting report,NA
+Select setters by,Select setters by,NA
+Specific players,Specific players,NA
+Minimum number of sets,Minimum number of sets,Nombre minimum de passes
+Select setters to report on,Select setters to report on,NA
+Include set distribution by setter call? (DataVolley indoor only),Include set distribution by setter call? (DataVolley indoor only),NA
+Attacking,Attacking,Attaque
+Include attack report,Include attack report,NA
+Attack charts minimum number of attacks,Attack charts minimum number of attacks,NA
+Attackers,Attackers,NA
+Attack charts by,Attack charts by,NA
+"Attack code (X5, V6, etc)","Attack code (X5, V6, etc)","Code d’attaque (X5, V6, etc)"
+Select attack codes to chart,Select attack codes to chart,NA
+Include block report,Include block report,NA
+Report on opposition attacks by,Report on opposition attacks by,NA
+Select opposition attack codes to report on,Select opposition attack codes to report on,NA
+Use the same attack codes as selected in the attacking section,Use the same attack codes as selected in the attacking section,NA
+Our other apps,Our other apps,Nos autres apps @ AI check
+DataVolley/VBStats file validator,DataVolley/VBStats file validator,Validateur de fichiers DataVolley/VBStats @ AI check
+A flexible reporting and analysis tool,A flexible reporting and analysis tool,NA
+Interactive exploration of team and player setting patterns,Interactive exploration of team and player setting patterns,NA
+Detailed blocking analysis,Detailed blocking analysis,NA
+Team and player attack charts,Team and player attack charts,NA
+Defensive analysis,Defensive analysis,NA
+News and updates,News and updates,NA
+Last update,Last update,NA
 
 @@ progress messages in app
 generating dataset summary,generating dataset summary,generation du recapitulatif des données
@@ -416,5 +550,7 @@ generating individual serve charts,generating individual serve charts,generation
 generating reception report,generating reception report,generation du compte rendu sur la reception
 generating other reception reports,generating other reception reports,generation des autres compte rendu sur la reception
 generating individual reception charts,generating individual reception charts,generation des graphiques de reception par joueur
-generating setting report,generating setting report,
+generating setting report,generating setting report,NA
+generating attack report, generating attack report,generation du compte rendu sur l’attaque @ AI check
+generating blocking report,generating blocking report,generation du compe rendu sur le contre @ AI check
 converting to,converting to,conversion
