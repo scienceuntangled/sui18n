@@ -8,7 +8,7 @@
 sui_js <- function() {
     js <- readLines(system.file("extdata/js/i18n.js", package = "sui18n"))
     js <- paste(js, collapse = "\n")
-    tags$script(HTML(js))
+    tags$head(tags$script(HTML(js)))
 }
 
 #' A Shiny module for internationalization
