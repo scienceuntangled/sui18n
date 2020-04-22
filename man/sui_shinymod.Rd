@@ -25,11 +25,24 @@ A Shiny module for internationalization
 }
 \examples{
 \dontrun{
-  ## in ui function
-  sui_js()
-  sui_shinymod_ui(id = "lang")
-
-  ## in server function
-  callModule(sui_shinymod_server, id = "lang", csv_path = "optional/path/to/your/file")
+  library(shiny)
+  app <- shinyApp(
+      ui = fluidPage(
+          useShinyjs(),
+          sui_js(),
+          sui_shinymod_ui(id = "lang"),
+          tags$p(lang_key = "hello"), ## simple tags can be done like this
+          uiOutput("another")
+      ),
+      server = function(input, output) {
+          ms <- callModule(sui_shinymod_server, id = "lang")
+          ## more complex UI elements can be done like this
+          output$another <- renderUI({
+              ms$i18n_lang()
+              tags$p(ms$i18n$t("Please wait"))
+          })
+      }
+  )
+  runApp(app)
 }
 }

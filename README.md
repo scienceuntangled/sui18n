@@ -46,9 +46,10 @@ tr$t("greeting")
 
 ## Using in Shiny apps
 
-In the UI function, call
+In the UI function, include
 
 ``` r
+useShinyjs(),
 sui_js()
 ```
 
@@ -103,7 +104,7 @@ And in the server:
 
 ``` r
 output$some_element <- renderUI({
-    blah <- mi18n$i18n_lang() ## make this expression reactive to the selected language
+    mi18n$i18n_lang() ## make this expression reactive to the selected language
     tags$p(my_i18n$i18n$t("hello"))
 })
 ```
