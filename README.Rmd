@@ -80,7 +80,19 @@ With those pieces in place, you can then use elements in the UI with a `lang_key
 tags$p(lang_key = "hello")
 ```
 
-The content of that `p` tag will be automatically populated with the translation of `lang_key` value, and it will change whenever the user changes their selected language. This approach doesn't require any extra reactive code, so it keeps your apps uncluttered. However, it is limited to simple tags (the translated text is inserted into the `element.innerHTML` attribute of the tag). If you need more complex UI structures, you can also use the `my_i18n` object directly. In your UI:
+The content of that `p` tag will be automatically populated with the translation of `lang_key` value, and it will change whenever the user changes their selected language. This approach doesn't require any extra reactive code, so it keeps your apps uncluttered. However, it is limited to simple tags (the translated text is inserted into the `element.innerHTML` attribute of the tag). This is actually more flexible than you might think &mdash; for example, you can do:
+
+```r
+tabPanel(title = tags$span(lang_key = "My tab title"), ...)
+```
+
+or
+
+```r
+selectInput("select_id", label = tags$span(lang_key = "My selector title"), ...)
+```
+
+However, if you need more complex UI structures, you can also use the `my_i18n` object directly. In your UI:
 
 ```r
 uiOutput("some_element")
