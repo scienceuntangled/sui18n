@@ -7,8 +7,7 @@
 #' @export
 sui_js <- function() {
     js <- readLines(system.file("extdata/js/i18n.js", package = "sui18n"))
-    js <- paste(js, collapse = "\n")
-    tags$head(tags$script(HTML(js)))
+    tags$head(tags$script(HTML(paste(js, collapse = "\n"))))
 }
 
 #' A Shiny module for internationalization
@@ -17,14 +16,15 @@ sui_js <- function() {
 #' @param input : see \code{\link[shiny]{callModule}}
 #' @param output : see \code{\link[shiny]{callModule}}
 #' @param session : see \code{\link[shiny]{callModule}}
-#' @param csv_path string: path to the languages CSV file. See \code{\link{sui_translator}} for details
+#' @param to string: as for \code{link{sui_translator}}
+#' @param csv_path string: as for \code{\link{sui_translator}}
 #'
 #' @examples
 #' \dontrun{
 #'   library(shiny)
 #'   app <- shinyApp(
 #'       ui = fluidPage(
-#'           useShinyjs(),
+#'           useShinyjs(), ## need to include this call
 #'           sui_js(),
 #'           sui_shinymod_ui(id = "lang"),
 #'           tags$p(lang_key = "hello"), ## simple tags can be done like this
@@ -50,17 +50,22 @@ sui_shinymod_ui <- function(id) {
 
 #' @rdname sui_shinymod
 #' @export
-sui_shinymod_server <- function(input, output, session, csv_path = NULL) {
-    this_i18n <- if (is.null(csv_path)) sui_translator() else sui_translator(csv_path = csv_path)
+sui_shinymod_server <- function(input, output, session, csv_path = NULL, to = NULL) {
+    this_i18n <- if (is.null(csv_path)) sui_translator(to) else sui_translator(to, csv_path = csv_path)
     this_i18n_lang <- reactiveVal(this_i18n$target())
     shiny::addResourcePath("sui_flags", system.file("extdata/flags", package = "sui18n"))
+    this_update_selection <- reactiveVal(NULL) ## manually force the selection to change
 
     ## update choices
     observe({
         langs <- tryCatch(setdiff(this_i18n$languages(), "key"), error = function(e) NULL)
         if (!is.null(langs)) {
-            isolate(sel <- input$select_lang)
-            if (is.null(sel) || !sel %in% langs) sel <- langs[1]
+            if (!is.null(this_update_selection())) {
+                sel <- this_update_selection()
+            } else {
+                isolate(sel <- input$select_lang)
+                if (is.null(sel) || !sel %in% langs) sel <- langs[1]
+            }
             flgs <- langs
             flgs[flgs == "en"] <- "GB"
             flgs <- setNames(lapply(seq_along(flgs), function(fi) paste0("<img src=\"sui_flags/", toupper(flgs[fi]), ".svg\" />", toupper(langs[fi]))), langs)
@@ -74,6 +79,8 @@ sui_shinymod_server <- function(input, output, session, csv_path = NULL) {
             this_i18n_lang(input$select_lang)
             ## construct js-side translator for this language
             dict <- this_i18n$get_table()
+            idx <- is.na(dict[[input$select_lang]])
+            if (!is.null(this_i18n$warn_unmatched) && this_i18n$warn_unmatched()) dict[[input$select_lang]][idx] <- paste0('<span style="border:1px solid red;">', dict$key[idx], '</span>')
             myscr <- paste0('mytr = i18n.create({ values : ',
                             jsonlite::toJSON(setNames(as.list(dict[[input$select_lang]]), dict$en), auto_unbox = TRUE),
                             '});')
@@ -83,5 +90,5 @@ sui_shinymod_server <- function(input, output, session, csv_path = NULL) {
         }
     })
 
-    list(i18n = this_i18n, i18n_lang = this_i18n_lang)
+    list(i18n = this_i18n, i18n_lang = this_i18n_lang, update_selection = this_update_selection)
 }

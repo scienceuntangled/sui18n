@@ -7,7 +7,7 @@
 \usage{
 sui_shinymod_ui(id)
 
-sui_shinymod_server(input, output, session, csv_path = NULL)
+sui_shinymod_server(input, output, session, csv_path = NULL, to = NULL)
 }
 \arguments{
 \item{id}{string: the id of the shiny element}
@@ -18,7 +18,9 @@ sui_shinymod_server(input, output, session, csv_path = NULL)
 
 \item{session}{: see \code{\link[shiny]{callModule}}}
 
-\item{csv_path}{string: path to the languages CSV file. See \code{\link{sui_translator}} for details}
+\item{csv_path}{string: as for \code{\link{sui_translator}}}
+
+\item{to}{string: as for \code{link{sui_translator}}}
 }
 \description{
 A Shiny module for internationalization
@@ -28,7 +30,7 @@ A Shiny module for internationalization
   library(shiny)
   app <- shinyApp(
       ui = fluidPage(
-          useShinyjs(),
+          useShinyjs(), ## need to include this call
           sui_js(),
           sui_shinymod_ui(id = "lang"),
           tags$p(lang_key = "hello"), ## simple tags can be done like this

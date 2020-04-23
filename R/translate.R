@@ -40,7 +40,7 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
     lng <- colnames(tdata)
     opts <- list(languages = lng, to = if (length(lng) > 1) setdiff(lng, "key")[1] else lng[1],
                  from = if ("key" %in% lng) "key" else lng[1], warn_unmatched = FALSE)
-    if (!missing(to)) {
+    if (!missing(to) && !is.null(to)) {
         if (to %in% lng) {
             opts$to <- to
         } else {
