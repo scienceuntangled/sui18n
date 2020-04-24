@@ -5,6 +5,10 @@
 
 <!-- badges: start -->
 
+[![R build
+status](https://github.com/scienceuntangled/sui18n/workflows/check-standard/badge.svg)](https://github.com/scienceuntangled/sui18n/actions)
+[![R build
+status](https://github.com/scienceuntangled/sui18n/workflows/test-coverage/badge.svg)](https://github.com/scienceuntangled/sui18n/actions)
 <!-- badges: end -->
 
 ## Installation
