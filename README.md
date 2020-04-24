@@ -49,7 +49,6 @@ tr$t("greeting")
 In the UI function, include
 
 ``` r
-useShinyjs(),
 sui_js()
 ```
 

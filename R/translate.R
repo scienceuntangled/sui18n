@@ -107,7 +107,6 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
                     idx <- if (ignore_case) which(tolower(this[3]) == tolower(tdata[[opts$from]])) else which(this[3] == tdata[[opts$from]])
                     if (length(idx) == 1 && !is.na(tdata[[opts$to]][idx])) {
                         ## match capitalization
-print(   tdata[[opts$to]][idx])                     
                         paste0(this[2], if (output_match_case) match_case(tdata[[opts$to]][idx], match_to = this[3], locale = opts$to) else tdata[[opts$to]][idx], this[4])
                     } else {
                         NA_character_

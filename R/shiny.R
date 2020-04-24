@@ -24,7 +24,6 @@ sui_js <- function() {
 #'   library(shiny)
 #'   app <- shinyApp(
 #'       ui = fluidPage(
-#'           useShinyjs(), ## need to include this call
 #'           sui_js(),
 #'           sui_shinymod_ui(id = "lang"),
 #'           tags$p(lang_key = "hello"), ## simple tags can be done like this
@@ -84,11 +83,17 @@ sui_shinymod_server <- function(input, output, session, csv_path = NULL, to = NU
             myscr <- paste0('mytr = i18n.create({ values : ',
                             jsonlite::toJSON(setNames(as.list(dict[[input$select_lang]]), dict$en), auto_unbox = TRUE),
                             '});')
-            shinyjs::runjs(myscr)
+            evaljs(myscr)
             ## run it
-            shinyjs::runjs("translate_all()")
+            do_translate()
         }
     })
 
-    list(i18n = this_i18n, i18n_lang = this_i18n_lang, update_selection = this_update_selection)
+    do_translate <- function() evaljs("translate_all()")
+
+    list(i18n = this_i18n, i18n_lang = this_i18n_lang, update_selection = this_update_selection, do_translate = do_translate)
+}
+
+evaljs <- function(expr) {
+    shiny::getDefaultReactiveDomain()$sendCustomMessage("evaljs", expr)
 }

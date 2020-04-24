@@ -1,3 +1,6 @@
+/* handler for running js code directly */
+Shiny.addCustomMessageHandler('evaljs', function(jsexpr) { eval(jsexpr) });
+
 function translate_all() {
     var items = document.querySelectorAll("[lang_key]")
     for (var i=0; i < items.length; i++) { try { items[i].innerHTML = mytr(items[i].getAttribute("lang_key")); } catch(error) {items[i].innerHTML = items[i].getAttribute("lang_key"); }}

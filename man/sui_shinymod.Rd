@@ -30,7 +30,6 @@ A Shiny module for internationalization
   library(shiny)
   app <- shinyApp(
       ui = fluidPage(
-          useShinyjs(), ## need to include this call
           sui_js(),
           sui_shinymod_ui(id = "lang"),
           tags$p(lang_key = "hello"), ## simple tags can be done like this
