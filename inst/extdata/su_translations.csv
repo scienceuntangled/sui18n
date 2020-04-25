@@ -242,6 +242,7 @@ player roles from,player roles from,position du joueur depuis
 roles,roles,positions
 Fixed rotation (S-H-M),Fixed rotation (S-H-M),Rotation pré-définie (P-RA-C)
 Fixed rotation (S-M-H),Fixed rotation (S-M-H),Rotation pré-définie (P-C-RA)
+Player roles,Player roles,Liste des joueurs
 statistic,statistic,statistique
 explanation,explanation,explication
 modified breakpoint percentage (breakpoint percentage excluding serve errors and aces),modified breakpoint percentage (breakpoint percentage excluding serve errors and aces),pourcentage de breakpoint modifié (pourcentage de breakpoint sans les erreurs de service ni les aces)
@@ -269,7 +270,7 @@ overall,overall,total
 
 @@ report settings
 serving,serving,service
-minimum number of serves required for a player to be included,minimum number of serves required for a player to be included,nombre minimum de services pour qu'un joueur soit inclus
+minimum number of serves required for a player to be included,minimum number of serves required for a player to be included,nombre minimum de services pour qu’un joueur soit inclus
 serve position data from,serve position data from,position du service obtenus par
 generate individual serve charts,generate individual serve charts,génération des graphiques de service individuels
 cone,cone,cone
@@ -281,13 +282,13 @@ coordinates,coordinates,coordonnées
 guess,guess,deviner
 coordinates (directions),coordinates (directions),coordonnées (directions)
 coordinates (heatmap),coordinates (heatmap),coordonnées (densite spatial)
-minimum number of receptions required for a player to be included,minimum number of receptions required for a player to be included,nombre minimum de réceptions pour qu'un joueur soit inclus
+minimum number of receptions required for a player to be included,minimum number of receptions required for a player to be included,nombre minimum de réceptions pour qu’un joueur soit inclus
 reception position data from,reception position data from,position de réceptions obtenus par
 setters reported on,setters reported on,passeurs reportés
-minimum number of sets required for a player to be included,minimum number of sets required for a player to be included,nombre minimum de passes pour qu'un joueur soit inclus
+minimum number of sets required for a player to be included,minimum number of sets required for a player to be included,nombre minimum de passes pour qu’un joueur soit inclus
 include set distribution by setter calls,include set distribution by setter calls,inclure les choix de passe par annonce du passeur
 report on individual setters,report on individual setters,compte-rendu pour chaque passeur
-minimum number of attacks required for a player to have charts shown,minimum number of attacks required for a player to have charts shown,nombre minimum d’attaques pour qu'un joueur soit inclus
+minimum number of attacks required for a player to have charts shown,minimum number of attacks required for a player to have charts shown,nombre minimum d’attaques pour qu’un joueur soit inclus
 attack chart style,attack chart style,style du graphique d’attaque
 no attack charts,no attack charts,pas de graphique d’attaque
 attack codes shown on charts,attack codes shown on charts,codes d’attaques présentés dans le graphique
@@ -375,8 +376,8 @@ by rotation,by rotation,par rotation
 "'Shifted to 4' means that the pass went to zones 4, 3C, or 3D and the setter sets from there","'Shifted to 4' means that the pass went to zones 4, 3C, or 3D and the setter sets from there","Décalé en 4' veut dire que la recep/relance est arrivée en zone 4, 3C ou 3D et que le passeur passe de cette zone"
 in crunch time,in crunch time,au moment décisif
 crunch time is defined as,crunch time is defined as,un moment décisif est défini par
-crunchtime_def_sets14,"in sets 1-4: scores of 18-18 or higher, and a margin of two points or less (e.g. scores of 18-20 or 23-22 are crunch time, but 16-18 and 18-21 are not)","au 4eme set: a 18-18 ou plus, avec une marge de 2 points ou moins (ex: a 18-20 ou 23-22 sont des moments décisifs, mais 16-18 ne l'est pas)"
-crunchtime_def_set5,"in sets 5: scores of 8-8 or higher, and a margin of two points or less (e.g. scores of 11-10 or 9-11 are crunch time, but 13-9 is not)","au 5eme set: a 8-8 ou plus, et avec une marge de 2 points ou moins (ex: a 11-10 ou 9-11 sont des moments décisifs, mais 13-9 ne l'est pas)"
+crunchtime_def_sets14,"in sets 1-4: scores of 18-18 or higher, and a margin of two points or less (e.g. scores of 18-20 or 23-22 are crunch time, but 16-18 and 18-21 are not)","au 4eme set: a 18-18 ou plus, avec une marge de 2 points ou moins (ex: a 18-20 ou 23-22 sont des moments décisifs, mais 16-18 ne l’est pas)"
+crunchtime_def_set5,"in sets 5: scores of 8-8 or higher, and a margin of two points or less (e.g. scores of 11-10 or 9-11 are crunch time, but 13-9 is not)","au 5eme set: a 8-8 ou plus, et avec une marge de 2 points ou moins (ex: a 11-10 ou 9-11 sont des moments décisifs, mais 13-9 ne l’est pas)"
 point win,point win,point gagnés @ in the sense of point win %
 setter pos,setter pos,passeur pos
 shortattkill,Kill,AG @ inset 'kill' text in setting plots
@@ -385,7 +386,7 @@ attkill,kill,att gagn @ used in the 'overall' text below setting plots
 ptwin,point win,point gagn @ used in the 'overall' text below setting plots
 
 @@ attacking section
-teamrep_attack_intro,"This section gives an indication of the contribution that middles make to their team in attack. The values given here are for *team* attack outcomes when the middle player in question is front row. They are based on attacks by all players on the team, not the just the attacks of the middle player in question. See the key at the end of this report for a full explanation of the columns, but briefly `rec att` is reception attack, `att%` is attack kill percentage, `R#+` is perfect or good reception, `trans att` is transition attack, and `BP` is breakpoint phase (the team is serving)","Cette catégorie donne une indication sur la contribution des centraux quand ils attaquent. Les valeurs données ici sont pour le résultat d’attaque de *l’équipe* quand le central en question est avant. C'est basé sur les attaques des tous les joueurs de l’équipe, pas que sur les attaques du central en question. Voir le lexique a la fin de ce compte-rendu pour une explication des colones, mais en bref 'rec att' est la réception attaquée, 'att%' est le % de point marqués a l’attaque, 'R#+' est une réception parfaite ou bonne, 'trans att' est la trasition d’attaque, et 'BP' est la phase de breakpoint (quand l’équipe sert)."
+teamrep_attack_intro,"This section gives an indication of the contribution that middles make to their team in attack. The values given here are for *team* attack outcomes when the middle player in question is front row. They are based on attacks by all players on the team, not the just the attacks of the middle player in question. See the key at the end of this report for a full explanation of the columns, but briefly `rec att` is reception attack, `att%` is attack kill percentage, `R#+` is perfect or good reception, `trans att` is transition attack, and `BP` is breakpoint phase (the team is serving)","Cette catégorie donne une indication sur la contribution des centraux quand ils attaquent. Les valeurs données ici sont pour le résultat d’attaque de *l’équipe* quand le central en question est avant. C’est basé sur les attaques des tous les joueurs de l’équipe, pas que sur les attaques du central en question. Voir le lexique a la fin de ce compte-rendu pour une explication des colones, mais en bref 'rec att' est la réception attaquée, 'att%' est le % de point marqués a l’attaque, 'R#+' est une réception parfaite ou bonne, 'trans att' est la trasition d’attaque, et 'BP' est la phase de breakpoint (quand l’équipe sert)."
 "Only attackers with at least ([[:digit:]]+) attacks in total are shown in this section","Only attackers with at least \\1 attacks in total are shown in this section","Seulement les attaquants avec au moins \\1 d’attaques sont montrés dans cette catégorie"
 "For each of those attackers, a breakdown by attack codes (X5, V5, etc) is given for those attack codes for which the player made at least ([[:digit:]]+) attacks","For each of those attackers, a breakdown by attack codes (X5, V5, etc) is given for those attack codes for which the player made at least \\1 attacks",NA
 "Charts/tables are only shown for attack codes (X5, V5, etc) for which the player made at least ([[:digit:]]+) attacks","Charts/tables are only shown for attack codes (X5, V5, etc) for which the player made at least \\1 attacks",NA
@@ -472,39 +473,39 @@ opposition transition attack kill percentage against this blocker,opposition tra
 trans aA% HB/FB/1T,trans aA% HB/FB/1T,trans aA% T3/T2/T1
 opposition transition attack kill percentage for high ball/fast ball/first tempo attacks against this blocker,opposition transition attack kill percentage for high ball/fast ball/first tempo attacks against this blocker,pourcentage d’attaque sur réceptions gagnantes sur tempo balle haute/tempo 2/tempo 1 contre ce contreur
 
-@@ app text elements - these are case-sensitive
+@@ app text elements - these are case-sensitive and cannot have NAs here
 Volleyball team reports,Volleyball team reports,Compte-rendus d’équipe pour le volleyball
 Download report,Download report,Télécharger le compte-rendu
 Open report in a new tab,Open report in a new tab,Ouvrir le document dans un nouvel onglet
-Note that you may need to enable popups in your browser if you choose to open the report in a new tab,Note that you may need to enable popups in your browser if you choose to open the report in a new tab,Il peut etre nécessaire d'autoriser les popups
+Note that you may need to enable popups in your browser if you choose to open the report in a new tab,Note that you may need to enable popups in your browser if you choose to open the report in a new tab,Il peut etre nécessaire d’autoriser les popups
 Dismiss,Dismiss,Annuler
 Cancel,Cancel,Annuler
 Apply,Apply,Appliquer
 Generate report,Generate report,Créer le compte-rendu
 Generating report,Generating report,Génération du compte-rendu
-Please wait,Please wait,"S'il vous plaît, attendez"
+Please wait,Please wait,"S’il vous plaît, attendez"
 Dataset selection,Dataset selection,Sélection des données @ AI check
 Select dataset:,Select dataset:,Sélectionner les données: @ AI check
 Report settings,Report settings,Paramètres de compte-rendu
 or,or,ou
 Login,Login,Identifiant
-See the 'About' tab for more information about this app,See the 'About' tab for more information about this app,"Allez voir la section 'A propose de' pour plus d'information sur cette application"
+See the 'About' tab for more information about this app,See the 'About' tab for more information about this app,"Allez voir la section 'A propose de' pour plus d’information sur cette application"
 Main tab,Main tab,Section principale
 Data administration,Data administration,Administration des données
-Pricing/Sign up/Free trial,Pricing/Sign up/Free trial,"Prix/S'enregistrer/Essai gratuit"
+Pricing/Sign up/Free trial,Pricing/Sign up/Free trial,"Prix/S’enregistrer/Essai gratuit"
 About,About,A propos ce
 See an example report:,See an example report:,Voir un exemple:
 PGE Skra Bełchatów from the 2017-18 PlusLiga example data set.,PGE Skra Bełchatów from the 2017-18 PlusLiga example data set.,PGE Skra Bełchatów 2017/18
 Subscribers: log in to see your personal data sets.,Subscribers: log in to see your personal data sets.,Membres : identifiez-vous pour voir vos données personnnelles.
-You have no data sets.,You have no data sets.,Vous n'avez aucun données.
+You have no data sets.,You have no data sets.,Vous n’avez aucun données.
 You can also upload a file and it will be added to the datasets list.,You can also upload a file and it will be added to the datasets list.,Vous pouvez aussi télécharger un fichier et il sera ajouté a la liste de vos données.
 Upload a file,Upload a file,Télécharger un fichier
 Match filter:,Match filter:,Filtre de matche:
 No filter applied.,No filter applied.,Sans filtres.
-matches selected,matches selected,NA
-Modify filter,Modify filter,NA
+matches selected,matches selected,matches sélectionnés
+Modify filter,Modify filter,Modifier le filtre
 Files:,Files:,Fichiers:
-matches selected from a total of,matches selected from a total of,NA
+matches selected from a total of,matches selected from a total of,matches sélectionnés sur un total de
 Select team:,Select team:,Sélectionner l’équipe:
 Select player:,Select player:,Sélectionner le joueur:
 Output format:,Output format:,Format du compte-rendu:
@@ -524,8 +525,8 @@ Receivers:,Receivers:,Réceptionneurs:
 Include setting report,Include setting report,Avec le compte-rendu sur les passes
 Report on individual setters?,Report on individual setters?,Compte-rendu pour chaque passeur?
 Select setters by:,Select setters by:,Choix du passeur par:
-Specific players,Specific players,Un joueur en particulier
-Minimum number of sets:,Minimum number of sets:,Nombre minimum de passes:
+Specific players,Specific players,Joueurs particuliers
+Minimum number of sets,Minimum number of sets,Nombre minimum de passes
 Select setters to report on:,Select setters to report on:,Choix du passeur pour le compte-rendu:
 Include set distribution by setter call? (DataVolley indoor only),Include set distribution by setter call? (DataVolley indoor only),Avec la distribution du passeur par compte-rendu a ses appels (DataVolley seulement)
 Setters:,Setters:,Passeurs:
@@ -534,7 +535,7 @@ Include attack report,Include attack report,Avec le compte-rendu d’attaque
 Attack charts minimum number of attacks:,Attack charts minimum number of attacks:,Graphique d’attaques avec un minimum d’attaques:
 Attackers:,Attackers:,Attaquants:
 Attack charts by:,Attack charts by:,Graphique des attaques par:
-Attack chart style:,Attack chart style:,Style du graphique d'attaque:
+Attack chart style:,Attack chart style:,Style du graphique d’attaque:
 Attacks to show on charts:,Attacks to show on charts:,Attaques a montrer:
 "Attack code (X5, V6, etc)","Attack code (X5, V6, etc)","Code d’attaque (X5, V6, etc)"
 Select attack codes to chart,Select attack codes to chart,Selection des codes d’attaque pour les graphiques
@@ -542,21 +543,22 @@ Include block report,Include block report,Avec le compte-rendu des contres
 Number of blockers from:,Number of blockers from:,Nombre de contreurs obtenus par:
 Report on opposition attacks by:,Report on opposition attacks by:,Compte-rendu sur les attaques de l’adversaire par:
 Select opposition attack codes to report on:,Select opposition attack codes to report on:,Choisir les codes attaques de l’adversaire pour compte-rendu sur:
-Select opposition setting zones to report on:,Select opposition setting zones to report on:,Choisir les zones de la passe de l'adversaire pour rapporter sur:
+Select opposition setting zones to report on:,Select opposition setting zones to report on:,Choisir les zones de la passe de l’adversaire pour rapporter sur:
 Use the same attack codes as selected in the attacking section,Use the same attack codes as selected in the attacking section,Utilisér les mêmes codes d’attaque que pour la section Attaque
-"Note, dropping non-standard attack codes:","Note, dropping non-standard attack codes:",NA
+"Note, dropping non-standard attack codes:","Note, dropping non-standard attack codes:","Remarquer, suppression des codes d’attaque non standard"
 Our other apps,Our other apps,Nos autres applications
 DataVolley/VBStats file validator,DataVolley/VBStats file validator,Validateur de fichiers DataVolley/VBStats
-A flexible reporting and analysis tool,A flexible reporting and analysis tool,Un outil modulable d'analyse et de synthese
+A flexible reporting and analysis tool,A flexible reporting and analysis tool,Un outil modulable d’analyse et de synthese
 Interactive exploration of team and player setting patterns,Interactive exploration of team and player setting patterns,Exploration interactive des tendances de distribution des équipes et des joueurs
 Detailed blocking analysis,Detailed blocking analysis,Analyse detaillée du contre
 Team and player attack charts,Team and player attack charts,Graphiques des attaques des joueurs et de l’équipe
 Defensive analysis,Defensive analysis,Analyse défensive
 News and updates,News and updates,Nouveautées et mises a jour
 Last update:,Last update:,Dérniere mise a jour:
-Processing log,Processing log,NA
+Processing log,Processing log,Journal de traitement
 Matches,Matches,Matches
 Players,Players,Les joueurs
+Teams,Teams,Équipes
 
 @@ progress messages in app
 generating dataset summary,generating dataset summary,génération du récapitulatif des données
