@@ -175,7 +175,7 @@ is_uppercase <- function(z) {
 
 is_titlecase <- function(z) {
     if (!nzchar(z)) return(FALSE)
-    !is_uppercase(z) && !any(grepl("\\<[[:lower:]]", z)) && grepl("[[:space:]]", str_trim(z)) ## needs to be more than one word, too
+    !is_uppercase(z) && !any(grepl("\\<[[:lower:]]", z)) && !any(grepl("\\<[[:upper:]][[:upper:]]", z)) && grepl("[[:space:]]", str_trim(z)) ## needs to be more than one word, too
 }
 
 is_firstupper <- function(z) {

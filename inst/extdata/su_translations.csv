@@ -336,6 +336,7 @@ Opp rec att kill R-,Opp rec att kill R-,rec att gagn adv R-
 @@ serve section
 "Expected percentage of points won on serve, given this server's serve evaluations and the league-wide BP% for each of those evaluations","Expected percentage of points won on serve, given this server's serve evaluations and the league-wide BP% for each of those evaluations","Pourcentage attendu de points gagnés au service, étant donné la qualité de service du serveur et le taux de BP dans la ligue pour chacune des évaluations"
 "Expected\nBP%","Expected\nBP%","%BP\nattendu"
+Expected BP%,Expected BP%,%BP attendu
 efficiency,efficiency,éfficacité
 value,value,valeur
 (Aces + positive - errors - negative)/(N serves),(Aces + positive - errors - negative)/(N serves),(Service gagnants + positifs - erreurs - mauvais)/(N services)
@@ -350,7 +351,9 @@ receiving team,receiving team,équipe en réception
 serves,serves,services
 jump serves,jump serves,services smashés
 jump serve,jump serve,service smashé
+% of serves,% of serves,% de services
 % of passes,% of passes,% de réception
+OPP P,OPP P,ADV P @ as opposition rotation OPP P1 etc
 
 @@ reception section
 "'Exp SO%' is the expected sideout percentage when a given receiver is passing, based on that receiver's pass evaluations and the league-wide SO% for each of those evaluations","'Exp SO%' is the expected sideout percentage when a given receiver is passing, based on that receiver's pass evaluations and the league-wide SO% for each of those evaluations","'%SO att' est le pourcentage de sideout attendu quand un joueur particulier réceptionne, calculé a partir des évaluations de réception de ce joueur et du niveau de SO général de la ligue pour chaque évaluation"
