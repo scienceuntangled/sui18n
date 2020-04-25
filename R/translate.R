@@ -115,6 +115,7 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
                 out[naidx] <- trx
             }
             ## and catch anything that did not match above and replace with input
+            out[!nzchar(txt0)] <- ""
             idx <- is.na(out) & nzchar(txt0) & !is.na(txt0)
             if (any(idx) && opts$warn_unmatched) {
                 warning("inputs without matching entries in the i18n data:\n", paste(txt[idx], collapse = "\n", sep = "\n"))
