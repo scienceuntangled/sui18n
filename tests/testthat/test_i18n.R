@@ -1,5 +1,13 @@
 context("general tests")
 
+test_that("text encoding in translations file looks OK", {
+    tr <- sui_translator()
+    for (lng in tr$languages()) {
+        invalid_chars <- !validUTF8(tr$get_table()[[lng]])
+        expect_equal(sum(invalid_chars), 0)
+    }
+})
+
 test_that("general tests", {
     tr <- sui_translator()
     expect_equal(tr$t(c("hi", "hello!", "HELLO", "Hello")),
