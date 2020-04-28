@@ -28,7 +28,7 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
     if (is.data.frame(csv_path)) {
         tdata <- csv_path
     } else {
-        tdata <- read.csv(csv_path, stringsAsFactors = FALSE, comment.char = "@")
+        tdata <- read.csv(csv_path, stringsAsFactors = FALSE, comment.char = "@", encoding = "UTF-8")
         tdata <- tdata[, !grepl("^X", colnames(tdata))] ## drop unnamed cols
     }
     for (ci in seq_len(ncol(tdata))) {
