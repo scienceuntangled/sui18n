@@ -530,7 +530,7 @@ Data administration,Data administration,Administration des données
 Pricing/Sign up/Free trial,Pricing/Sign up/Free trial,Prix/S’enregistrer/Essai gratuit
 About,About,A propos
 See an example report:,See an example report:,Voir un exemple:
-PGE Skra Belchatów from the 2017-18 PlusLiga example data set.,PGE Skra Belchatów from the 2017-18 PlusLiga example data set.,PGE Skra Belchatów 2017/18
+PGE Skra Belchatów from the 2017-18 PlusLiga example data set,PGE Skra Belchatów from the 2017-18 PlusLiga example data set,PGE Skra Belchatów 2017/18
 Subscribers: log in to see your personal data sets.,Subscribers: log in to see your personal data sets.,Membres : identifiez-vous pour voir vos données personnnelles.
 You have no data sets.,You have no data sets.,Vous n’avez aucune données.
 You can also upload a file and it will be added to the datasets list.,You can also upload a file and it will be added to the datasets list.,Vous pouvez aussi télécharger un fichier et il sera ajouté à la liste de vos données.
@@ -594,6 +594,8 @@ Processing log,Processing log,Historique de traitement des fichiers
 Matches,Matches,Matches
 Players,Players,Les joueurs
 Teams,Teams,Équipes
+in English,in English,en anglais
+in French,in French,en français
 
 @@ progress messages in app
 generating dataset summary,generating dataset summary,génération du récapitulatif des données

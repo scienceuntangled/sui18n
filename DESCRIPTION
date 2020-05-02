@@ -1,6 +1,6 @@
 Package: sui18n
 Title: Internationalization
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: c(person(given = "Ben", family = "Raymond", role = c("aut", "cre"), email = "ben@untan.gl"),
              person(given = "Adrien", family = "Ickowicz", role = "aut"))
 Description: Provides internationalization functions and data.
