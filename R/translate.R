@@ -157,28 +157,12 @@ match_to_table <- function(txt, tdata, from, to, ignore_case = TRUE, as_regexp =
 match_case <- function(txt, match_to, locale) {
     if (is.na(txt) || !nzchar(txt)) return(txt)
     if (is_uppercase(match_to)) {
-        str_to_upper(txt, locale = locale)
+        punct_str_to_upper(txt, locale = locale)
     } else if (is_titlecase(match_to)) {
-        str_to_title(txt, locale = locale)
+        punct_str_to_title(txt, locale = locale)
     } else if (is_firstupper(match_to)) {
-        paste0(str_to_upper(substr(txt, 1, 1), locale = locale), str_to_lower(substr(txt, 2, nchar(txt)), locale = locale))
+        punct_str_to_firstupper(txt, locale = locale)
     } else {
         txt
     }
-}
-
-is_uppercase <- function(z) {
-    if (!nzchar(z)) return(FALSE)
-    z <- strsplit(z, "")[[1]]
-    all(grepl("[[:upper:]]", z) | grepl("[^[:alpha:]]", z))
-}
-
-is_titlecase <- function(z) {
-    if (!nzchar(z)) return(FALSE)
-    !is_uppercase(z) && !any(grepl("\\<[[:lower:]]", z)) && !any(grepl("\\<[[:upper:]][[:upper:]]", z)) && grepl("[[:space:]]", str_trim(z)) ## needs to be more than one word, too
-}
-
-is_firstupper <- function(z) {
-    if (!nzchar(z)) return(FALSE)
-    grepl("[[:upper:]]", substr(z, 1, 1)) && !grepl("[[:upper:]]", substr(z, 2, nchar(z)))
 }
