@@ -264,7 +264,6 @@ usage rate,usage rate,coeficiente de uso,taux d’utilisation
 yes,yes,si,oui
 no,no,no,non
 player report,player report,informe de jugador,compte-rendu du joueur
-contact,contact,contacto,contact
 report by,report by,informe elaborado por,compte-rendu par
 date unknown,date unknown,fecha desconocida,date inconnue
 match summary,match summary,informe de partido,compte-rendu de match
@@ -608,6 +607,7 @@ in Italian,in Italian,en italiano,en italien
 French,French,francés,français
 Spanish,Spanish,español,espagnol
 Italian,Italian,italiano,italien
+Contact:,Contact:,Contacto:,Contact:
 
 @@ progress messages in app
 generating dataset summary,generating dataset summary,generar resumen de conjunto de datos,génération du récapitulatif des données
