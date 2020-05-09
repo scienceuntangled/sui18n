@@ -39,8 +39,8 @@ on poor reception,on poor reception,sobre recepción negativa,sur mauvaise réce
 with setter call,with setter call,con la llamada del colocador,par annonce du passeur
 no setter call,no setter call,sin llamada,sans annonce du passeur
 perfect/good reception only,perfect/good reception only,recepción perfecta/positiva solamente,réception excellente/bonne uniquement
-setter shifted to 2 (perfect (#)/positive (+)/ok (!) reception only),setter shifted to 2 (perfect (#)/positive (+)/ok (!) reception only),colocador desplazado a zona 2 (recepción perfecta (#)/positiva (+)/exclamativa (!) solamente,passeur décalé en 2 (réception parfaite(#)/bonne(+)/moyenne(!) uniquement)
-setter shifted to 4 (perfect (#)/positive (+)/ok (!) reception only),setter shifted to 4 (perfect (#)/positive (+)/ok (!) reception only),colocador desplazado a zona 4 (recepción perfecta (#)/positiva (+)/exclamativa (!) solamente,passeur décalé en 4 (réception parfaite(#)/bonne(+)/moyenne(!) uniquement)
+Setter shifted to 2 (perfect (#)/good (+)/OK (!) reception only),Setter shifted to 2 (perfect (#)/good (+)/OK (!) reception only),Colocador desplazado a zona 2 (recepción perfecta (#)/positiva (+)/exclamativa (!) solamente,Passeur décalé en 2 (réception parfaite(#)/bonne(+)/moyenne(!) uniquement)
+Setter shifted to 4 (perfect (#)/good (+)/OK (!) reception only),Setter shifted to 4 (perfect (#)/good (+)/OK (!) reception only),Colocador desplazado a zona 4 (recepción perfecta (#)/positiva (+)/exclamativa (!) solamente,Passeur décalé en 4 (réception parfaite(#)/bonne(+)/moyenne(!) uniquement)
 in transition,in transition,en contraataque,en transition
 perfect/good dig only,perfect/good dig only,defensa perfecta/buena solamente,défense parfaite/bonne uniquement
 attack,attack,ataque,attaque
@@ -542,9 +542,11 @@ You have no data sets.,You have no data sets.,No tienes datos,Vous n’avez aucu
 You can also upload a file and it will be added to the datasets list.,You can also upload a file and it will be added to the datasets list.,Puedes subir un archivo y se añadirá al listado de ficheros,Vous pouvez aussi télécharger un fichier et il sera ajouté à la liste de vos données.
 Upload a file,Upload a file,Subir un archivo,Télécharger un fichier
 Match filter:,Match filter:,Filtro de partidos,Filtre de match:
+Filter by filename,Filter by filename,Filtrar por nombre de archivo,Filtrer par nom de fichier
 No filter applied.,No filter applied.,Sin filtros,Sans filtres.
+Apply filter,Apply filter,Aplicar filtros,Appliquer le filtre
 matches selected,matches selected,partidos seleccionados,matchs sélectionnés
-Modify filter,Modify filter,Modificar filtos,Modifier le filtre
+Modify filter,Modify filter,Modificar filtros,Modifier le filtre
 Files:,Files:,Archivos:,Fichiers:
 matches selected from a total of,matches selected from a total of,partidos seleccionados de un total de,matchs sélectionnés sur un total de
 Select team:,Select team:,Selecciona equipo,Sélectionner l’équipe:
@@ -624,3 +626,4 @@ generating setting report,generating setting report,generando informe de pase/di
 generating attack report,generating attack report,generando informe de ataque,génération du compte-rendu sur l’attaque
 generating blocking report,generating blocking report,generando informe de bloqueo,génération du compe rendu sur le contre
 converting to,converting to,convirtiendo a,compilation du compte-rendu
+preprocessing data,preprocessing data,procesando datos,des données en traitement
