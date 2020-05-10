@@ -28,6 +28,14 @@ source("../R/internal_utils.R")
 library(stringr)
 x <- read.csv("../inst/extdata/su_translations.csv", stringsAsFactors = FALSE, comment.char = "@", encoding = "UTF-8")
 stopifnot(!any(grepl("^X", colnames(x)))) ## all cols named
+if (any(duplicated(x$key))) {
+    print(x[x$key %in% x$key[which(duplicated(x$key))], ])
+    stop("duplicated key entries")
+}
+if (any(duplicated(tolower(x$key)))) {
+    print(x[tolower(x$key) %in% tolower(x$key)[which(duplicated(tolower(x$key)))], ])
+    warning("duplicated (ignoring case) key entries - may be OK?")
+}
 en_uppercase <- unlist(lapply(x$en, is_uppercase))
 en_titlecase <- unlist(lapply(x$en, is_titlecase))
 en_firstupper <- unlist(lapply(x$en, is_firstupper))

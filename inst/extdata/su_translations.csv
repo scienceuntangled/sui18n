@@ -153,11 +153,11 @@ receptions rated as perfect/positive/ok (no first tempo attack possible)/negativ
 
 @@ reception sideout
 reception sideout,reception sideout,cambio de saque tras la recepción,sideout sur réception
-SO% TOT,SO% TOT,% C.S. TOT,%SO TOT
+SO% TOT,SO% TOT,%C.S. TOT,%SO TOT
 overall sideout percentage,overall sideout percentage,porcentaje de cambio de saque total,pourcentage de sideout total
-SO% JUMP,SO% JUMP,% C.S. SALTO,%SO SMASH
+SO% JUMP,SO% JUMP,%C.S. SALTO,%SO SMASH
 sideout percentage on jump serves,sideout percentage on jump serves,porcentaje de cambio de saque con saque en salto,pourcentage de sideout sur service smashé
-SO% FLOAT,SO% FLOAT,% C.S. FLOT,%SO FLOT
+SO% FLOAT,SO% FLOAT,%C.S. FLOT,%SO FLOT
 sideout percentage on float/jump-float serves,sideout percentage on float/jump-float serves,porcentaje de cambio de saque con saque flotante/en salto flotante,pourcentage de sideout sur service flottant/sauté flottant
 @ abbrev for total
 tot,tot,tot,tot
@@ -311,7 +311,7 @@ zones,zones,zonas,zones
 subzones,subzones,subzonas,sous-zones
 coordinates,coordinates,coordenadas,coordonnées
 guess,guess,por defecto,défaut
-coordinates (directions),coordinates (directions),coordenadas (direcciones),coordonnées (directions)
+coordinates (directions),coordinates (directions),coordenadas (direcciónes),coordonnées (directions)
 coordinates (heatmap),coordinates (heatmap),coordenadas (mapa de calor),coordonnées (densite spatial)
 minimum number of receptions required for a player to be included,minimum number of receptions required for a player to be included,número mínimo de recepciones para que un jugador sea incluído,nombre minimum de réceptions pour qu’un joueur soit inclus
 reception position data from,reception position data from,posición de recepción obtenido de,position de réceptions obtenus par
@@ -339,10 +339,10 @@ attack codes to report on,attack codes to report on,códigos de ataque a incluir
 
 @@ comparisons
 opp serve err,opp serve err,error saque adv,service err adv
-Rec att kill R#,Rec att kill R#,At rec punto R#,Rec att gagn R#
+@ used with e.g. rec att kill R# and rec att kill R!
+Rec att kill R,Rec att kill R,At rec punto R,Rec att gagn R
+Rec att kill R#+,Rec att kill R#+,At rec punto R#+,Rec att gagn R#+
 Rec att kill R+,Rec att kill R+,At rec punto R+,Rec att gagn R+
-Rec att kill R!,Rec att kill R!,At rec punto R!,Rec att gagn R!
-Rec att kill R-,Rec att kill R-,At rec punto R-,Rec att gagn R-
 trans att kill,trans att kill,contraataque punto,att trans gagn
 trans block,trans block,bloqueo en contraataque,contre trans
 other,other,otros,autres
@@ -357,10 +357,10 @@ opp rec att err,opp rec att err,error at rec rival,att rec err adv
 rec att block,rec att block,at rec bloqueado,att rec contre
 opp trans att err,opp trans att err,error contraataque rival,att trans err adv
 serve err,serve err,error de saque,serv err
-Opp rec att kill R#,Opp rec att kill R#,At rec punto R# rival,Rec att gagn adv R#
-Opp rec att kill R+,Opp rec att kill R+,At rec punto R+ rival,Rec att gagn adv R+
-Opp rec att kill R!,Opp rec att kill R!,At rec punto R! rival,Rec att gagn adv R!
-Opp rec att kill R-,Opp rec att kill R-,At rec punto R- rival,Rec att gagn adv R-
+@ used with e.g. opp rec att kill R# and opp rec att kill R!
+Opp rec att kill R,Opp rec att kill R,At rec punto rival R,Rec att gagn adv R
+Opp rec att kill R#+,Opp rec att kill R#+,At rec punto rival R#+,Rec att gagn adv R#+
+Opp rec att kill R+,Opp rec att kill R+,At rec punto rival R+,Rec att gagn adv R+
 
 @@ serve section
 "Expected percentage of points won on serve, given this server's serve evaluations and the league-wide BP% for each of those evaluations","Expected percentage of points won on serve, given this server's serve evaluations and the league-wide BP% for each of those evaluations","Porcentaje esperado de puntos ganados al saque, dadas las evaluaciones de saque de este jugador y  el %BP de la liga para esas evaluaciones","Pourcentage attendu de points gagnés au service, étant donné la qualité de service du serveur et le taux de BP dans la ligue pour chacune des évaluations"
@@ -369,6 +369,7 @@ Expected BP%,Expected BP%,%BP esperado,%BP attendu
 efficiency,efficiency,eficacia,éfficacité
 value,value,valor,valeur
 (Aces + positive - errors - negative)/(N serves),(Aces + positive - errors - negative)/(N serves),(Aces + positivos - errores - negativos)/(N saques),(Service gagnants + positifs - erreurs - mauvais)/(N services)
+position,position,posición,position
 all (potentially including serves with missing position information),all (potentially including serves with missing position information),todos (incluyendo saques sin alguna información sobre la posición),tous (incluant les services sans information de position)
 serves from the left (zones 5/7,serves from the left (zones 5/7,saques desde la izquierda (zonas 5/7),services venant de la gauche (zones 5/7
 serves from the centre (zone 6,serves from the centre (zone 6,saques desde el centro (zona 6),services venant de face (zone 6
@@ -384,10 +385,34 @@ jump serve,jump serve,saque en salto,service smashé
 % of passes,% of passes,% de recepción,% de réception
 @ as opposition rotation OPP P1 etc
 OPP P,OPP P,RIV R,ADV P
+error,error,error,erreur
+"negative, opponent free attack",negative,negativa,mauvaise
+"OK, no first tempo possible",OK,Regular,Moyenne
+"positive, opponent some attack (+)",positive (+),positiva (+),positive (+)
+"positive, no attack",positive,positiva,positive
 
 @@ reception section
 "'Exp SO%' is the expected sideout percentage when a given receiver is passing, based on that receiver's pass evaluations and the league-wide SO% for each of those evaluations","'Exp SO%' is the expected sideout percentage when a given receiver is passing, based on that receiver's pass evaluations and the league-wide SO% for each of those evaluations","'% C.S. Esp' es el porcentaje esperado de cambio de saque cuando un jugador recibe, basado en las evaluaciones de recepción de dicho jugador y en el %C.S. de la liga para cada una de esas evaluaciones","'%SO att' est le pourcentage de sideout attendu quand un joueur particulier réceptionne, calculé a partir des évaluations de réception de ce joueur et du niveau de SO général de la ligue pour chaque évaluation"
 percent,percent,porcentaje,pourcentage
+percentage,percentage,porcentaje,pourcentage
+N tot,N tot,N tot,N tot
+SO% tot,SO% tot,%C.S. tot,%SO tot
+Eff% tot,Eff% tot,Ef% tot,Eff% tot
+Exp SO% tot,Exp SO% tot,%C.S. esp tot,SO% att tot
+N jump,N jump,N salto,N smash
+SO% jump,SO% jump,%C.S. salto,%SO smash
+Eff% jump,Eff% jump,Ef% salto,Eff% smash
+Exp SO% jump,Exp SO% jump,%C.S. esp salto,SO% att smash
+N other,N other,N otros,N autres
+SO% other,SO% other,%C.S. otros,%SO autres
+Eff% other,Eff% other,Ef% otros,Eff% autres
+Exp SO% other,Exp SO% other,%C.S. esp otros,SO% att autres
+"poor, no attack",poor,negativa,mauvaise
+"negative, limited attack",negative,negativa,négative
+"positive, attack (+)",positive,positiva (+),positive (+)
+perfect pass,perfect,perfecta,parfaite
+jump_letter,J,S,S
+float_letter,F,F,F
 Expected SO%,Expected SO%,%C.S. esperado,%SO attendu
 SO%,SO%,%C.S.,%SO
 %SO,%SO,%C.S.,%SO
@@ -404,6 +429,9 @@ all (with position information),all (with position information),todas (con infor
 from the receiver's left,from the receiver's left,por la izquierda del receptor,venant de la gauche du réceptionneur
 straight,straight,de frente,venant de face
 from the receiver's right,from the receiver's right,por la derecha del receptor,venant de la droite du réceptionneur
+direction,direction,dirección,direction
+receptions,receptions,recepciones,réceptions
+jump serve receptions,jump serve receptions,recepciónes con saques en salto,réceptions sur services smashés
 
 @@ setting section
 by rotation,by rotation,por rotación,par rotation
@@ -445,9 +473,11 @@ N attacks,N attacks,N ataques,N att
 N kills,N kills,N ataques punto,N att gagn
 N errs,N errs,N errores,N errs
 N blocked,N blocked,N bloqueados,N contrés
+blocked %,blocked %,bloqueados %,% contrés
 Rally win %,Rally win %,% Rallies ganados,Point gagn %
 N rec att,N rec att,N at tras recepción,N rec att
 rec att%,rec att%,% at rec,rec att gagn%
+rec att kill %,rec att kill %,% at rec,rec att gagn%
 N rec att R#+,N rec att R#+,N at rec #+,N rec att R#+
 rec att% R#+,rec att% R#+,% at rec #+,rec att gagn% R#+
 SO% R#+,SO% R#+,% C.S. R#+,SO% R#+
@@ -460,6 +490,18 @@ N trans att BP,N trans att BP,N contraat BP,N att trans BP
 trans att% BP,trans att% BP,% contraat BP,att trans gagn% BP
 BP%,BP%,% BP,%BP
 %BP,%BP,% BP,%BP
+Number of reception attacks by the team when this player was front row,Number of reception attacks by the team when this player was front row,NA,NA
+Team reception attack kill percentage when this player was front row,Team reception attack kill percentage when this player was front row,NA,NA
+Sideout percentage when this player was front row,Sideout percentage when this player was front row,NA,NA
+As for 'N rec att' but only on good or perfect reception,As for 'N rec att' but only on good or perfect reception,NA,NA
+As for 'rec att%' but only on good or perfect reception,As for 'rec att%' but only on good or perfect reception,NA,NA
+As for 'SO%' but only on good or perfect reception,As for 'SO%' but only on good or perfect reception,NA,NA
+Number of transition attacks by the team when this player was front row,Number of transition attacks by the team when this player was front row,NA,NA
+Team transition attack kill percentage when this player was front row,Team transition attack kill percentage when this player was front row,NA,NA
+Percentage of points won when a transition attack was made (by any player on the team) and this player was front row,Percentage of points won when a transition attack was made (by any player on the team) and this player was front row,NA,NA
+As for 'N trans att' but only in breakpoint phase (i.e. the team was serving),As for 'N trans att' but only in breakpoint phase (i.e. the team was serving),NA,NA
+As for 'trans att%' but only in breakpoint phase (i.e. the team was serving),As for 'trans att%' but only in breakpoint phase (i.e. the team was serving),NA,NA
+The percentage of points won on serve when this player was front row,The percentage of points won on serve when this player was front row,NA,NA
 
 @@ blocking section
 all opposition attack,all opposition attack,todos los ataques del rival,toutes les attaques de l’adversaire
@@ -483,6 +525,7 @@ block kills (regardless of whether the kill was made by this individual player o
 rec aA%,rec aA%,rec aA%,rec aA%
 opposition reception attack (the first attack directly after receiving serve) kill percentage against this blocker,opposition reception attack (the first attack directly after receiving serve) kill percentage against this blocker,porcentaje de ataque punto tras recepción del rival (primer ataque directamente tras la recepción) contra este bloqueador,pourcentage d’attaques gagnantes sur réception (première attaque directement apres réception) de l’adversaire contre ce contreur
 N blockers,N blockers,N bloqueadores,N contreurs
+XX N blockers,XX N blockers,XX N bloqueadores,XX N contreurs
 Average number of blockers against each opposition XX attack,Average number of blockers against each opposition XX attack,Promedio de bloqueadores para cada ataque XX del rival,Moyenne du nombre de contreurs pour chaque XX attaques de l’adversaire
 rallies won,rallies won,rallies ganados,échanges gagnés
 TOT_XX,TOT_XX,TOT_XX,TOT_XX
@@ -496,21 +539,36 @@ part%,part%,% part,part%
 XXpart%,XXpart%,% XX part,XXpart%
 Percentage of opposition XX attacks in which this blocker participated in the block,Percentage of opposition XX attacks in which this blocker participated in the block,Porcentaje de ataques XX rivales en los que este bloqueador participó en el bloqueo,Pourcentage des attaques XX de l’adversaire dans lequel le joueur a participé au contre
 As for 'Rallies won' but only including rallies during which the blocking team was serving,As for 'Rallies won' but only including rallies during which the blocking team was serving,"Como para ‘Rallies ganados’, pero incluyedno solamente rallies en los que el equipo bloqueador estaba al saque",Comme 'Points gagnés' mais incluant uniquement les échanges durant lesquels l’équipe au contre a servis
+BP% R,BP% R,% BP R,BP% R
+BP% R+,BP% R+,% BP R+,BP% R+
+BP% R#+,BP% R#+,% BP R#+,BP% R#+
 BP% Rxx,BP% Rxx,% BP Rxx,BP% Rxx
 "As for 'BP%', but where the reception evaluation code was xx","As for 'BP%', but where the reception evaluation code was xx","Como para "% BP", pero donde la evaluación de recepción fue xx","Comme '%BP', mais pour lequel la qualité de réception était xx"
+aA% HB,aA% HB,% aA PA,aA% T3
+aA% FB,aA% FB,% aA PR,aA% T2
+aA% 1T,aA% 1T,% aA 1T,aA% T1
 aA% HB/FB/1T,aA% HB/FB/1T,% aA PA/PR/1T,aA% T3/T2/T1
 opposition attack kill percentage for high ball/fast ball/first tempo attacks against this blocker,opposition attack kill percentage for high ball/fast ball/first tempo attacks against this blocker,porcentaje de ataque punto del rival con ataques de pelota alta/pelota rápida/primer tiempo contra este bloqueador,pourcentage d’attaque gagnante de l’adversaire sur balle haute/tempo 2/tempo 1 contre ce contreur
 rec aA,rec aA,rec aA,rec aA
 number of opposition reception attacks (the first attack directly after receiving serve) against this blocker,number of opposition reception attacks (the first attack directly after receiving serve) against this blocker,número de ataques tras recepción del rival (solamente el primer ataque tras la recepción) contra este bloqueador,nombre d’attaques sur réception (première attaque après la réception) de l’adversaire contre ce contreur
 opposition reception attack kill percentage against this blocker,opposition reception attack kill percentage against this blocker,porcentaje de ataque punto del rival contra este bloqueador,pourcentage d’attaques sur réception gagnantes contre ce contreur
+rec aA% HB,rec aA% HB,rec aA% PA,rec aA% T3
+rec aA% FB,rec aA% FB,rec aA% PR,rec aA% T2
+rec aA% 1T,rec aA% 1T,rec aA% 1T,rec aA% T1
 rec aA% HB/FB/1T,rec aA% HB/FB/1T,rec aA% PA/PR/1T,rec aA% T3/T2/T1
 opposition reception attack kill percentage for high ball/fast ball/first tempo attacks against this blocker,opposition reception attack kill percentage for high ball/fast ball/first tempo attacks against this blocker,porcentaje de ataque punto tras recepción del rival con ataques de pelota alta/pelota rápida/primer tiempo contra este bloqueador,pourcentage d’attaque sur réceptions gagnantes de l’adversaire sur balle haute/tempo 2/tempo 1 contre ce contreur
+rec aA% R,rec aA% R,rec aA% R,rec aA% R
+rec aA% R+,rec aA% R+,rec aA% R+,rec aA% R+
+rec aA% R#+,rec aA% R#+,rec aA% R#+,rec aA% R#+
 rec aA% Rxx,rec aA% Rxx,rec aA% Rxx,rec aA% Rxx
 opposition reception attack kill percentage against this blocker where the reception evaluation code was xx,opposition reception attack kill percentage against this blocker where the reception evaluation code was xx,porcentaje de ataque punto tras recepción del rival contra este bloqueador donde la evaluación de la recepción fue xx,pourcentage d’attaque sur réceptions gagnantes de l’adversaire contre ce contreur quand la qualité de réception était
 trans aA,trans aA,contraataque aA,trans aA
 number of opposition transition attacks against this blocker,number of opposition transition attacks against this blocker,número de contraataques del rival contra este bloqueador,nombre d’attaques sur transition de l’adversaire contre ce contreur
 trans aA%,trans aA%,contraataque aA%,trans aA%
 opposition transition attack kill percentage against this blocker,opposition transition attack kill percentage against this blocker,porcentaje de contraataque punto del rival contra este bloqueador,pourcentage d’attaques marquées de l’adversaire contre ce contreur
+trans aA% HB,trans aA% HB,contraataque aA% PA,trans aA% T3
+trans aA% FB,trans aA% FB,contraataque aA% PR,trans aA% T2
+trans aA% 1T,trans aA% 1T,contraataque aA% 1T,trans aA% T1
 trans aA% HB/FB/1T,trans aA% HB/FB/1T,contraataque aA% PA/PR/1T,trans aA% T3/T2/T1
 opposition transition attack kill percentage for high ball/fast ball/first tempo attacks against this blocker,opposition transition attack kill percentage for high ball/fast ball/first tempo attacks against this blocker,porcentaje de contraataque punto del rival con ataques de pelota alta/pelota rápida/primer tiempo contra este bloqueador,pourcentage d’attaque sur réceptions gagnantes sur tempo balle haute/tempo 2/tempo 1 contre ce contreur
 
@@ -557,12 +615,13 @@ Infer player positions from:,Infer player positions from:,Determinar posiciones 
 Include worksheet,Include worksheet,Incluir ficha técnica,Inclure la fiche technique
 Include team comparisons,Include team comparisons,Incluir comparativa entre equipos,Inclure le comparatif des équipes
 Include serve report,Include serve report,Incluir informe de saque,Inclure le compte-rendu sur les services
-Generate individual serve charts? (May be slow),Generate individual serve charts? (May be slow),¿Generar diagramas individuales de saque? (Podría ralentizarlo),Générer le graphique des services par joueur? (Peut ètre long à charger)
+Generate individual serve charts?,Generate individual serve charts?,¿Generar diagramas individuales de saque?,Générer le graphique des services par joueur?
+May be slow,May be slow,Podría ralentizarlo,Peut ètre long à charger
 Minimum number of serves:,Minimum number of serves:,Número mínimo de saques:,Nombre de services minimum:
 Servers:,Servers:,Sacadores:,Serveurs:
 Take serve/reception position data from:,Take serve/reception position data from:,Obtener los datos de posición de saque/recepción de:,Analyser les positions de service/réception à partir de:
 Include reception report,Include reception report,Incluir informe de recepción,Inclure le compte-rendu de réception
-Generate individual reception charts? (May be slow),Generate individual reception charts? (May be slow),¿Generar diagramas individuales de recepción? (Podría ralentizarlo),Générer le graphique des réception par joueur? (Peut ètre long à charger)
+Generate individual reception charts?,Generate individual reception charts?,¿Generar diagramas individuales de recepción?,Générer le graphique des réception par joueur?
 Minimum number of receptions:,Minimum number of receptions:,Número mínimo de recepciones:,Nombre de réceptions minimum:
 Receivers:,Receivers:,Receptores:,Réceptionneurs:
 Include setting report,Include setting report,Incluir informe de pase/distribución,Inclure le compte-rendu sur les passes
@@ -610,6 +669,12 @@ French,French,francés,français
 Spanish,Spanish,español,espagnol
 Italian,Italian,italiano,italien
 Contact:,Contact:,Contacto:,Contact:
+disclaimer_text_ui,"Use at your own risk. While every effort has been made to make the reports accurate, no warranty is given and no responsibility is accepted for errors or omissions. Be aware that the outputs from these apps can be affected by errors or inconsistencies in your data, which in general are impossible for the apps to detect or correct. Note also that different scouts use different scouting conventions, and it is not possible to anticipate or cater for all possible variations in these conventions.",NA,NA
+no_app_access,You do not have access to this application - contact,NA,NA
+request_dropbox_email,"To work with your own data sets, you will need to upload them via Dropbox. Enter your Dropbox email here so that a folder can be shared with you.",NA,NA
+
+
+
 
 @@ progress messages in app
 generating dataset summary,generating dataset summary,generar resumen de conjunto de datos,génération du récapitulatif des données
