@@ -62,7 +62,8 @@ for (tgt in setdiff(colnames(x), c("en", "key"))) {
         }
     }
 
-    chk <- grepl("\"", x[[tgt]])
+    chk <- grepl("\"", x[[tgt]], fixed = TRUE)
+    ## this doesn't work, the double quotes get removed by xlread?
     if (any(chk)) {
         cat("Language ", tgt, " has embedded double quotes:\n", sep = "")
         for (ii in which(chk)) {
