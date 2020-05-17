@@ -5,8 +5,10 @@
 
 <!-- badges: start -->
 
-[![R build status](https://github.com/scienceuntangled/sui18n/workflows/R-CMD-check/badge.svg)](https://github.com/scienceuntangled/sui18n/actions)
-[![R build status](https://github.com/scienceuntangled/sui18n/workflows/test-coverage/badge.svg)](https://github.com/scienceuntangled/sui18n/actions)
+[![R build
+status](https://github.com/scienceuntangled/sui18n/workflows/R-CMD-check/badge.svg)](https://github.com/scienceuntangled/sui18n/actions)
+[![R build
+status](https://github.com/scienceuntangled/sui18n/workflows/test-coverage/badge.svg)](https://github.com/scienceuntangled/sui18n/actions)
 <!-- badges: end -->
 
 ## Installation
@@ -105,7 +107,7 @@ And in the server:
 
 ``` r
 output$some_element <- renderUI({
-    mi18n$i18n_lang() ## make this expression reactive to the selected language
+    my_i18n$i18n_lang() ## make this expression reactive to the selected language
     tags$p(my_i18n$i18n$t("hello"))
 })
 ```

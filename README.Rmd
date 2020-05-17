@@ -103,7 +103,7 @@ And in the server:
 
 ```r
 output$some_element <- renderUI({
-    mi18n$i18n_lang() ## make this expression reactive to the selected language
+    my_i18n$i18n_lang() ## make this expression reactive to the selected language
     tags$p(my_i18n$i18n$t("hello"))
 })
 ```
