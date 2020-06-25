@@ -37,7 +37,7 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
     }
     tdata <- tdata[!apply(tdata, 1, function(z) all(is.na(z) | !nzchar(z))), ] ## drop empty rows
     tdata <- unique(tdata) ## drop duplicate rows
-    lng <- colnames(tdata)
+    lng <- if ("en" %in% colnames(tdata)) c(c("key", "en"), sort(setdiff(colnames(tdata), c("key", "en")))) else colnames(tdata)
     opts <- list(languages = lng, to = if (length(lng) > 1) setdiff(lng, "key")[1] else lng[1],
                  from = if ("key" %in% lng) "key" else lng[1], warn_unmatched = FALSE)
     if (!missing(to) && !is.null(to)) {
