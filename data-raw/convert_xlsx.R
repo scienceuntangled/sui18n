@@ -42,7 +42,7 @@ en_firstupper <- unlist(lapply(x$en, is_firstupper))
 for (tgt in setdiff(colnames(x), c("en", "key"))) {
     check_uppercase <- unlist(lapply(x[[tgt]], is_uppercase))
     check_titlecase <- unlist(lapply(x[[tgt]], is_titlecase))
-    check_firstupper <- unlist(lapply(x[[tgt]], is_firstupper))
+    check_firstupper <- unlist(lapply(x[[tgt]], function(z) is_firstupper(sub("^¿", "", z))))
     chk <- check_uppercase != en_uppercase | check_titlecase != en_titlecase | check_firstupper != en_firstupper
     chk <- chk | (grepl("[A-Z]", substr(x$en, 1, 1)) & grepl("[a-z]", substr(x[[tgt]], 1, 1))) | (grepl("[a-z]", substr(x$en, 1, 1)) & grepl("[A-Z]", substr(x[[tgt]], 1, 1)))
     if (any(chk)) {
