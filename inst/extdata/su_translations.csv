@@ -1,5 +1,5 @@
 @ note: comments are marked with @ and sections are marked with @@
-key,en,pt,es,fr,it
+key,en,pt-br,es,fr,it
 
 @@ For package tests
 hello,hello,olá,hola,bonjour,ciao
