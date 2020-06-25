@@ -53,7 +53,7 @@ test_that("general tests", {
 
 test_that("operation with 'key' column is ok", {
     tr <- sui_translator(csv_path = data.frame(en = "cat", key = "miaow", fr = "chat", stringsAsFactors = FALSE))
-    expect_equal(tr$languages(), c("en", "key", "fr"))
+    expect_equal(tr$languages(), c("key", "en", "fr"))
     expect_equal(tr$from(), "key") ## should be chosen by default
     expect_equal(tr$target(), "en") ## should be chosen by default
     expect_equal(tr$t("miaow"), "cat")
