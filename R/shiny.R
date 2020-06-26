@@ -44,7 +44,7 @@ sui_js <- function() {
 #' @export
 sui_shinymod_ui <- function(id) {
     ns <- NS(id)
-    shinyWidgets::pickerInput(ns("select_lang"), label = NULL, choices = NULL, width = "80px")
+    shinyWidgets::pickerInput(ns("select_lang"), label = NULL, choices = NULL, width = "95px")
 }
 
 #' @rdname sui_shinymod
