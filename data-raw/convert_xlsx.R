@@ -56,7 +56,7 @@ for (tgt in setdiff(colnames(x), c("en", "key"))) {
 
     chk <- is.na(x[[tgt]]) | x$en==x[[tgt]]
     if (any(chk)) {
-        cat("Language ", tgt, " identical entries need checking:\n", sep = "")
+        cat("Language ", tgt, " identical/missing entries need checking:\n", sep = "")
         for (ii in which(chk)) {
             cat("[", ii, "] en: ", x$en[ii], "\n[", ii, "] ", tgt, ": ", x[[tgt]][ii], "\n\n", sep = "")
         }
@@ -66,6 +66,21 @@ for (tgt in setdiff(colnames(x), c("en", "key"))) {
     ## this doesn't work, the double quotes get removed by xlread?
     if (any(chk)) {
         cat("Language ", tgt, " has embedded double quotes:\n", sep = "")
+        for (ii in which(chk)) {
+            cat("[", ii, "] en: ", x$en[ii], "\n[", ii, "] ", tgt, ": ", x[[tgt]][ii], "\n\n", sep = "")
+        }
+    }
+
+    chk <- grepl(":$", x[[tgt]]) & !grepl(":$", x$en)
+    if (any(chk)) {
+        cat("Language ", tgt, " has ending ':' where English does not:\n", sep = "")
+        for (ii in which(chk)) {
+            cat("[", ii, "] en: ", x$en[ii], "\n[", ii, "] ", tgt, ": ", x[[tgt]][ii], "\n\n", sep = "")
+        }
+    }
+    chk <- !grepl(":$", x[[tgt]]) & grepl(":$", x$en)
+    if (any(chk)) {
+        cat("Language ", tgt, " does not have an ending ':' where English does:\n", sep = "")
         for (ii in which(chk)) {
             cat("[", ii, "] en: ", x$en[ii], "\n[", ii, "] ", tgt, ": ", x[[tgt]][ii], "\n\n", sep = "")
         }

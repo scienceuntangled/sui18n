@@ -135,7 +135,7 @@ poor,poor,neg,negativa,mauvaise,negativa
 percentage of serve receptions rated as poor,percentage of serve receptions rated as poor,porcentagem de recepções avaliadas como negativas,porcentaje de recepciones valoradas como negativas,pourcentage de mauvaises réceptions,percentuale di ricezioni valutate come negative
 @ eff as abbrev for efficiency
 eff,eff,eff,ef,eff,eff
-Serve reception efficiency [(number of receptions rated perfect or positive - number of errors - number of receptions rated negative)/(number of receptions)],Serve reception efficiency [(number of receptions rated perfect or positive - number of errors - number of receptions rated negative)/(number of receptions)],Eficiência da recepção [(número de recepções avaliadas como perfeitas ou positivas - número de erros - número de recepções negativas)/(número total de recepções)],Eficacia de recepción [(número de recepciones perfectas o positivas - número de errores - número de recepciones negativas)/(número de recepciones)],Éfficacité de la réception de service [(nombre de réceptions parfaites ou positives - nombre d’erreurs - nombre de mauvaises réceptions)/(nombre de réceptions)],Efficacia di ricezione [(numero di ricezioni perfette o positive - numero di errori - numero di ricezioni negative)/(numero di ricezioni)]
+Serve reception efficiency [(number of receptions rated perfect or positive - number of errors - number of overpasses)/(number of receptions)],Serve reception efficiency [(number of receptions rated perfect or positive - number of errors - number of overpasses)/(number of receptions)],Eficiência da recepção [(número de recepções avaliadas como perfeitas ou positivas - número de erros - número de xeques)/(número total de recepções)],Eficacia de recepción [(número de recepciones perfectas o positivas - número de errores - número de recepciones al otro campo)/(número de recepciones)],Éfficacité de la réception de service [(nombre de réceptions parfaites ou positives - nombre d’erreurs - nombre de réceptions directement dans le camp adverse)/(nombre de réceptions)],Efficacia di ricezione [(numero di ricezioni perfette o positive - numero di errori – palle slash)/(numero di ricezioni)]
 @ eff j as abbrev for efficiency on jump serves
 eff j,eff j,eff vg,ef ss,eff ss,eff bs
 reception efficiency on jump serves,reception efficiency on jump serves,eficiência da recepção em saques viagem,eficacia de la recepción con saque en salto,éfficacité de la réception sur service smashé,efficacia di ricezione con battuta in salto spin
@@ -144,7 +144,7 @@ eff f,eff f,eff fl,ef sf,eff sf,eff bf
 reception efficiency on float/jump-float serves,reception efficiency on float/jump-float serves,eficiência da recepção em saques flutuados,eficacia de la recepción con saque flotante/en salto flotante,éfficacité de la réception sur service sauté flottant,efficacia di ricezione con battuta flot/in salto flot
 
 @@ reception attack
-kill,kill,pto,ataque punto,att gagn,attacco vincente
+kill,kill,pto,at punto,att gagn,att vincente
 number of attacks during serve reception phase,number of attacks during serve reception phase,número de ataques depois da recepção,número de ataques tras la recepción,nombre d’attaques sur réceptions,numero di attacchi in cambio palla
 attack kill percentage,attack kill percentage,porcentagem de ataques perfeitos,porcentaje de ataque punto,pourcentage d’attaque gagnante,percentuale di attacco vincente
 Attack efficiency [(number of kills - number of errors and blocked attacks)/(number of attacks)],Attack efficiency [(number of kills - number of errors and blocked attacks)/(number of attacks)],Eficiência do ataque [(número de ataques perfeitos - número de ataques errados e bloqueados)/(número total de ataques)],Eficacia de ataque [(número de ataques punto - número de errores y ataques bloqueados)/(número de ataques)],Éfficacité de l’attaque [(nombre d’attaques gagnantes - nombre d’erreurs et contrées)/(nombre d’attaques)],Efficacia di attacco [(numero di attacchi vincenti - numero di errori e murati)/(numero di attacchi)]
@@ -207,7 +207,10 @@ float,float,flutuado,flot,flot,flot
 blocks,blocks,bloqueios,bloqueos,contres,muri
 number of points won with block kills,number of points won with block kills,número de pontos vencidos com o bloqueio,número de puntos ganados con el bloqueo,nombre de contres gagnants,numero di punti vinti con muri vincenti
 block,block,bloqueio,bloqueo,contre,muri
-block kills as a percentage of the number of attacks,block kills as a percentage of the number of attacks,porcentagem de ataques efetuados pelo adversário que foram bloqueados,porcentaje de bloqueos punto,pourcentage de contre gagnants,muri vincenti come percentuale degli attacchi
+block2,block2,bloqueio2,bloqueo2,contre2,muri2
+block kills as a percentage of the number of attacks,block kills as a percentage of the number of attacks,porcentagem de ataques efetuados pelo adversário que foram bloqueados,porcentaje de bloqueos punto sobre el total de ataques,pourcentage de contre gagnants,muri vincenti come percentuale degli attacchi
+block kills as a percentage of the number of attacks (excluding attack errors),block kills as a percentage of the number of attacks (excluding attack errors),porcentagem de ataques (tirando erros) efetuados pelo adversário que foram bloqueados,porcentaje de bloqueos punto sobre el total de ataques (excluyendo errores de ataque),pourcentage de contre gagnants en excluant les erreurs d’attaques,muri vincenti come percentuale degli attacchi (errori in attacco esclusi)
+blocks against first-ball (reception-phase) attacks,blocks against first-ball (reception-phase) attacks,bloqueios contra o primeiro ataque (fase de recepção),bloqueos contra el primer ataque tras la recepción (fase cambio),contre d'attaques sur réceptions,muri su attacco di cambiopalla (prima palla)
 @ abbrev for positive
 pos,pos,pos,pos,pos,pos
 @ abbrev for serve reception used in the context of block kills on opposition reception attack
@@ -218,19 +221,27 @@ trans,trans,ctatq,contraat,trans,contrat
 @@ Breakpoint transition attack
 breakpoint transition attack,breakpoint transition attack,contra-ataque na fase de breakpoint,contraataque (fase breakpoint),attaque en transition (breakpoint),contrattacco (fase breakpoint)
 ATT/S,ATT/S,ATT/S,ATT/S,ATT/S,ATT/B
+number of breakpoint attacks (i.e. by the serving team) as a percentage of their number of serves,number of breakpoint attacks (i.e. by the serving team) as a percentage of their number of serves,número de ataques no breakpoint (ex: pelo time sacador) em relação a porcentagem do número de saques,número de ataques en fase punto (del equipo al saque) como porcentaje del total de saques,nombre d'attaques de breakpoint (equipe au service) comme pourcentage du nombre de services,numero di attacchi in contrattacco (es: della squadra al servizio) come percentuale delle battute totali
 ATT/D,ATT/D,ATT/D,ATT/D,ATT/D,ATT/D
 number of attacks as a percentage of defensive opportunities,number of attacks as a percentage of defensive opportunities,número de ataques como porcentagem de oportunidades de defesa,número de ataques  por oportunidad de defensa,nombre d’attaques par opportunité de défense,numero di attacchi per opportunità di difesa
+number of breakpoint (serving team) attacks as a percentage of the number of serves on which the receiving team made an attack past the serving team's block (i.e. not blocked and not an attack error),number of breakpoint (serving team) attacks as a percentage of the number of serves on which the receiving team made an attack past the serving team's block (i.e. not blocked and not an attack error),número de ataques no breakpoint (time sacador) em relação a porcentagem do número de saques nos quais o time receptor fez um ataque contra o bloqueio do time sacador (ex: não foi um ataque errado nem bloqueado),número de ataques en fase punto (del equipo al saque) como porcentaje del total de saques en los cuales el equipo receptor realizó un ataque que pasó el bloqueo (que no fue bloqueado o que no fue errado),nombre de d'attaque sur breakpoint (equipe au service) en pourcentage du nombre de services sur lesquelles l'equipe en reception a effectue une attaque non-contree (ni une attaque contree ni une erreur d'attaque),totale dei contrattacchi (dalla squadra al servizio) come percentuale delle battute totali seguite da un attacco in cambiopalla (esclusi errori e murate) della squadra in ricezione
 K/D,K/D,P/D,A/D,G/D,A/D
 number of attack kills as a percentage of defensive opportunities,number of attack kills as a percentage of defensive opportunities,número de ataques pontuados como porcentagem de oportunidades de defesa,número de ataques punto por oportunidad de defensa,nombre d’attaques gagnantes par opportunité de défense,numero di attacchi vincenti per opportunità di difesa
+number of breakpoint (serving team) attack kills as a percentage of the number of serves on which the receiving team made an attack past the serving team's block (i.e. not blocked and not an attack error),number of breakpoint (serving team) attack kills as a percentage of the number of serves on which the receiving team made an attack past the serving team's block (i.e. not blocked and not an attack error),número de pontos de ataque no breakpoint (time sacador) em relação a porcentagem do número de saques nos quais o time receptor fez um ataque contra o bloqueio do time sacador (ex: não foi um ataque errado nem bloqueado),número de ataques punto en fase punto (del equipo al saque) como porcentaje del total de saques en los cuales el equipo receptor realizó un ataque que pasó el bloqueo (que no fue bloqueado o que no fue errado),nombre de d'attaque gagnantes sur breakpoint (equipe au service) en pourcentage du nombre de services sur lesquelles l'equipe en reception a effectue une attaque non-contree (ni une attaque contree ni une erreur d'attaque),totale dei punti su contrattacco (dalla squadra al servizio) come percentuale delle battute totali seguite da un attacco in cambiopalla (esclusi errori e murate) della squadra in ricezione
+CAR,CAR,TCXA,TCA,RCA,IDC
+counterattack rate (number of transition attacks as a percentage of the number of opposition attacks),counterattack rate (number of transition attacks as a percentage of the number of opposition attacks),taxa de contra-ataque (porcentagem de ataques do adversário nos quais um contra-ataque foi feito),tasa de contraataque (porcentaje de ataques del rival que se pudieron contraatacar),ratio de contre-attaque (pourcentage d'attaque adverse menant a une contre-attaque),indice di contrattacco (percentuale di attacchi avversari seguiti da un contrattacco della squadra di casa)
+CKR,CKR,TCXAP,TCA#,RCAG,ICV
+counterattack kill rate (number of transition attack kills as a percentage of the number of opposition attacks),counterattack kill rate (number of transition attack kills as a percentage of the number of opposition attacks),taxa de contra-ataques pontuados (porcentagem de ataques adversários no qual um ponto de contra-ataque foi feito),tasa de contraataque punto (porcentaje de ataques del rival que se contraatacaron y donde se hizo punto),ratio de contre-attaques gagnantes (pourcentage d'attaques adverse menant a une contre-attaque gagnante),indice di contrattacco vincente (percentuale di attacchi avversari seguiti da un contrattacco vincente della squadra di casa)
 
 @@ Attack
-opp kill,opp kill,pto adv,ataque punto rival,att gagnante adv,att vincenti avv
+opp kill,opp kill,pto adv,at punto riv,att gagn adv,att vincenti avv
 
 @@ Scoring by rotation
 scoring by rotation (including serve errors),scoring by rotation (including serve errors),pontos por rotação (incluindo erros de saque),puntos por rotación (incluyendo errores de saque),score par rotation (incluant les erreurs de services),punti per rotazione (errori di battuta inclusi)
-opp n srv,opp n srv,n saq adv,n saque rival,srv n adv,n battute avversario
+opp n srv,opp n srv,n saq adv,n saq rival,srv n adv,n battute avversario
 number of serves attempted by the opposition,number of serves attempted by the opposition,número de saques realizados pelo adversário,número de saques del equipo rival,nombre de services de l’adversaire,numero di battute dell'avversario
-n srv,n srv,n saq,n saque,n srv,n battute
+n srv,n srv,n saq,n saq,n srv,n battute
+n  srv,n  srv,n  saq,n  saq,n  srv,n  battute
 P1/P2/etc,P1/P2/etc,P1/P2/etc,R1/R2/etc,P1/P2/etc,P1/P2/ecc
 setter in position 1/2/etc,setter in position 1/2/etc,levantador na posição 1/2/etc,colocador en posición 1/2/etc,passeur en position 1/2/etc,palleggiatore in posto 1/2/etc
 
@@ -594,7 +605,7 @@ Generate report,Generate report,Gerar relatório,Generar informe,Créer le compt
 Generating report,Generating report,Gerando relatório,Generando informe,Génération du compte-rendu,Generando analisi
 Please wait,Please wait,"Por favor, aguarde","Por favor, espera","S’il vous plaît, attendez","Attendere, prego"
 Dataset selection,Dataset selection,Seleção dos dados,Selección de datos,Sélection des données,Selezione dell'insieme di dati
-Select dataset:,Select dataset:,Dados selecionados:,Selecciona los datos,Sélectionner les données:,Selezionare i set di dati
+Select dataset:,Select dataset:,Dados selecionados:,Selecciona los datos:,Sélectionner les données:,Selezionare i set di dati:
 Report settings,Report settings,Configurações do relatório,Opciones del informe,Paramètres de compte-rendu,Opzioni dell'analisi
 or,or,ou,o,ou,o
 Login,Login,Entrar,Iniciar sesión,Identifiant,Accesso
@@ -603,13 +614,13 @@ Main tab,Main tab,Aba principal,Pestaña principal,Section principale,Scheda pri
 Data administration,Data administration,Gerenciamento dos dados,Administración de datos,Administration des données,Amministrazione dei dati
 Pricing/Sign up/Free trial,Pricing/Sign up/Free trial,Valores/Entrar/Teste gratuito,Suscripción/Registro/Prueba gratuita,Prix/S’enregistrer/Essai gratuit,Prezzi/Abbonarsi/Prova gratuita
 About,About,Sobre,Sobre,A propos,Informazioni
-See an example report:,See an example report:,Ver um relatório como exemplo,Ver un informe de ejemplo:,Voir un exemple:,Vedi un'analisi di esempio:
+See an example report:,See an example report:,Ver um relatório como exemplo:,Ver un informe de ejemplo:,Voir un exemple:,Vedi un'analisi di esempio:
 PGE Skra Bełchatów from the 2017-18 PlusLiga example data set,PGE Skra Bełchatów from the 2017-18 PlusLiga example data set,Exemplo de dados da equipe PGE Skra Belchatów na temporada 2017-18 da PlusLiga,"Ejemplo del PGE Skra Belchatów 2017/18, datos de la PlusLiga",PGE Skra Bełchatów 2017/18,PGE Skra Bełchatów dal set di dati di esempio PlusLiga 2017-18
 Subscribers: log in to see your personal data sets.,Subscribers: log in to see your personal data sets.,Assinantes: entre para ver o seu banco de dados.,Suscriptores: inicia sesión para ver tus ficheros y datos personales,Membres : identifiez-vous pour voir vos données personnnelles.,Abbonati: accedi per vedere i tuoi set di dati personali.
 You have no data sets.,You have no data sets.,Você não tem dados registrados.,No tienes datos,Vous n’avez aucune données.,Non hai set di dati.
 You can also upload a file and it will be added to the datasets list.,You can also upload a file and it will be added to the datasets list.,Você pode enviar um arquivo e ele será adicionado à lista do banco de dados.,Puedes subir un archivo y se añadirá al listado de ficheros,Vous pouvez aussi télécharger un fichier et il sera ajouté à la liste de vos données.,Puoi caricare un file che verrà aggiunto all'elenco dei set di dati.
 Upload a file,Upload a file,Enviar um arquivo,Subir un archivo,Télécharger un fichier,Caricare un file
-Match filter:,Match filter:,Filtro de partidas:,Filtro de partidos,Filtre de match:,Filtro di partite:
+Match filter:,Match filter:,Filtro de partidas:,Filtro de partidos:,Filtre de match:,Filtro di partite:
 Filter by filename,Filter by filename,Filtrar por nome do arquivo,Filtrar por nombre de archivo,Filtrer par nom de fichier,Filtro per nome di file
 No filter applied.,No filter applied.,Sem filtros,Sin filtros,Sans filtres.,Senza filtri
 Apply filter,Apply filter,Aplicar filtro,Aplicar filtros,Appliquer le filtre,Applicare filtri
@@ -617,8 +628,8 @@ matches selected,matches selected,partidas selecionadas,partidos seleccionados,m
 Modify filter,Modify filter,Modificar filtros,Modificar filtros,Modifier le filtre,Modificare i filtri
 Files:,Files:,Arquivos:,Archivos:,Fichiers:,File:
 matches selected from a total of,matches selected from a total of,partidas selecionadas de um total de,partidos seleccionados de un total de,matchs sélectionnés sur un total de,partite selezionate da un totale di
-Select team:,Select team:,Selecionar equipe:,Selecciona equipo,Sélectionner l’équipe:,Selezionare squadra:
-Select player:,Select player:,Selecionar jogador:,Selecciona jugador,Sélectionner le ou les joueurs:,Selezionare giocatore:
+Select team:,Select team:,Selecionar equipe:,Selecciona equipo:,Sélectionner l’équipe:,Selezionare squadra:
+Select player:,Select player:,Selecionar jogador:,Selecciona jugador:,Sélectionner le ou les joueurs:,Selezionare giocatore:
 Output format:,Output format:,Formato do relatório:,Formato del informe:,Format du compte-rendu:,Formato dell'analisi:
 Options,Options,Opções,Opciones,Options,Opzioni
 Infer player positions from:,Infer player positions from:,Obter posições dos jogadores de:,Determinar posiciones de los jugadores de:,Déterminer les rôles des joueurs par:,Determina le posizioni dei giocatori per:
@@ -632,17 +643,17 @@ Servers:,Servers:,Sacadores:,Sacadores:,Serveurs:,Giocatori al servizio:
 Take serve/reception position data from:,Take serve/reception position data from:,Obter os dados de posição de saque/recepção de:,Obtener los datos de posición de saque/recepción de:,Analyser les positions de service/réception à partir de:,Ottenere i dati della posizione di battuta/ricezione di:
 Include reception report,Include reception report,Incluir relatório de recepção,Incluir informe de recepción,Inclure le compte-rendu de réception,Includere analisi della ricezione
 Generate individual reception charts?,Generate individual reception charts?,Gerar gráficos individuais de recepção?,¿Generar diagramas individuales de recepción?,Générer le graphique des réception par joueur?,Generare analisi individuali di ricezione?
-Minimum number of receptions:,Minimum number of receptions:,Número mínimo de recepções:,Número mínimo de recepciones:,Nombre de réceptions minimum:,Numero minimo di ricezioni
+Minimum number of receptions:,Minimum number of receptions:,Número mínimo de recepções:,Número mínimo de recepciones:,Nombre de réceptions minimum:,Numero minimo di ricezioni:
 Receivers:,Receivers:,Receptores:,Receptores:,Réceptionneurs:,Ricettori:
 Include setting report,Include setting report,Incluir relatório de distribuição,Incluir informe de pase/distribución,Inclure le compte-rendu sur les passes,Includere analisi del palleggio/distribuzione
 Report on individual setters?,Report on individual setters?,Detalhar levantadores individualmente?,¿Informe individual de colocadores?,Compte-rendu pour chaque passeur?,Analisi su palleggiatore singolo?
 Select setters by:,Select setters by:,Selecionar levantadores por:,Seleccionar colocadores por:,Identification du passeur par:,Selezionare palleggiatori per:
 Specific players,Specific players,Jogadores específicos,Jugadores específicos,Joueurs particuliers,Giocatori specifici
-Minimum number of sets,Minimum number of sets,Número mínimo de levantamentos,Número mínimo de pases:,Nombre minimum de passes,Numero minimo di alzate
+Minimum number of sets,Minimum number of sets,Número mínimo de levantamentos,Número mínimo de pases,Nombre minimum de passes,Numero minimo di alzate
 Select setters to report on:,Select setters to report on:,Selecionar levantadores para o relatório:,Seleccionar colocadores para el informe:,Sélection du passeur pour le compte-rendu:,Selezionare palleggiatori da analizzare:
 Include set distribution by setter call? (DataVolley indoor only),Include set distribution by setter call? (DataVolley indoor only),Incluir distribuição por chamada do levantador? (somente DataVolley indoor),¿Incluir distribución por llamada? (DataVolley indoor solamente),Inclure la distribution du passeur par rapport à ses appels (DataVolley seulement),Includere distribuzione per chiamate? (DataVolley indoor soltanto)
 Setters:,Setters:,Levantadores:,Colocadores:,Passeurs:,Palleggiatori:
-Attacking,Attacking,Ataques,Ataques,Attaques,Attacchi:
+Attacking,Attacking,Ataques,Ataques,Attaques,Attacchi
 Include attack report,Include attack report,Incluir relatório de ataque,Incluir informe de ataque,Inclure le compte-rendu d’attaque,Includere analisi dell'attacco
 Attack charts minimum number of attacks:,Attack charts minimum number of attacks:,Número mínimo de ações para os gráficos de ataque:,Diagramas de ataque con un mínimo de ataques:,Graphique d’attaques avec un minimum d’attaques:,Numero minimo di attacchi nel grafico:
 Attackers:,Attackers:,Atacantes:,Atacantes:,Attaquants:,Attaccanti:
@@ -650,12 +661,12 @@ Attack charts by:,Attack charts by:,Gráficos de ataque por:,Diagramas de ataque
 Attack chart style:,Attack chart style:,Estilo dos gráficos de ataque:,Estilo de los diagramas de ataque:,Style du graphique d’attaque:,Tipo di direzioni di attacco:
 Attacks to show on charts:,Attacks to show on charts:,Ataques a serem exibidos nos gráficos:,Ataques a mostrar en los diagramas:,Attaques à afficher:,Attacchi da mostrare nei diagrammi:
 "Attack code (X5, V6, etc)","Attack code (X5, V6, etc)","Códigos de ataque (X5, V6, etc)","Código de ataque (X5, V6, etc)","Code d’attaque (X5, V6, etc)","Codice di attacco (X5, V6, ecc)"
-Select attack codes to chart,Select attack codes to chart,Selecione os códigos de ataque para o gráfico,Selecciona los códigos de ataque para incluir en el diagrama:,Selection des codes d’attaque pour les graphiques,Selezionare codici di attacchi per le direzioni:
+Select attack codes to chart,Select attack codes to chart,Selecione os códigos de ataque para o gráfico,Selecciona los códigos de ataque para incluir en el diagrama,Selection des codes d’attaque pour les graphiques,Selezionare codici di attacchi per le direzioni
 Include block report,Include block report,Incluir relatório de bloqueio,Incluir informe de bloqueo,Inclure le compte-rendu des contres,Includere analisi del muro
 Number of blockers from:,Number of blockers from:,Número de bloqueios determinado por:,Número de bloqueadores determinado por:,Nombre de contreurs déterminé par:,Numero di giocatori a muro da:
 Report on opposition attacks by:,Report on opposition attacks by:,Incluir ataques dos adversários por:,Incluir ataques del rival por:,Compte-rendu sur les attaques de l’adversaire par:,Includere attacchi dell'avversario per:
 Select opposition attack codes to report on:,Select opposition attack codes to report on:,Selecionar os códigos de ataque do adversário para o relatório:,Selecciona los códigos de ataque del rival para el informe:,Choisir les codes d’attaques de l’adversaire pour le compte-rendu:,Selezionare i codici di attacco dell'avversario per l'analisi:
-Select opposition setting zones to report on:,Select opposition setting zones to report on:,Selecionar as zonas de levantamento do adversário para o relatório:,Selecciona las zonas de pase del rival para el informe:,Choisir les zones de la passe de l’adversaire à analyser,Selezionare le zone di palleggio dell'avversario per l'analisi:
+Select opposition setting zones to report on:,Select opposition setting zones to report on:,Selecionar as zonas de levantamento do adversário para o relatório:,Selecciona las zonas de pase del rival para el informe:,Choisir les zones de la passe de l’adversaire à analyser:,Selezionare le zone di palleggio dell'avversario per l'analisi:
 Use the same attack codes as selected in the attacking section,Use the same attack codes as selected in the attacking section,Usar os mesmos códigos de ataque que foram selecionados na seção de ataque,Usar los mismos códigos de ataque seleccionados en la sección de ataque,Utiliser les mêmes codes d’attaque que pour la section Attaque,Usare gli stessi codici di attacco selezionati nella sezione di attacco
 "Note, dropping non-standard attack codes:","Note, dropping non-standard attack codes:","Nota, códigos fora do padrão serão descartados:","Nota, descartados los códigos de ataque no habituales:","Remarque, suppression des codes d’attaque non standard:","Nota, eliminando codici di attacco non standard:"
 Our other apps,Our other apps,Nossos outros aplicativos,Nuestras otras aplicaciones,Nos autres applications,Nostre altre app
@@ -666,7 +677,7 @@ Detailed blocking analysis,Detailed blocking analysis,Análise detalhada de bloq
 Team and player attack charts,Team and player attack charts,Gráficos de ataque de equipes e atletas,Diagramas de ataque individuales y colectivos,Graphiques des attaques des joueurs et de l’équipe,Diagrammi di attacco individuali e colettivi
 Defensive analysis,Defensive analysis,Análise de defesa,Análisis de la defensa,Analyse défensive,Analisi della difesa
 News and updates,News and updates,Notícias e atualizações,Noticias y actualizaciones,Nouveautés et mises à jour,Notizie e aggiornamenti
-Last update:,Last update:,Ultima atualização:,Última actualización,Dernière mise à jour:,Ultimo aggiornamento:
+Last update:,Last update:,Ultima atualização:,Última actualización:,Dernière mise à jour:,Ultimo aggiornamento:
 Processing log,Processing log,Processando registro,Procesando registro,Historique de traitement des fichiers,Elaborando l'accesso
 Matches,Matches,Partidas,Partidos,Matches,Partite
 Players,Players,Jogadores,Jugadores,Les joueurs,Giocatori
