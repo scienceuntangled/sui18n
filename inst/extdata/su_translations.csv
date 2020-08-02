@@ -164,8 +164,8 @@ tot,tot,tot,tot,tot,tot
 @ abbrev for reception
 rec,rec,rec,rec,rec,ric
 TOT excluding serve errors,TOT excluding serve errors,TOT excluindo erros de saque,TOT excluyendo errores de saque,TOT excluant les erreurs de service,TOT errori in battuta esclusi
-in sets won,in sets won,em sets vencidos,en sets ganados,dans les sets gagnés,in set vinti
-in sets lost,in sets lost,em sets perdidos,en sets perdidos,dans les sets perdus,in set persi
+in sets won (excluding serve errors),in sets won (excluding serve errors),em sets vencidos (excluindo erros de saque),en sets ganados (excluyendo errores de saque),dans les sets gagnés (excluant les erreurs de service),in set vinti (errori in battuta esclusi)
+in sets lost (excluding serve errors),in sets lost (excluding serve errors),em sets perdidos (excluindo erros de saque),en sets perdidos (excluyendo errores de saque),dans les sets perdus (excluant les erreurs de service),in set persi (errori in battuta esclusi)
 
 @@ Reception first ball sideout
 reception first ball sideout,reception first ball sideout,sideout no primeiro ataque por recepção,cambio de saque en primera opción de ataque,sideout sur première attaque,cambio palla su primo attacco
