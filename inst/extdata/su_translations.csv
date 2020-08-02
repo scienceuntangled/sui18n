@@ -211,12 +211,15 @@ block2,block2,bloqueio2,bloqueo2,contre2,muri2
 block kills as a percentage of the number of attacks,block kills as a percentage of the number of attacks,porcentagem de ataques efetuados pelo adversário que foram bloqueados,porcentaje de bloqueos punto sobre el total de ataques,pourcentage de contre gagnants,muri vincenti come percentuale degli attacchi
 block kills as a percentage of the number of attacks (excluding attack errors),block kills as a percentage of the number of attacks (excluding attack errors),porcentagem de ataques (tirando erros) efetuados pelo adversário que foram bloqueados,porcentaje de bloqueos punto sobre el total de ataques (excluyendo errores de ataque),pourcentage de contre gagnants en excluant les erreurs d’attaques,muri vincenti come percentuale degli attacchi (errori in attacco esclusi)
 blocks against first-ball (reception-phase) attacks,blocks against first-ball (reception-phase) attacks,bloqueios contra o primeiro ataque (fase de recepção),bloqueos contra el primer ataque tras la recepción (fase cambio),contre d'attaques sur réceptions,muri su attacco di cambiopalla (prima palla)
+blocks in breakpoint phase (i.e. blocks by the serving team),blocks in breakpoint phase (i.e. blocks by the serving team),bloqueios na fase de breakpoint,bloqueos en fase breakpoint,contres sur phase de breakpoint,muri (fase breakpoint)
 @ abbrev for positive
 pos,pos,pos,pos,pos,pos
 @ abbrev for serve reception used in the context of block kills on opposition reception attack
 ser r,ser r,rec,rec s,rec s,ric b
 @ abbrev for transition
 trans,trans,ctatq,contraat,trans,contrat
+trans bp,trans bp,ctatq bp,contraat bp,trans bp,contrat bp
+tot bp,tot bp,tot bp,tot bp,tot bp,tot bp
 
 @@ Breakpoint transition attack
 breakpoint transition attack,breakpoint transition attack,contra-ataque na fase de breakpoint,contraataque (fase breakpoint),attaque en transition (breakpoint),contrattacco (fase breakpoint)
@@ -270,6 +273,7 @@ number of points won per 100 rallies,number of points won per 100 rallies,númer
 @ used in percentage of rallies won
 rally,rally,rally,rally,échange,azioni
 usage rate,usage rate,taxa de uso,coeficiente de uso,taux d’utilisation,coefficiente di uso
+points won plus errors made as a percentage of the number of rallies,points won plus errors made as a percentage of the number of rallies,número de pontos vencidos e número de erros cometidos a cada 100 rallies,número de puntos ganados y número de errores cometidos cada 100 rallies,nombre de points gagnés et nombre d’erreurs pour 100 échanges,numero di punti vinti e numero di errori fatti per ogni 100 punti
 
 @@ miscellaneous
 yes,yes,sim,si,oui,si
