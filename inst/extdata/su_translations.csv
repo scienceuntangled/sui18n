@@ -220,6 +220,7 @@ ser r,ser r,rec,rec s,rec s,ric b
 trans,trans,ctatq,contraat,trans,contrat
 trans bp,trans bp,ctatq bp,contraat bp,trans bp,contrat bp
 tot bp,tot bp,tot bp,tot bp,tot bp,tot bp
+trans so,trans so,ctatq so,contraat c.s.,trans so,contrat cp
 
 @@ Breakpoint transition attack
 breakpoint transition attack,breakpoint transition attack,contra-ataque na fase de breakpoint,contraataque (fase breakpoint),attaque en transition (breakpoint),contrattacco (fase breakpoint)
@@ -232,9 +233,11 @@ K/D,K/D,P/D,A/D,G/D,A/D
 number of attack kills as a percentage of defensive opportunities,number of attack kills as a percentage of defensive opportunities,número de ataques pontuados como porcentagem de oportunidades de defesa,número de ataques punto por oportunidad de defensa,nombre d’attaques gagnantes par opportunité de défense,numero di attacchi vincenti per opportunità di difesa
 number of breakpoint (serving team) attack kills as a percentage of the number of serves on which the receiving team made an attack past the serving team's block (i.e. not blocked and not an attack error),number of breakpoint (serving team) attack kills as a percentage of the number of serves on which the receiving team made an attack past the serving team's block (i.e. not blocked and not an attack error),número de pontos de ataque no breakpoint (time sacador) em relação a porcentagem do número de saques nos quais o time receptor fez um ataque contra o bloqueio do time sacador (ex: não foi um ataque errado nem bloqueado),número de ataques punto en fase punto (del equipo al saque) como porcentaje del total de saques en los cuales el equipo receptor realizó un ataque que pasó el bloqueo (que no fue bloqueado o que no fue errado),nombre de d'attaque gagnantes sur breakpoint (equipe au service) en pourcentage du nombre de services sur lesquelles l'equipe en reception a effectue une attaque non-contree (ni une attaque contree ni une erreur d'attaque),totale dei punti su contrattacco (dalla squadra al servizio) come percentuale delle battute totali seguite da un attacco in cambiopalla (esclusi errori e murate) della squadra in ricezione
 CAR,CAR,TCXA,TCA,RCA,IDC
-counterattack rate (number of transition attacks as a percentage of the number of opposition attacks),counterattack rate (number of transition attacks as a percentage of the number of opposition attacks),taxa de contra-ataque (porcentagem de ataques do adversário nos quais um contra-ataque foi feito),tasa de contraataque (porcentaje de ataques del rival que se pudieron contraatacar),ratio de contre-attaque (pourcentage d'attaque adverse menant a une contre-attaque),indice di contrattacco (percentuale di attacchi avversari seguiti da un contrattacco della squadra di casa)
+counterattack rate (percentage of opposition attacks on which a counterattack was made),counterattack rate (percentage of opposition attacks on which a counterattack was made),taxa de contra-ataque (porcentagem de ataques do adversário nos quais um contra-ataque foi feito),tasa de contraataque (porcentaje de ataques del rival que se pudieron contraatacar),ratio de contre-attaque (pourcentage d'attaque adverse menant a une contre-attaque),indice di contrattacco (percentuale di attacchi avversari seguiti da un contrattacco della squadra di casa)
 CKR,CKR,TCXAP,TCA#,RCAG,ICV
-counterattack kill rate (number of transition attack kills as a percentage of the number of opposition attacks),counterattack kill rate (number of transition attack kills as a percentage of the number of opposition attacks),taxa de contra-ataques pontuados (porcentagem de ataques adversários no qual um ponto de contra-ataque foi feito),tasa de contraataque punto (porcentaje de ataques del rival que se contraatacaron y donde se hizo punto),ratio de contre-attaques gagnantes (pourcentage d'attaques adverse menant a une contre-attaque gagnante),indice di contrattacco vincente (percentuale di attacchi avversari seguiti da un contrattacco vincente della squadra di casa)
+counterattack kill rate (percentage of opposition attacks on which a counterattack kill was made),counterattack kill rate (percentage of opposition attacks on which a counterattack kill was made),taxa de contra-ataques pontuados (porcentagem de ataques adversários no qual um ponto de contra-ataque foi feito),tasa de contraataque punto (porcentaje de ataques del rival que se contraatacaron y donde se hizo punto),ratio de contre-attaques gagnantes (pourcentage d'attaques adverse menant a une contre-attaque gagnante),indice di contrattacco vincente (percentuale di attacchi avversari seguiti da un contrattacco vincente della squadra di casa)
+CAR BP,CAR BP,TCXA BP,TCA BP,RCA BP,IDC BP
+counterattack rate (percentage of opposition attacks on which a counterattack was made) in breakpoint phase,counterattack rate (percentage of opposition attacks on which a counterattack was made) in breakpoint phase,taxa de contra-ataque (porcentagem de ataques do adversário nos quais um contra-ataque foi feito) na fase de breakpoint,tasa de contraataque (porcentaje de ataques del rival que se pudieron contraatacar) en fase breakpoint,ratio de contre-attaque (pourcentage d'attaque adverse menant a une contre-attaque) sur phase de breakpoint,indice di contrattacco (percentuale di attacchi avversari seguiti da un contrattacco della squadra di casa) in fase breakpoint
 
 @@ Attack
 opp kill,opp kill,pto adv,at punto riv,att gagn adv,att vincenti avv
@@ -260,6 +263,7 @@ freeballs rated as positive,freeballs rated as positive,bolas de graça avaliada
 
 @@ Errors and points won
 errors and points won,errors and points won,erros e pontos vencidos,errores y puntos ganados,erreurs et points gagnés,errori e punti vinti
+points won,points won,pontos vencidos,puntos ganados,points gagnés,punti vinti
 errs,errs,errs,errs,errs,err
 "number of errors made (attack, serve, set, freeball errors plus block net touches)","number of errors made (attack, serve, set, freeball errors plus block net touches)","número de erros cometidos (ataque, saque, levantamento, bola de graça e infrações de bloqueio)","número de errores cometidos (ataque, saque, pase, free-balls y falta de red)","nombre d’erreurs (attaque, service, passe, relance et faute de filet)","numero di errori fatti (attacco, battuta, palleggio, errori di free ball e invasione a muro)"
 errs/100,errs/100,errs/100,errs/100,errs/100,err/100
@@ -270,6 +274,7 @@ pts,pts,pts,pts,pts,pt
 number of points won (serve aces plus block and attack kills),number of points won (serve aces plus block and attack kills),"número de pontos vencidos (saques ace, pontos de bloqueio, ataques pontuados)","número de puntos ganados (aces, bloqueos y contraataques)","nombre de points gagnés (service gagnants, contres et attaques gagnantes)","numero di punti vinti (aces, muri e contrattacchi)"
 pts/100,pts/100,pts/100,pts/100,pts/100,pt/100
 number of points won per 100 rallies,number of points won per 100 rallies,número de pontos vencidos a cada 100 rallies,número de puntos ganados cada 100 rallies,nombre de points gagnés pour 100 échanges,numero di punti vinti per ogni 100 punti
+(points won on serve) + (points won on reception) - (points lost on serve) - (points lost on reception),(points won on serve) + (points won on reception) - (points lost on serve) - (points lost on reception),(pontos vencidos no saque) + (pontos vencidos na recepção) - (pontos perdidos no saque) - (pontos perdidos na recepção),(puntos ganados al saque) + (puntos ganados en recepción) - (puntos perdidos al saque) - (puntos perdidos en recepción),(points gagnés au service) + (points gagnés sur réception) - (points perdus au service) - (points perdus sur réception),(punti vinti al servizio) + (punti vinti sulla ricezione) - (punti persi al servizio) - (punti persi sulla ricezione)
 @ used in percentage of rallies won
 rally,rally,rally,rally,échange,azioni
 usage rate,usage rate,taxa de uso,coeficiente de uso,taux d’utilisation,coefficiente di uso
@@ -304,6 +309,7 @@ all,all,todos,todos,toutes,tutti
 OPP FBSO%,OPP FBSO%,%FBSO ADV,CSPA% ADV,SOPA% ADV,CPPA% AVV
 REC ATT KILL%,REC ATT KILL%,ATQ REC PTO%,REC AT PUNTO%,REC ATT GAGN%,ATT RIC VINCENTI%
 REC ATT EFF,REC ATT EFF,ATQ REC EFF,EF REC AT,REC ATT EFF,EFF ATT RIC
+R#+ KILL%,R#+ KILL%,ATQ R#+ PTO%,AT R#+ PUNTO%,R#+ ATT GAGN%,ATT VINC R#+
 BP% TOT,BP% TOT,%BP TOT,%BP TOT,%BP TOT,BP% TOT
 BLOCK% SER R,BLOCK% SER R,%BLOCK REC,%BLOQUEO REC,%Contre REC S,% MURI RIC
 no data,no data,sem dados,sin datos,sans données,senza dati
@@ -313,6 +319,7 @@ errors,errors,erros,errores,erreurs,errori
 all players,all players,todos os jogadores,todos los jugadores,tous les joueurs,tutti i giocatori
 all teams,all teams,todas as equipes,todos los equipos,toutes les équipes,tutte le squadre
 overall,overall,total,total,total,totali
+average,average,média,promedio,moyenne,media
 
 @@ report settings
 serving,serving,saque,saque,service,battuta
