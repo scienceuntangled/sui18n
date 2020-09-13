@@ -54,6 +54,7 @@ blocking,blocking,bloqueio,bloqueo,contre,muro
 middle blocking,middle blocking,bloqueio dos centrais,bloqueo de los centrales,contre des centraux,muro dei centrali
 keys,keys,legenda,leyenda,lexique,legenda
 worksheet key,worksheet key,legenda das planilhas,leyenda de la ficha técnica,lexique de la fiche technique,legenda del foglio della squadra
+team comparisons key,team comparisons key,legenda das comparações entre equipes,leyenda de la comparativa entre equipos,lexique de comparatif des équipes,legenda del confronti tra squadre
 attacking key,attacking key,legenda do ataque,leyenda de ataque,lexique d’attaque,legenda dell'attacco
 middle attackers,middle attackers,atacantes centrais,atacantes centrales,centraux,centrali
 blocking key,blocking key,legenda do bloqueio,leyenda de bloqueo,lexique du contre,chiave del muro
@@ -385,6 +386,9 @@ serve err,serve err,saque err,error de saque,serv err,err batt
 Opp rec att kill R,Opp rec att kill R,Atq rec adv pto R,At rec punto rival R,Rec att gagn adv R,Att ric vinc avv R
 Opp rec att kill R#+,Opp rec att kill R#+,Atq rec adv pto R#+,At rec punto rival R#+,Rec att gagn adv R#+,Att ric vinc avv R#+
 Opp rec att kill R+,Opp rec att kill R+,Atq rec adv pto R+,At rec punto rival R+,Rec att gagn adv R+,Att ric vinc avv R+
+opposition attack kill percentage,opposition attack kill percentage,porcentagem de pontos de ataque adversário,porcentaje de ataque punto del rival,pourcentage d'attaques marquées de l'adversaire,percentuale di attacco dell'avversario
+reception attack kill percentage,reception attack kill percentage,porcentagem de ataques após a recepção pontuados,porcentaje de ataque punto tras recepción,pourcentage d'attaques sur réception gagnantes,percentuale di attacchi sulla ricezione
+reception attack efficiency [(number of kills - number of errors and blocked attacks)/(number of attacks)],reception attack efficiency [(number of kills - number of errors and blocked attacks)/(number of attacks)],eficiência do ataque após a recepção [(número de ataques perfeitos - número de ataques errados e bloqueados)/(número total de ataques)],eficacia de ataque tras recepción [(número de ataques punto - número de errores y ataques bloqueados)/(número de ataques)],éfficacité de l'attaque sur réception [(nombre d'attaques gagnantes - nombre d'erreurs et contrées)/(nombre d'attaques)],efficacia di attacco sulla ricezione [(numero di attacchi vincenti - numero di errori e murati)/(numero di attacchi)]
 
 @@ serve section
 "Expected percentage of points won on serve, given this server's serve evaluations and the league-wide BP% for each of those evaluations","Expected percentage of points won on serve, given this server's serve evaluations and the league-wide BP% for each of those evaluations",Porcentagem esperada de pontos vencidos no saque tendo em conta as avaliações do saque desse jogador e o %BP de toda a liga para cada uma das avaliações,"Porcentaje esperado de puntos ganados al saque, dadas las evaluaciones de saque de este jugador y  el %BP de la liga para esas evaluaciones","Pourcentage attendu de points gagnés au service, étant donné la qualité de service du serveur et le taux de BP dans la ligue pour chacune des évaluations","Percentuale prevista di punti vinti al servizio, date le valutazioni del servizio di questo giocatore e la % BP del campionato per tali valutazioni"
