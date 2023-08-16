@@ -5,8 +5,7 @@
 
 <!-- badges: start -->
 
-[![R build
-status](https://github.com/scienceuntangled/sui18n/workflows/R-CMD-check/badge.svg)](https://github.com/scienceuntangled/sui18n/actions)
+[![R-CMD-check](https://github.com/scienceuntangled/sui18n/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/scienceuntangled/sui18n/actions/workflows/R-CMD-check.yaml)
 [![R build
 status](https://github.com/scienceuntangled/sui18n/workflows/test-coverage/badge.svg)](https://github.com/scienceuntangled/sui18n/actions)
 <!-- badges: end -->
