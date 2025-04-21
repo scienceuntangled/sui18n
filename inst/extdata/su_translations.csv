@@ -599,9 +599,9 @@ rec aA% FB,rec aA% FB,rec aA% BR,rec aA% PR,rec aA% T2,rec aA% PS
 rec aA% 1T,rec aA% 1T,rec aA% 1T,rec aA% 1T,rec aA% T1,rec aA% 1T
 rec aA% HB/FB/1T,rec aA% HB/FB/1T,rec aA% BA/BR/1T,rec aA% PA/PR/1T,rec aA% T3/T2/T1,rec aA% PA/PS/1T
 opposition reception attack kill percentage for high ball/fast ball/first tempo attacks against this blocker,opposition reception attack kill percentage for high ball/fast ball/first tempo attacks against this blocker,porcentagem de ataque do adversário depois da recepção para bola alta/bola rápida/primeiro tempo contra esse bloqueador,porcentaje de ataque punto tras recepción del rival con ataques de pelota alta/pelota rápida/primer tiempo contra este bloqueador,pourcentage d’attaque sur réceptions gagnantes de l’adversaire sur balle haute/tempo 2/tempo 1 contre ce contreur,percentuale di attacchi sulla ricezione dell'avversario per attacchi di palla alta/palla spinta/primo tempo contro questo giocatore
-rec aA% R,rec aA% R,rec aA% BA,rec aA% R,rec aA% R,rec aA% R
-rec aA% R+,rec aA% R+,rec aA% BR,rec aA% R+,rec aA% R+,rec aA% R+
-rec aA% R#+,rec aA% R#+,rec aA% 1T,rec aA% R#+,rec aA% R#+,rec aA% R#+
+rec aA% R,rec aA% R,rec aA% R,rec aA% R,rec aA% R,rec aA% R
+rec aA% R+,rec aA% R+,rec aA% R+,rec aA% R+,rec aA% R+,rec aA% R+
+rec aA% R#+,rec aA% R#+,rec aA% R#+,rec aA% R#+,rec aA% R#+,rec aA% R#+
 rec aA% Rxx,rec aA% Rxx,rec aA% Rxx,rec aA% Rxx,rec aA% Rxx,rec aA% Rxx
 opposition reception attack kill percentage against this blocker where the reception evaluation code was xx,opposition reception attack kill percentage against this blocker where the reception evaluation code was xx,porcentagem de ataque do adversário depois da recepção contra esse bloqueador quando a recepção foi avaliada como xx,porcentaje de ataque punto tras recepción del rival contra este bloqueador donde la evaluación de la recepción fue xx,pourcentage d’attaque sur réceptions gagnantes de l’adversaire contre ce contreur quand la qualité de réception était,percentuale di attacchi sulla ricezione dell'avversario contro questo giocatore quando la valutazione della recezione è stata xx
 trans aA,trans aA,ctatq aA,contraataque aA,trans aA,contratt aA
