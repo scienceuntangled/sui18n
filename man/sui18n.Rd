@@ -2,8 +2,27 @@
 % Please edit documentation in R/sui18n-package.R
 \docType{package}
 \name{sui18n}
+\alias{sui18n-package}
 \alias{sui18n}
 \title{\pkg{sui18n}}
 \description{
 Internationalization functions and data.
+}
+\author{
+\strong{Maintainer}: Ben Raymond \email{ben@untan.gl}
+
+Authors:
+\itemize{
+  \item Adrien Ickowicz
+}
+
+Other contributors:
+\itemize{
+  \item Chau Le [contributor]
+  \item Felipe Lima [contributor]
+  \item Giorgio Poetto [contributor]
+  \item Miguel Rivera [contributor]
+  \item Emilie Robles [contributor]
+}
+
 }

@@ -1,12 +1,13 @@
 Package: sui18n
 Title: Internationalization
-Version: 0.4.11
+Version: 0.4.11.9900
 Authors@R: c(person(given = "Ben", family = "Raymond", role = c("aut", "cre"), email = "ben@untan.gl"),
              person(given = "Adrien", family = "Ickowicz", role = "aut"),
-             person(given = "Miguel", family = "Rivera", role = "ctb"),
-             person(given = "Emilie", family = "Robles", role = "ctb"),
+             person(given = "Chau", family = "Le", role = "ctb"),
+             person(given = "Felipe", family = "Lima", role = "ctb"),
              person(given = "Giorgio", family = "Poetto", role = "ctb"),
-             person(given = "Felipe", family = "Lima", role = "ctb"))
+             person(given = "Miguel", family = "Rivera", role = "ctb"),
+             person(given = "Emilie", family = "Robles", role = "ctb"))
 Description: Provides internationalization functions and data.
 License: MIT + file LICENSE
 Imports:
@@ -19,4 +20,4 @@ Suggests:
   testthat
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.1
+RoxygenNote: 7.3.2

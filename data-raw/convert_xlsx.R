@@ -2,8 +2,8 @@ x <- readxl::read_excel("su_translations.xlsx", col_names = FALSE)
 ## write the file long-hand, so that we retain control over comment lines and so on
 csv_file <- "../inst/extdata/su_translations.csv"
 unlink(csv_file)
-## quote if necessary
-qifn <- function(z) sapply(z, function(txt) if (grepl("[,\"]", txt)) paste0("\"", txt, "\"") else txt)
+## quote if necessary, and convert " to '
+qifn <- function(z) unname(sapply(z, function(txt) if (grepl(",", txt)) paste0("\"", gsub("[\"“”]", "'", txt), "\"") else gsub("[\"“”]", "'", txt)))
 con  <- file(csv_file, open = "wt", encoding = "UTF-8")
 for (l in seq_len(nrow(x))) {
     if (all(is.na(x[l, ]))) {
@@ -22,6 +22,11 @@ for (l in seq_len(nrow(x))) {
 }
 close(con)
 
+## quotes " now changed to ' in the regexp above
+##for (cl in seq_len(ncol(x))[-1]) {
+##    chk <- grep("\"", x[[cl]])
+##    if (length(chk) > 0) stop("Embedded quotes in ", x[[cl]][2], " on rows ", paste(chk, collapse = ", "))
+##}
 
 ## checks
 source("../R/internal_utils.R")
@@ -71,18 +76,20 @@ for (tgt in setdiff(colnames(x), c("en", "key"))) {
         }
     }
 
-    chk <- grepl(":$", x[[tgt]]) & !grepl(":$", x$en)
-    if (any(chk)) {
-        cat("Language ", tgt, " has ending ':' where English does not:\n", sep = "")
-        for (ii in which(chk)) {
-            cat("[", ii, "] en: ", x$en[ii], "\n[", ii, "] ", tgt, ": ", x[[tgt]][ii], "\n\n", sep = "")
+    for (punct in c(":", "\\?", "\\.", "\\)", "\\]", "%")) {
+        chk <- grepl(paste0(punct, "$"), x[[tgt]]) & !grepl(paste0(punct, "$"), x$en)
+        if (any(chk)) {
+            cat("Language ", tgt, " has ending '", gsub("\\\\", "", punct), "' where English does not:\n", sep = "")
+            for (ii in which(chk)) {
+                cat("[", ii, "] en: ", x$en[ii], "\n[", ii, "] ", tgt, ": ", x[[tgt]][ii], "\n\n", sep = "")
+            }
         }
-    }
-    chk <- !grepl(":$", x[[tgt]]) & grepl(":$", x$en)
-    if (any(chk)) {
-        cat("Language ", tgt, " does not have an ending ':' where English does:\n", sep = "")
-        for (ii in which(chk)) {
-            cat("[", ii, "] en: ", x$en[ii], "\n[", ii, "] ", tgt, ": ", x[[tgt]][ii], "\n\n", sep = "")
+        chk <- !grepl(paste0(punct, "$"), x[[tgt]]) & grepl(paste0(punct, "$"), x$en)
+        if (any(chk)) {
+            cat("Language ", tgt, " does not have an ending '", gsub("\\\\", "", punct), "' where English does:\n", sep = "")
+            for (ii in which(chk)) {
+                cat("[", ii, "] en: ", x$en[ii], "\n[", ii, "] ", tgt, ": ", x[[tgt]][ii], "\n\n", sep = "")
+            }
         }
     }
 }
