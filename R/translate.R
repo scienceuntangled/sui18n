@@ -39,7 +39,7 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
     tdata <- unique(tdata) ## drop duplicate rows
     lng <- c(if ("key" %in% colnames(tdata)) "key", if ("en" %in% colnames(tdata)) "en", sort(setdiff(colnames(tdata), c("key", "en"))))
     opts <- list(languages = lng, to = if (length(lng) > 1) setdiff(lng, "key")[1] else lng[1],
-                 from = if ("key" %in% lng) "key" else lng[1], warn_unmatched = FALSE)
+                 from = if ("key" %in% lng) "key" else lng[1], warn_unmatched = FALSE, warn_untranslated = FALSE, log_unmatched = NULL, log_untranslated = NULL)
     if (!missing(to) && !is.null(to)) {
         if (to %in% lng) {
             opts$to <- to
@@ -71,11 +71,33 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
         from = function() opts$from,
 
         warn_unmatched = function(x) {
+            ## if set to TRUE, issue a warning for text that does not appear in our dictionary
             if (!missing(x)) {
                 stopifnot(is.logical(x) && length(x) == 1 & !is.na(x))
                 opts$warn_unmatched <<- x
             }
             invisible(opts$warn_unmatched)
+        },
+
+        warn_untranslated = function(x) {
+            ## if set to TRUE, issue a warning for text that appears in our dictionary but does not have a translation for the target language
+            if (!missing(x)) {
+                stopifnot(is.logical(x) && length(x) == 1 & !is.na(x))
+                opts$warn_untranslated <<- x
+            }
+            invisible(opts$warn_untranslated)
+        },
+
+        log_unmatched = function(x) {
+            ## if non-NULL, log to that file any text that does not appear in our dictionary
+            if (!missing(x)) opts$log_unmatched <<- x
+            invisible(opts$log_unmatched)
+        },
+
+        log_untranslated = function(x) {
+            ## if non-NULL, log to that file any text that appears in our dictionary but does not have a translation for the target language
+            if (!missing(x)) opts$log_untranslated <<- x
+            invisible(opts$log_untranslated)
         },
 
         t = function(txt, underscores_as_spaces = TRUE, as_regexp = FALSE, ignore_case = TRUE, allow_punct = TRUE, output_match_case = TRUE) {
@@ -91,23 +113,30 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
             out <- temp$text
             entry_found <- temp$entry_found ## so we can differentiate text that could not be matched to an entry, from text that had an entry but no translation
             if (underscores_as_spaces) txt <- gsub("_", " ", txt) ## treat underscores as spaces
-            naidx <- is.na(out)
+            naidx <- is.na(out) & !entry_found
             if (any(naidx) && as_regexp) {
                 temp <- match_to_table2(txt[naidx], tdata = tdata, from = opts$from, to = opts$to, as_regexp = TRUE, output_match_case = output_match_case)
                 out[naidx] <- temp$text
-                entry_found[naidx] <- temp$entry_found
-                naidx <- is.na(out)
+                entry_found[naidx] <- entry_found[naidx] | temp$entry_found
+                naidx <- is.na(out) & !entry_found
             }
             if (any(naidx) && ignore_case) {
                 ## then exact (but case-insensitive) match
                 temp <- match_to_table2(txt[naidx], tdata = tdata, from = opts$from, to = opts$to, ignore_case = TRUE, output_match_case = output_match_case)
                 out[naidx] <- temp$text
-                entry_found[naidx] <- temp$entry_found
-                naidx <- is.na(out)
+                entry_found[naidx] <- entry_found[naidx] | temp$entry_found
+                naidx <- is.na(out) & !entry_found
             }
             ## now check for matches but discarding punctuation and spaces at the start or end of the text
+            ## note!
+            ## str_detect("+", "[[:punct:]]")
+            ## [1] FALSE
+            ## > grepl("[[:punct:]]", "+")
+            ## [1] TRUE
+            ## punct according to `? regexp` is ‘ ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~ ’
+            ## but these are not detected as punct by stringr: "$" "+" "<" "=" ">" "^" "`" "|" "~"
             if (any(naidx) && allow_punct) {
-                txt_parts <- str_match_all(txt[naidx], "^([[:punct:]=[:space:]]*)(.+?)([[:punct:]=[:space:]]*)$") ## why isn't = considered part of punct here?
+                txt_parts <- str_match_all(txt[naidx], "^([[:punct:]\\$\\+<=>\\^`\\|~[:space:]]*)(.+?)([[:punct:]\\$\\+<=>\\^`\\|~[:space:]]*)$")
                 ## TODO if translating to Spanish and the input ends with ?, add ¿ to the start. But need to search backwards from each ? to find either the start of that sentence (which might be the start of the string)
                 tempidx <- vapply(txt_parts, function(this) {
                     if (!any(nzchar(this))) return(NA_integer_)
@@ -127,16 +156,18 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
                     }
                 }, FUN.VALUE = "", USE.NAMES = FALSE)
                 out[naidx] <- trx
-                entry_found[naidx] <- !is.na(tempidx)
+                entry_found[naidx] <- entry_found[naidx] | !is.na(tempidx)
             }
             ## and catch anything that did not match above and replace with input
             out[!nzchar(txt0)] <- ""
             idx <- is.na(out) & nzchar(txt0) & !is.na(txt0)
-            if (any(idx & !entry_found) && opts$warn_unmatched) {
-                warning("inputs without matching entries in the i18n data:\n", paste(txt[idx & !entry_found], collapse = "\n", sep = "\n"))
+            if (any(idx & !entry_found)) {
+                if (opts$warn_unmatched) warning("inputs without matching entries in the i18n data: ", paste(txt[idx & !entry_found], collapse = "\n", sep = "\n"))
+                if (!is.null(opts$log_unmatched)) try(cat(paste(txt[idx & !entry_found], collapse = "\n", sep = "\n"), "\n", sep = "", file = opts$log_unmatched, append = TRUE))
             }
-            if (any(idx & entry_found) && opts$warn_unmatched) {
-                warning("inputs with matching entries but no translations in the i18n data:\n", paste(txt[idx & entry_found], collapse = "\n", sep = "\n"))
+            if (any(idx & entry_found)) {
+                if (opts$warn_untranslated) warning("inputs with matching entries but no translations in the i18n data: ", paste(txt[idx & entry_found], collapse = "\n", sep = "\n"))
+                if (!is.null(opts$log_untranslated)) try(cat(paste(txt[idx & entry_found], collapse = "\n", sep = "\n"), "\n", sep = "", file = opts$log_untranslated, append = TRUE))
             }
             out[idx] <- txt0[idx]
             out
@@ -175,7 +206,7 @@ match_to_table2 <- function(txt, tdata, from, to, ignore_case = TRUE, as_regexp 
     this_tdata <- if (ignore_case && !as_regexp) tolower(tdata[[from]]) else tdata[[from]]
     iidx <- vapply(txt, function(z) {
         if (as_regexp) {
-            idx <- which(vapply(this_tdata, function(re) tryCatch(grepl(paste0("^", re, "$"), z, ignore.case = ignore_case), error = function(e) FALSE), FUN.VALUE = TRUE, USE.NAMES = FALSE))
+            suppressWarnings(idx <- which(vapply(this_tdata, function(re) tryCatch(grepl(paste0("^", re, "$"), z, ignore.case = ignore_case), error = function(e) FALSE), FUN.VALUE = TRUE, USE.NAMES = FALSE)))
         } else {
             idx <- if (ignore_case) which(tolower(z) == this_tdata) else which(z == this_tdata)
         }

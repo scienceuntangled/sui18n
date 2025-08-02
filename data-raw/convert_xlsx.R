@@ -3,7 +3,7 @@ x <- readxl::read_excel("su_translations.xlsx", col_names = FALSE)
 csv_file <- "../inst/extdata/su_translations.csv"
 unlink(csv_file)
 ## quote if necessary, and convert " to '
-qifn <- function(z) unname(sapply(z, function(txt) if (grepl(",", txt)) paste0("\"", gsub("[\"“”]", "'", txt), "\"") else gsub("[\"“”]", "'", txt)))
+qifn <- function(z) unname(sapply(z, function(txt) if (grepl(",", txt)) paste0("\"", gsub("[\"\u201c\u201d\u2018\u2019]", "'", txt), "\"") else gsub("[\"\u201c\u201d\u2018\u2019]", "'", txt)))
 con  <- file(csv_file, open = "wt", encoding = "UTF-8")
 for (l in seq_len(nrow(x))) {
     if (all(is.na(x[l, ]))) {
@@ -18,6 +18,13 @@ for (l in seq_len(nrow(x))) {
         }
     } else {
         writeLines(paste(qifn(x[l, ]), collapse = ","), con = con)
+        ## some lines need duplication with/without case and punctuation matching because they are used directly by the js translator (must match exactly) and the R translator (but used here without the punctuation)
+        if (x[l, 1] %in% c("Minimum number of sets:", "Attack chart style:")) {
+            writeLines(paste(qifn(tolower(sub(":$", "", x[l, ]))), collapse = ","), con = con)
+        }
+        if (x[l, 1] %in% c("BP_won", "indiv_B%")) {
+            writeLines(paste(qifn(tolower(gsub("_", " ", x[l, ]))), collapse = ","), con = con)
+        }
     }
 }
 close(con)
@@ -31,10 +38,10 @@ close(con)
 ## checks
 source("../R/internal_utils.R")
 library(stringr)
-x <- read.csv("../inst/extdata/su_translations.csv", stringsAsFactors = FALSE, comment.char = "@", encoding = "UTF-8")
+x <- read.csv(csv_file, stringsAsFactors = FALSE, comment.char = "@", encoding = "UTF-8")
 stopifnot(!any(grepl("^X", colnames(x)))) ## all cols named
 if (any(duplicated(x$key))) {
-    print(x[x$key %in% x$key[which(duplicated(x$key))], ])
+    print(x[x$key %in% x$key[which(duplicated(x$key))], 1, drop = FALSE])
     stop("duplicated key entries")
 }
 if (any(duplicated(tolower(x$key)))) {
