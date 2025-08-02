@@ -177,31 +177,6 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
     )
 }
 
-## old, to delete
-## match_to_table <- function(txt, tdata, from, to, ignore_case = TRUE, as_regexp = FALSE, output_match_case = TRUE) {
-##     this_tdata <- if (ignore_case && !as_regexp) tolower(tdata[[from]]) else tdata[[from]]
-##     vapply(txt, function(z) {
-##         if (as_regexp) {
-##             idx <- which(vapply(this_tdata, function(re) tryCatch(grepl(paste0("^", re, "$"), z, ignore.case = ignore_case), error = function(e) FALSE), FUN.VALUE = TRUE, USE.NAMES = FALSE))
-##         } else {
-##             idx <- if (ignore_case) which(tolower(z) == this_tdata) else which(z == this_tdata)
-##         }
-##         if (length(idx) == 1) {
-##             if (as_regexp) {
-##                 out <- sub(this_tdata[idx], tdata[[to]][idx], z)
-##                 ##print(this_tdata[idx])
-##                 ##print(tdata[[to]][idx])
-##                 ##print(out)
-##             } else {
-##                 out <- tdata[[to]][idx]
-##             }
-##             if (output_match_case) out <- match_case(out, match_to = z, locale = to)
-##             out
-##         } else {
-##             NA_character_
-##         }
-##     }, FUN.VALUE = "", USE.NAMES = FALSE)
-## }
 match_to_table2 <- function(txt, tdata, from, to, ignore_case = TRUE, as_regexp = FALSE, output_match_case = TRUE) {
     this_tdata <- if (ignore_case && !as_regexp) tolower(tdata[[from]]) else tdata[[from]]
     iidx <- vapply(txt, function(z) {
