@@ -161,11 +161,12 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
             ## and catch anything that did not match above and replace with input
             out[!nzchar(txt0)] <- ""
             idx <- is.na(out) & nzchar(txt0) & !is.na(txt0)
-            if (any(idx & !entry_found)) {
+            idxw <- is.na(out) & nzchar(txt0) & !is.na(txt0) & !grepl("^[[:digit:]\\.\\+\\-]+$", txt0) ## don't warn about purely numeric inputs
+            if (any(idxw & !entry_found)) {
                 if (opts$warn_unmatched) warning("inputs without matching entries in the i18n data: ", paste(txt[idx & !entry_found], collapse = "\n", sep = "\n"))
                 if (!is.null(opts$log_unmatched)) try(cat(paste(txt[idx & !entry_found], collapse = "\n", sep = "\n"), "\n", sep = "", file = opts$log_unmatched, append = TRUE))
             }
-            if (any(idx & entry_found)) {
+            if (any(idxw & entry_found)) {
                 if (opts$warn_untranslated) warning("inputs with matching entries but no translations in the i18n data: ", paste(txt[idx & entry_found], collapse = "\n", sep = "\n"))
                 if (!is.null(opts$log_untranslated)) try(cat(paste(txt[idx & entry_found], collapse = "\n", sep = "\n"), "\n", sep = "", file = opts$log_untranslated, append = TRUE))
             }
@@ -181,7 +182,7 @@ match_to_table2 <- function(txt, tdata, from, to, ignore_case = TRUE, as_regexp 
     this_tdata <- if (ignore_case && !as_regexp) tolower(tdata[[from]]) else tdata[[from]]
     iidx <- vapply(txt, function(z) {
         if (as_regexp) {
-            suppressWarnings(idx <- which(vapply(this_tdata, function(re) tryCatch(grepl(paste0("^", re, "$"), z, ignore.case = ignore_case), error = function(e) FALSE), FUN.VALUE = TRUE, USE.NAMES = FALSE)))
+            suppressWarnings(idx <- which(vapply(this_tdata, function(re) tryCatch(grepl(paste0("^[[:space:]]*", re, "[[:space:]]*$"), z, ignore.case = ignore_case), error = function(e) FALSE), FUN.VALUE = TRUE, USE.NAMES = FALSE)))
         } else {
             idx <- if (ignore_case) which(tolower(z) == this_tdata) else which(z == this_tdata)
         }
@@ -209,15 +210,19 @@ match_to_table2 <- function(txt, tdata, from, to, ignore_case = TRUE, as_regexp 
     list(text = out, entry_found = entry_found)
 }
 
-## operates on single string input txt
+## operates on single string input txt (the translated text) and match_to (the template we are matching to)
+## 2025-08-14: we don't modify the case of txt to upper/firstupper/title if it is not all lower case. But convert txt to lowercase if it is not and if match_to is
 match_case <- function(txt, match_to, locale) {
     if (is.na(txt) || !nzchar(txt)) return(txt)
-    if (is_uppercase(match_to)) {
+    txt_lc <- is_lowercase(txt)
+    if (is_uppercase(match_to) && txt_lc) {
         punct_str_to_upper(txt, locale = locale)
-    } else if (is_titlecase(match_to)) {
-        punct_str_to_title(txt, locale = locale)
-    } else if (is_firstupper(match_to)) {
+    } else if (is_firstupper(match_to) && txt_lc) { ## check for firstupper before title, because a single word is TRUE for both
         punct_str_to_firstupper(txt, locale = locale)
+    } else if (is_titlecase(match_to) && txt_lc) {
+        punct_str_to_title(txt, locale = locale)
+    } else if (is_lowercase(match_to) && !txt_lc) {
+        punct_str_to_lower(txt, locale = locale)
     } else {
         txt
     }
