@@ -2,8 +2,14 @@ x <- readxl::read_excel("su_translations.xlsx", col_names = FALSE)
 ## write the file long-hand, so that we retain control over comment lines and so on
 csv_file <- "../inst/extdata/su_translations.csv"
 unlink(csv_file)
-## quote if necessary, and convert " to '
-qifn <- function(z) unname(sapply(z, function(txt) if (grepl(",", txt)) paste0("\"", gsub("[\"\u201c\u201d\u2018\u2019]", "'", txt), "\"") else gsub("[\"\u201c\u201d\u2018\u2019]", "'", txt)))
+## quote if necessary, and convert " to '. Convert multiple spaces to single (but NOT for the wacky "n  srv" entry that needs it) and trim leading/trailing spaces
+qifn <- function(z, no_collapse_spaces = FALSE) {
+    cs <- if (no_collapse_spaces) identity else function(w) gsub("[[:space:]]+", " ", w)
+    out <- sapply(z, function(txt) {
+        stringr::str_trim(cs(if (grepl(",", txt)) paste0("\"", gsub("[\"\u201c\u201d\u2018\u2019]", "'", txt), "\"") else gsub("[\"\u201c\u201d\u2018\u2019]", "'", txt)))
+    })
+    unname(out)
+}
 con  <- file(csv_file, open = "wt", encoding = "UTF-8")
 for (l in seq_len(nrow(x))) {
     if (all(is.na(x[l, ]))) {
@@ -17,7 +23,7 @@ for (l in seq_len(nrow(x))) {
             stop("non-empty columns in comment row")
         }
     } else {
-        writeLines(paste(qifn(x[l, ]), collapse = ","), con = con)
+        writeLines(paste(qifn(x[l, ], no_collapse_spaces = isTRUE(x[l, 1] == "n  srv")), collapse = ","), con = con)
         ## some lines need duplication with/without case and punctuation matching because they are used directly by the js translator (must match exactly) and the R translator (but used here without the punctuation)
         if (x[l, 1] %in% c("Minimum number of sets:", "Attack chart style:")) {
             writeLines(paste(qifn(tolower(sub(":$", "", x[l, ]))), collapse = ","), con = con)
