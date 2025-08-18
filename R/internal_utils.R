@@ -17,7 +17,7 @@ is_firstupper <- function(z) {
 is_lowercase <- function(z) {
     if (!nzchar(z)) return(FALSE)
     z <- strsplit(z, "")[[1]]
-    all(grepl("[[:lower:]]", specials_as_lower(z)) | grepl("[^[:alpha:]]", z))
+    all(grepl("[[:lower:]]", z) | grepl("[^[:alpha:]]", z))
 }
 
 ## internal functions to convert string to various case types, but ignoring any leading non-alpha chars like punctuation
