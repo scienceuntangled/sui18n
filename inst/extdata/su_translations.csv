@@ -22,13 +22,13 @@ BP% win breakdown,BP% win breakdown,Phân tích %BP thắng,Detalhe do % de brea
 BP% loss breakdown,BP% loss breakdown,Phân tích %BP thua,Detalhe do % de breakpoint perdido,Detalle del % de break point perdido,Détails %BP perdus,Analisi di % di break point perso
 serve,serve,phát bóng,saque,saque,service,battuta
 serve evaluation,serve evaluation,đánh giá phát bóng,avaliação do saque,evaluación del saque,évaluation du service,valutazione della battuta
-expected breakpoint %,expected breakpoint %,dự tính %BP,% de breakpoint esperado,% de break point esperado,breakpoint % attendu,breakpoint atteso %
+expected breakpoint %,expected breakpoint %,dự tính % breakpoint,% de breakpoint esperado,% de break point esperado,breakpoint % attendu,breakpoint atteso %
 serve efficiency,serve efficiency,hiệu xuất phát bóng,eficiência de saque,eficacia de saque,éfficacité du service,efficacia della battuta
 breakpoint %,breakpoint %,% breakpoint,% de breakpoint,% de break point,breakpoint %,breakpoint %
 individual,individual,cá nhân,individual,individual,par joueur,individuale
 Reception,Reception,Bước 1,Recepção,Recepción,Réception,Ricezione
 reception evaluation,reception evaluation,đánh giá bước 1,avaliação da recepção,evaluación de la recepción,évaluation de la réception,valutazione della ricezione
-expected sideout %,expected sideout %,dự tính %SO,% de sideout esperado,% de cambio de saque esperado,sideout % attendu,cambio palla atteso %
+expected sideout %,expected sideout %,dự tính % sideout,% de sideout esperado,% de cambio de saque esperado,sideout % attendu,cambio palla atteso %
 reception efficiency,reception efficiency,hiệu xuất bước 1,eficiência da recepção,eficacia de la recepción,éfficacité de la réception,efficacia della ricezione
 sideout %,sideout %,% sideout,% de sideout,% de cambio de saque,sideout %,cambio palla %
 by serve type,by serve type,bằng cách phát bóng,por tipo de saque,por tipo de saque,par type de service,per tipo di battuta
@@ -89,7 +89,7 @@ points ratio,points ratio,tỷ số điểm,razão de pontos,coeficiente de punt
 @@ Team roster section
 number,number,số áo,número,número,numéro,numero
 player name,player name,tên,nome do jogador,nombre del jugador,nom du joueur,nome del giocatore
-player ID,player ID,số ID,ID do jogador,ID del jugador,ID du joueur,ID del giocatore
+Player ID,Player ID,Số ID,ID do jogador,ID del jugador,ID du joueur,ID del giocatore
 listed roles,listed roles,vai trò,posições,roles,rôles,ruoli
 @ matches as in shorthand for number of matches
 matches,matches,trận,partidas,partidos,matchs,partite

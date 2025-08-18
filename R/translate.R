@@ -12,7 +12,7 @@
 #'  \item \code{ignore_case} (default = \code{TRUE}) - allow case-insensitive matching
 #'  \item \code{allow_punct} (default = \code{TRUE}) - allow additional punctuation and space characters at the beginning and end of the input
 #' }
-#' The \code{t} function also takes an \code{output_match_case} parameter. If \code{TRUE} an attempt will be made to match the case style of the output to the input (i.e. all upper case, titlecase, first-letter-only uppercase).
+#' The \code{t} function also takes an \code{output_match_case} parameter. If \code{TRUE} an attempt will be made to match the case style of the output to the input (i.e. all upper case, titlecase, first-letter-only uppercase). This is currently \code{TRUE} by default except when translating to German, but this behaviour might change.
 #'
 #' @examples
 #'
@@ -100,8 +100,11 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
             invisible(opts$log_untranslated)
         },
 
-        t = function(txt, underscores_as_spaces = TRUE, as_regexp = FALSE, ignore_case = TRUE, allow_punct = TRUE, output_match_case = TRUE) {
+        ## output_match_case defaults to TRUE for all languages other than "de"
+        ## TODO add a way to set these parm defaults for the instantiated object, so that if we want non-default behaviour they don't have to be specified in every object$t call
+        t = function(txt, underscores_as_spaces = TRUE, as_regexp = FALSE, ignore_case = TRUE, allow_punct = TRUE, output_match_case) {
             if (opts$to == opts$from) return(txt)
+            if (missing(output_match_case)) output_match_case <- !opts$to %in% c("de")
             assert_that(is.flag(ignore_case), !is.na(ignore_case))
             assert_that(is.flag(as_regexp), !is.na(as_regexp))
             assert_that(is.flag(underscores_as_spaces), !is.na(underscores_as_spaces))
