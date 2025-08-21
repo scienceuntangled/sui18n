@@ -22,7 +22,7 @@ A list object. The translation functionality is provided by the \code{t} compone
  \item \code{ignore_case} (default = \code{TRUE}) - allow case-insensitive matching
  \item \code{allow_punct} (default = \code{TRUE}) - allow additional punctuation and space characters at the beginning and end of the input
 }
-The \code{t} function also takes an \code{output_match_case} parameter. If \code{TRUE} an attempt will be made to match the case style of the output to the input (i.e. all upper case, titlecase, first-letter-only uppercase). This is currently \code{TRUE} by default except when translating to German, but this behaviour might change.
+The \code{t} function also takes an \code{output_case} string parameter, which can take values "match" (attempt to match the case style of the output to that of the input), "upper" (output upper case), "firstupper" (first character opf the output to upper case), "title" (title case), "lower", (lower case), or "as-is" (output will be whatever has been entered into the translations file). By default this is "match" except when translating to German ("as-is"), but this behaviour might change.
 }
 \description{
 The CSV data should contain one column per language.

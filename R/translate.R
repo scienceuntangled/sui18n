@@ -12,7 +12,7 @@
 #'  \item \code{ignore_case} (default = \code{TRUE}) - allow case-insensitive matching
 #'  \item \code{allow_punct} (default = \code{TRUE}) - allow additional punctuation and space characters at the beginning and end of the input
 #' }
-#' The \code{t} function also takes an \code{output_match_case} parameter. If \code{TRUE} an attempt will be made to match the case style of the output to the input (i.e. all upper case, titlecase, first-letter-only uppercase). This is currently \code{TRUE} by default except when translating to German, but this behaviour might change.
+#' The \code{t} function also takes an \code{output_case} string parameter, which can take values "match" (attempt to match the case style of the output to that of the input), "upper" (output upper case), "firstupper" (first character opf the output to upper case), "title" (title case), "lower", (lower case), or "as-is" (output will be whatever has been entered into the translations file). By default this is "match" except when translating to German ("as-is"), but this behaviour might change.
 #'
 #' @examples
 #'
@@ -101,31 +101,46 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
         },
 
         ## output_match_case defaults to TRUE for all languages other than "de"
+        ## 2025-08-18 output_match_case has been superseded by output_case
         ## TODO add a way to set these parm defaults for the instantiated object, so that if we want non-default behaviour they don't have to be specified in every object$t call
-        t = function(txt, underscores_as_spaces = TRUE, as_regexp = FALSE, ignore_case = TRUE, allow_punct = TRUE, output_match_case) {
+        t = function(txt, underscores_as_spaces = TRUE, as_regexp = FALSE, ignore_case = TRUE, allow_punct = TRUE, output_case, output_match_case) {
+            ## output_case can be "match" (attempt to match to the case of the input text), "upper", "firstupper", "lower", "title", or "as-is" (leave it as it appears in the translation file)
             if (opts$to == opts$from) return(txt)
-            if (missing(output_match_case)) output_match_case <- !opts$to %in% c("de")
+            if (!missing(output_match_case)) {
+                if (missing(output_case)) {
+                    output_case <- if (isTRUE(output_match_case)) {
+                                       if (!opts$to %in% c("de")) "match" else "as-is" ## backwards-compatibility to default output_match_case behaviour (TRUE except for German)
+                                   } else {
+                                       "as-is" ## backwards-equivalent to output_match_case = FALSE
+                                   }
+                } else {
+                    ## both output_case and output_match_case have been provided - use output_case
+                }
+            } else if (missing(output_case)) {
+                output_case <- if (!opts$to %in% c("de")) "match" else "as-is"## backwards-compatibility
+            }
+            assert_that(is.string(output_case))
+            output_case <- match.arg(output_case, c("as-is", "match", "upper", "firstupper", "lower", "title"))
             assert_that(is.flag(ignore_case), !is.na(ignore_case))
             assert_that(is.flag(as_regexp), !is.na(as_regexp))
             assert_that(is.flag(underscores_as_spaces), !is.na(underscores_as_spaces))
             assert_that(is.flag(allow_punct), !is.na(allow_punct))
-            assert_that(is.flag(output_match_case), !is.na(output_match_case))
             txt0 <- txt
             ## first try for exact match
-            temp <- match_to_table2(txt, tdata = tdata, from = opts$from, to = opts$to, ignore_case = FALSE, output_match_case = output_match_case)
+            temp <- match_to_table2(txt, tdata = tdata, from = opts$from, to = opts$to, ignore_case = FALSE, output_case = output_case, locale = opts$to)
             out <- temp$text
             entry_found <- temp$entry_found ## so we can differentiate text that could not be matched to an entry, from text that had an entry but no translation
             if (underscores_as_spaces) txt <- gsub("_", " ", txt) ## treat underscores as spaces
             naidx <- is.na(out) & !entry_found
             if (any(naidx) && as_regexp) {
-                temp <- match_to_table2(txt[naidx], tdata = tdata, from = opts$from, to = opts$to, as_regexp = TRUE, output_match_case = output_match_case)
+                temp <- match_to_table2(txt[naidx], tdata = tdata, from = opts$from, to = opts$to, as_regexp = TRUE, output_case = output_case, locale = opts$to)
                 out[naidx] <- temp$text
                 entry_found[naidx] <- entry_found[naidx] | temp$entry_found
                 naidx <- is.na(out) & !entry_found
             }
             if (any(naidx) && ignore_case) {
                 ## then exact (but case-insensitive) match
-                temp <- match_to_table2(txt[naidx], tdata = tdata, from = opts$from, to = opts$to, ignore_case = TRUE, output_match_case = output_match_case)
+                temp <- match_to_table2(txt[naidx], tdata = tdata, from = opts$from, to = opts$to, ignore_case = TRUE, output_case = output_case, locale = opts$to)
                 out[naidx] <- temp$text
                 entry_found[naidx] <- entry_found[naidx] | temp$entry_found
                 naidx <- is.na(out) & !entry_found
@@ -153,7 +168,15 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
                     if (!is.na(idx) && !is.na(tdata[[opts$to]][idx])) {
                         ## match capitalization
                         this <- txt_parts[[i]]
-                        paste0(this[2], if (output_match_case) match_case(tdata[[opts$to]][idx], match_to = this[3], locale = opts$to) else tdata[[opts$to]][idx], this[4])
+                        paste0(this[2],
+                               switch(output_case,
+                                      "match" = match_case(tdata[[opts$to]][idx], match_to = this[3], locale = opts$to),
+                                      "upper" = punct_str_to_upper(tdata[[opts$to]][idx], locale = opts$to),
+                                      "firstupper"= punct_str_to_firstupper(tdata[[opts$to]][idx], locale = opts$to),
+                                      "title" = punct_str_to_title(tdata[[opts$to]][idx], locale = opts$to),
+                                      "lower" = punct_str_to_lower(tdata[[opts$to]][idx], locale = opts$to),
+                                      tdata[[opts$to]][idx]),
+                               this[4])
                     } else {
                         NA_character_
                     }
@@ -181,7 +204,7 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
     )
 }
 
-match_to_table2 <- function(txt, tdata, from, to, ignore_case = TRUE, as_regexp = FALSE, output_match_case = TRUE) {
+match_to_table2 <- function(txt, tdata, from, to, ignore_case = TRUE, as_regexp = FALSE, output_case = "match", locale) {
     this_tdata <- if (ignore_case && !as_regexp) tolower(tdata[[from]]) else tdata[[from]]
     iidx <- vapply(txt, function(z) {
         if (as_regexp) {
@@ -204,8 +227,13 @@ match_to_table2 <- function(txt, tdata, from, to, ignore_case = TRUE, as_regexp 
             } else {
                 temp <- tdata[[to]][idx]
             }
-            if (output_match_case) temp <- match_case(temp, match_to = z, locale = to)
-            temp
+            switch(output_case,
+                   "match" = match_case(temp, match_to = z, locale = locale),
+                   "upper" = punct_str_to_upper(temp, locale = locale),
+                   "firstupper"= punct_str_to_firstupper(temp, locale = locale),
+                   "title" = punct_str_to_title(temp, locale = locale),
+                   "lower" = punct_str_to_lower(temp, locale = locale),
+                   temp)
         } else {
             NA_character_
         }

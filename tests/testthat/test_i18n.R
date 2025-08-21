@@ -46,6 +46,15 @@ test_that("general tests", {
     expect_equal(tr$t("cAt dog"), "chat chien") ## can't match case, so return as data entry value which is all lower case
     expect_equal(tr$t("cAt dog", ignore_case = FALSE), "cAt dog") ## no match
 
+    tr <- sui_translator("de", csv_path = data.frame(en = "expected sideout %", de = "erwartete Sideout %", fr = "% de 'Sideout' attendu", stringsAsFactors = FALSE))
+    expect_equal(tr$t("expected sideout %"), "erwartete Sideout %") ## default
+    expect_equal(tr$t("Expected sideout %", output_case = "match"), "erwartete Sideout %") ## it will not force firstupper because the entry in the translation file is not all lowercase
+    expect_equal(tr$t("Expected sideout %", output_case = "firstupper"), "Erwartete sideout %")
+    expect_equal(tr$t("Expected sideout %", output_case = "as-is"), "erwartete Sideout %")
+    expect_equal(tr$t("Expected sideout %", output_case = "title"), "Erwartete Sideout %")
+    expect_equal(tr$t("Expected sideout %", output_case = "upper"), "ERWARTETE SIDEOUT %")
+    expect_equal(tr$t("Expected sideout %", output_case = "lower"), "erwartete sideout %")
+
     ## to test
     ## as_regexp = TRUE
     ## allow_punct = FALSE
