@@ -70,3 +70,14 @@ test_that("operation with 'key' column is ok", {
     tr$set_target("key")
     expect_equal(tr$t("chat"), "miaow")
 })
+
+test_that("Japanese translation works OK", {
+    tr <- sui_translator()
+    tr$set_target("jp")
+    hj <- intToUtf8(c(12371, 12435, 12395, 12385, 12399))
+    expect_equal(tr$t(c("hi", "hello!", "HELLO", "Hello")),
+                 c("hi", c(paste0(hj, "!"), rep(hj, 2))))
+    tr <- sui_translator("jp")
+    expect_equal(tr$t(c("hi", "hello!", "HELLO", "Hello")),
+                 c("hi", c(paste0(hj, "!"), rep(hj, 2))))
+})

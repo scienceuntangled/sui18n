@@ -41,6 +41,7 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
     opts <- list(languages = lng, to = if (length(lng) > 1) setdiff(lng, "key")[1] else lng[1],
                  from = if ("key" %in% lng) "key" else lng[1], warn_unmatched = FALSE, warn_untranslated = FALSE, log_unmatched = NULL, log_untranslated = NULL)
     if (!missing(to) && !is.null(to)) {
+        to <- tolower(to)
         if (to %in% lng) {
             opts$to <- to
         } else {
@@ -100,7 +101,7 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
             invisible(opts$log_untranslated)
         },
 
-        ## output_match_case defaults to TRUE for all languages other than "de"
+        ## output_match_case defaults to TRUE for all languages other than "de" and "jp"
         ## 2025-08-18 output_match_case has been superseded by output_case
         ## TODO add a way to set these parm defaults for the instantiated object, so that if we want non-default behaviour they don't have to be specified in every object$t call
         t = function(txt, underscores_as_spaces = TRUE, as_regexp = FALSE, ignore_case = TRUE, allow_punct = TRUE, output_case, output_match_case) {
@@ -109,7 +110,7 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
             if (!missing(output_match_case)) {
                 if (missing(output_case)) {
                     output_case <- if (isTRUE(output_match_case)) {
-                                       if (!opts$to %in% c("de")) "match" else "as-is" ## backwards-compatibility to default output_match_case behaviour (TRUE except for German)
+                                       if (!opts$to %in% c("de", "jp")) "match" else "as-is" ## backwards-compatibility to default output_match_case behaviour (TRUE except for German and Japanese)
                                    } else {
                                        "as-is" ## backwards-equivalent to output_match_case = FALSE
                                    }
@@ -117,7 +118,7 @@ sui_translator <- function(to, csv_path = system.file("extdata/su_translations.c
                     ## both output_case and output_match_case have been provided - use output_case
                 }
             } else if (missing(output_case)) {
-                output_case <- if (!opts$to %in% c("de")) "match" else "as-is"## backwards-compatibility
+                output_case <- if (!opts$to %in% c("de", "jp")) "match" else "as-is"## backwards-compatibility
             }
             assert_that(is.string(output_case))
             output_case <- match.arg(output_case, c("as-is", "match", "upper", "firstupper", "lower", "title"))

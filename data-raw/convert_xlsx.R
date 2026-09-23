@@ -2,11 +2,27 @@ x <- readxl::read_excel("su_translations.xlsx", col_names = FALSE)
 ## write the file long-hand, so that we retain control over comment lines and so on
 csv_file <- "../inst/extdata/su_translations.csv"
 unlink(csv_file)
+
+## map full-width characters (used in Japanese source, esp punctuation) to standard
+w2std <- function(z) {
+    out <- sapply(z, function(zz) {
+        zz <- utf8ToInt(zz)
+        idx <- zz %in% (65281 + (0:93))
+        zz[idx] <- zz[idx] - 65281 + 33
+        intToUtf8(zz)
+    })
+    gsub("\u301c", "~", gsub("\u3002", ".", unname(out), fixed = TRUE), fixed = TRUE)
+}
+
 ## quote if necessary, and convert " to '. Convert multiple spaces to single (but NOT for the wacky "n  srv" entry that needs it) and trim leading/trailing spaces
-qifn <- function(z, no_collapse_spaces = FALSE) {
+qifn <- function(z, no_collapse_spaces = FALSE, remove_trailing_colon = FALSE) {
     cs <- if (no_collapse_spaces) identity else function(w) gsub("[[:space:]]+", " ", w)
     out <- sapply(z, function(txt) {
-        stringr::str_trim(cs(if (grepl(",", txt)) paste0("\"", gsub("[\"\u201c\u201d\u2018\u2019]", "'", txt), "\"") else gsub("[\"\u201c\u201d\u2018\u2019]", "'", txt)))
+        ## replace alternative quote chars, collapse spaces
+        y <- cs(if (grepl(",", txt)) paste0("\"", gsub("[\"\u201c\u201d\u2018\u2019]", "'", txt), "\"") else gsub("[\"\u201c\u201d\u2018\u2019]", "'", txt))
+        y <- stringr::str_trim(w2std(y)) ## replace wide chars, trim whitespace
+        if (remove_trailing_colon) y <- sub("[[:space:]]*:$", "", y)
+        y
     })
     unname(out)
 }
@@ -23,12 +39,16 @@ for (l in seq_len(nrow(x))) {
             stop("non-empty columns in comment row")
         }
     } else {
-        writeLines(paste(qifn(x[l, ], no_collapse_spaces = isTRUE(x[l, 1] == "n  srv")), collapse = ","), con = con)
+        rem_tr_c <- x[l, 1] %in% c("crunch time is defined as", "matches selected from a total of", "no_app_access", "converting to", "plots show", "but not")
+        ## to check: "matches selected from a total of"
+        ## not: "minimum number of sets", "attack chart style", see below
+        ## also: "no_app_access" ("You do not have access to this application ") - is not actually used? see common_server_sc
+        writeLines(paste(qifn(x[l, ], no_collapse_spaces = isTRUE(x[[l, 1]] == "n  srv"), remove_trailing_colon = rem_tr_c), collapse = ","), con = con)
         ## some lines need duplication with/without case and punctuation matching because they are used directly by the js translator (must match exactly) and the R translator (but used here without the punctuation)
-        if (x[l, 1] %in% c("Minimum number of sets:", "Attack chart style:")) {
-            writeLines(paste(qifn(tolower(sub(":$", "", x[l, ]))), collapse = ","), con = con)
+        if (x[[l, 1]] %in% c("Minimum number of sets:", "Attack chart style:")) {
+            writeLines(paste(qifn(tolower(sub("[:\uff1a]$", "", x[l, ]))), collapse = ","), con = con)
         }
-        if (x[l, 1] %in% c("BP_won", "indiv_B%")) {
+        if (x[[l, 1]] %in% c("BP_won", "indiv_B%")) {
             writeLines(paste(qifn(tolower(gsub("_", " ", x[l, ]))), collapse = ","), con = con)
         }
     }
@@ -57,21 +77,25 @@ if (any(duplicated(tolower(x$key)))) {
 en_uppercase <- unlist(lapply(x$en, is_uppercase))
 en_titlecase <- unlist(lapply(x$en, is_titlecase))
 en_firstupper <- unlist(lapply(x$en, is_firstupper))
-for (tgt in setdiff(colnames(x), c("en", "key"))) {
-    check_uppercase <- unlist(lapply(x[[tgt]], is_uppercase))
-    check_titlecase <- unlist(lapply(x[[tgt]], is_titlecase))
-    check_firstupper <- unlist(lapply(x[[tgt]], function(z) is_firstupper(sub("^¿", "", z))))
-    chk <- check_uppercase != en_uppercase | check_titlecase != en_titlecase | check_firstupper != en_firstupper
-    chk <- chk | (grepl("[A-Z]", substr(x$en, 1, 1)) & grepl("[a-z]", substr(x[[tgt]], 1, 1))) | (grepl("[a-z]", substr(x$en, 1, 1)) & grepl("[A-Z]", substr(x[[tgt]], 1, 1)))
-    if (any(chk)) {
-        cat("Language ", tgt, " case comparisons need checking:\n", sep = "")
-        for (ii in which(chk)) {
-            cat("[", ii, "] en: ", x$en[ii], "\n[", ii, "] ", tgt, ": ", x[[tgt]][ii], "\n\n", sep = "")
+##for (tgt in setdiff(colnames(x), c("en", "key"))) {
+for (tgt in "vn") {##setdiff(colnames(x), c("en", "key"))) {
+    if (!tgt %in% "jp") {
+        check_uppercase <- unlist(lapply(x[[tgt]], is_uppercase))
+        check_titlecase <- unlist(lapply(x[[tgt]], is_titlecase))
+        check_firstupper <- unlist(lapply(x[[tgt]], function(z) is_firstupper(sub("^¿", "", z))))
+        chk <- check_uppercase != en_uppercase | check_titlecase != en_titlecase | check_firstupper != en_firstupper
+        chk <- chk | (grepl("[A-Z]", substr(x$en, 1, 1)) & grepl("[a-z]", substr(x[[tgt]], 1, 1))) | (grepl("[a-z]", substr(x$en, 1, 1)) & grepl("[A-Z]", substr(x[[tgt]], 1, 1)))
+        if (any(chk)) {
+            cat("Language ", tgt, " case comparisons need checking:\n", sep = "")
+            for (ii in which(chk)) {
+                cat("[", ii, "] en: ", x$en[ii], "\n[", ii, "] ", tgt, ": ", x[[tgt]][ii], "\n\n", sep = "")
+            }
+        } else {
+            cat("Language ", tgt, " case comparisons all passed.\n", sep = "")
         }
     } else {
-        cat("Language ", tgt, " case comparisons all passed.\n", sep = "")
+        cat("Language ", tgt, " case comparisons skipped.\n", sep = "")
     }
-
     chk <- is.na(x[[tgt]]) | x$en==x[[tgt]]
     if (any(chk)) {
         cat("Language ", tgt, " identical/missing entries need checking:\n", sep = "")
@@ -94,14 +118,14 @@ for (tgt in setdiff(colnames(x), c("en", "key"))) {
         if (any(chk)) {
             cat("Language ", tgt, " has ending '", gsub("\\\\", "", punct), "' where English does not:\n", sep = "")
             for (ii in which(chk)) {
-                cat("[", ii, "] en: ", x$en[ii], "\n[", ii, "] ", tgt, ": ", x[[tgt]][ii], "\n\n", sep = "")
+                cat("[", ii, "] key: ", x$key[ii], "\n[", ii, "] en: ", x$en[ii], "\n[", ii, "] ", tgt, ": ", x[[tgt]][ii], "\n\n", sep = "")
             }
         }
         chk <- !grepl(paste0(punct, "$"), x[[tgt]]) & grepl(paste0(punct, "$"), x$en)
         if (any(chk)) {
             cat("Language ", tgt, " does not have an ending '", gsub("\\\\", "", punct), "' where English does:\n", sep = "")
             for (ii in which(chk)) {
-                cat("[", ii, "] en: ", x$en[ii], "\n[", ii, "] ", tgt, ": ", x[[tgt]][ii], "\n\n", sep = "")
+                cat("[", ii, "] key: ", x$key[ii], "\n[", ii, "] en: ", x$en[ii], "\n[", ii, "] ", tgt, ": ", x[[tgt]][ii], "\n\n", sep = "")
             }
         }
     }
