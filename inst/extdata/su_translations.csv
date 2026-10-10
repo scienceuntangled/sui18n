@@ -15,7 +15,7 @@ squad roster,squad roster,メンバー一覧,danh sách cầu thủ,lista de jog
 team worksheet,team worksheet,チームワークシート,bảng tính đội,planilhas da equipe,ficha técnica,fiche technique,foglio della squadra
 team comparisons,team comparisons,チーム比較,so sánh đội,comparação entre equipes,comparación entre equipos,comparaison des équipes,comparazione fra le squadre
 comparison table,comparison table,比較表,bảng so sánh,tabela comparativa,tabla comparativa,tableau de comparaison,tabella comparativa
-continued,continued,続く,tiếp theo,continuação,continuación,suite,continua
+continued,continued,続き,tiếp theo,continuação,continuación,suite,continua
 SO% win breakdown,SO% win breakdown,SO成功内訳,Phân tích %SO thắng,Detalhe do % de sideout vencido,Detalle del % de cambio de saque ganado,Détails %SO gagnés,Analisi di % di cambio palla vinto
 SO% loss breakdown,SO% loss breakdown,SO失敗内訳,Phân tích %SO thua,Detalhe do % de sideout perdido,Detalle del % de cambio de saque perdido,Détails %SO perdus,Analisi di % di cambio palla perso
 BP% win breakdown,BP% win breakdown,BP成功内訳,Phân tích %BP thắng,Detalhe do % de breakpoint vencido,Detalle del % de break point ganado,Détails %BP gagnés,Analisi di % di break point vinto
@@ -25,7 +25,7 @@ serve evaluation,serve evaluation,サーブ評価,đánh giá phát bóng,avalia
 expected breakpoint %,expected breakpoint %,期待ブレイクポイント%,dự tính % breakpoint,% de breakpoint esperado,% de break point esperado,breakpoint % attendu,breakpoint atteso %
 serve efficiency,serve efficiency,サーブ効果率,hiệu xuất phát bóng,eficiência de saque,eficacia de saque,éfficacité du service,efficacia della battuta
 breakpoint %,breakpoint %,ブレイクポイント%,% breakpoint,% de breakpoint,% de break point,breakpoint %,breakpoint %
-individual,individual,個人の,cá nhân,individual,individual,par joueur,individuale
+individual,individual,選手別,cá nhân,individual,individual,par joueur,individuale
 Reception,Reception,レセプション,Bước 1,Recepção,Recepción,Réception,Ricezione
 reception evaluation,reception evaluation,レセプション評価,đánh giá bước 1,avaliação da recepção,evaluación de la recepción,évaluation de la réception,valutazione della ricezione
 expected sideout %,expected sideout %,期待サイドアウト%,dự tính % sideout,% de sideout esperado,% de cambio de saque esperado,sideout % attendu,cambio palla atteso %
@@ -38,7 +38,7 @@ on perfect or good reception,on perfect or good reception,パーフェクト・�
 
 
 
-On OK reception,On OK reception,OKパス時,Khi bước 1 tạm tốt,Com recepção regular,Sobre recepción regular,Sur réception moyenne,Con ricezione esclamativa
+On OK reception,On OK reception,オーケーパス時,Khi bước 1 tạm tốt,Com recepção regular,Sobre recepción regular,Sur réception moyenne,Con ricezione esclamativa
 on poor reception,on poor reception,プアパス時,khi bước 1 không tốt,com recepção negativa,sobre recepción negativa,sur mauvaise réception,con ricezione negativa
 with setter call,with setter call,セッターコールあり,với chuyền 2 gọi,com chamada do levantador,con la llamada del colocador,par annonce du passeur,con la chiamata del palleggiatore
 no setter call,no setter call,セッターコールなし,chuyền 2 không gọi,sem chamada do levantador,sin llamada del colocador,sans annonce du passeur,senza chiamata del palleggiatore
@@ -46,8 +46,8 @@ setter call,setter call,セッターコール,chuyền 2 gọi,chamada do levant
 @’call’ as shorthand for ‘setter call’
 call,call,コール,gọi,chamada,llamada,annonce,chiamata
 perfect/good reception only,perfect/good reception only,パーフェクト・グッドパスだけ,bước 1 hoàn hảo/tốt,somente recepção perfeita/positiva,recepción perfecta/positiva solamente,réception excellente/bonne uniquement,ricezione doppio più/positiva solo
-Setter shifted to 2 (perfect (#)/good (+)/OK (!) reception only),Setter shifted to 2 (perfect (#)/good (+)/OK (!) reception only),セッターがZ2に動いた時(パーフェクト(#)・グッド (+)・OK (!)パスのみ),Chuyền 2 di chuyển đến 2 (chỉ bước 1 hoàn hảo(#)/tốt(+)/tạm được(!)),Levantador setorizado na 2 (recepção perfeita (#)/positiva (+)/regular (!) somente),Colocador desplazado a zona 2 (recepción perfecta (#)/positiva (+)/exclamativa (!) solamente,Passeur décalé en 2 (réception parfaite(#)/bonne(+)/moyenne(!) uniquement),Palleggiatore spostato verso posto 2 (solo ricezione doppio più/positiva/esclamativa)
-Setter shifted to 4 (perfect (#)/good (+)/OK (!) reception only),Setter shifted to 4 (perfect (#)/good (+)/OK (!) reception only),セッターがZ4に動いた時(パーフェクト(#)・グッド (+)・OK (!)パスのみ),Chuyền 2 di chuyển đến 4 (chỉ bước 1 hoàn hảo(#)/tốt(+)/tạm được(!)),Levantador setorizado na 2 (recepção perfeita (#)/positiva (+)/regular (!) somente),Colocador desplazado a zona 4 (recepción perfecta (#)/positiva (+)/exclamativa (!) solamente,Passeur décalé en 4 (réception parfaite(#)/bonne(+)/moyenne(!) uniquement),Palleggiatore spostato verso posto 4 (solo ricezione doppio più/positiva/esclamativa)
+Setter shifted to 2 (perfect (#)/good (+)/OK (!) reception only),Setter shifted to 2 (perfect (#)/good (+)/OK (!) reception only),セッターがZ2に動いた時(パーフェクト(#)・グッド (+)・オーケー(!)パスのみ),Chuyền 2 di chuyển đến 2 (chỉ bước 1 hoàn hảo(#)/tốt(+)/tạm được(!)),Levantador setorizado na 2 (recepção perfeita (#)/positiva (+)/regular (!) somente),Colocador desplazado a zona 2 (recepción perfecta (#)/positiva (+)/exclamativa (!) solamente,Passeur décalé en 2 (réception parfaite(#)/bonne(+)/moyenne(!) uniquement),Palleggiatore spostato verso posto 2 (solo ricezione doppio più/positiva/esclamativa)
+Setter shifted to 4 (perfect (#)/good (+)/OK (!) reception only),Setter shifted to 4 (perfect (#)/good (+)/OK (!) reception only),セッターがZ4に動いた時(パーフェクト(#)・グッド (+)・オーケー (!)パスのみ),Chuyền 2 di chuyển đến 4 (chỉ bước 1 hoàn hảo(#)/tốt(+)/tạm được(!)),Levantador setorizado na 2 (recepção perfeita (#)/positiva (+)/regular (!) somente),Colocador desplazado a zona 4 (recepción perfecta (#)/positiva (+)/exclamativa (!) solamente,Passeur décalé en 4 (réception parfaite(#)/bonne(+)/moyenne(!) uniquement),Palleggiatore spostato verso posto 4 (solo ricezione doppio più/positiva/esclamativa)
 shifted to 2,shifted to 2,Z2に寄る,di chuyển đến 2,setorizado na 2,desplazado a zona 2,décalé en 2,spostato verso posto 2
 shifted to 4,shifted to 4,Z4に寄る,di chuyển đến 4,setorizado na 4,desplazado a zona 4,décalé en 4,spostato verso posto 4
 in transition,in transition,トランジッションで,trong sự thuyên chuyển,no contra-ataque,en contraataque,en transition,in contrattacco
@@ -137,16 +137,16 @@ N,N,本数,N,N,N,N,N
 number of serve receptions,number of serve receptions,レセプション数,tổng số bước 1,número de recepções,número de recepciones,nombre de réceptions de service,numero di ricezioni
 @ perf as abbrev for perfect
 perf,perf,パーフェクト,perf,perf,perf,parf,perf
-percentage of serve receptions rated as perfect,percentage of serve receptions rated as perfect,パーフェクトなレセプションの割合,% bước một đánh giá hoàn hảo,porcentagem de recepções avaliadas como perfeitas,porcentaje de recepciones valoradas como perfectas,pourcentage de réception de service jugées parfaites,percentuale di ricezioni valutate come perfette
+percentage of serve receptions rated as perfect,percentage of serve receptions rated as perfect,パーフェクトレセプションの割合,% bước một đánh giá hoàn hảo,porcentagem de recepções avaliadas como perfeitas,porcentaje de recepciones valoradas como perfectas,pourcentage de réception de service jugées parfaites,percentuale di ricezioni valutate come perfette
 @ pos+perf as abbrev for positive + perfect
 pos+perf,pos+perf,ポジティブ+パーフェクト,pos+perf,pos+perf,pos+perf,pos+parf,pos+perf
-percentage of serve receptions rated as perfect or positive,percentage of serve receptions rated as perfect or positive,パーフェクトまたはポジティブなレセプションの割合,% bước một đánh giá hoàn hảo hay tốt,porcentagem de recepções avaliadas como perfeitas ou positivas,porcentaje de recepciones valoradas como perfectas o positivas,pourcentage de réception de service jugées parfaites ou positives,percentuale di ricezioni valutate come positive/perfette
-percentage of receptions that were rated as perfect or positive,percentage of receptions that were rated as perfect or positive,パーフェクトまたはポジティブなレセプションの割合,% bước một đánh giá hoàn hảo hay tốt,porcentagem de recepções avaliadas como perfeitas ou positivas,porcentaje de recepciones valoradas como perfectas o positivas,pourcentage de réception de service jugées parfaites ou positives,percentuale di ricezioni valutate come positive/perfette
-percentage of receptions that were rated positive or perfect,percentage of receptions that were rated positive or perfect,ポジティブまたはパーフェクトなレセプションの割合,% bước một đánh giá hoàn hảo hay tốt,porcentagem de recepções avaliadas como perfeitas ou positivas,porcentaje de recepciones valoradas como perfectas o positivas,pourcentage de réception de service jugées parfaites ou positives,percentuale di ricezioni valutate come positive/perfette
+percentage of serve receptions rated as perfect or positive,percentage of serve receptions rated as perfect or positive,パーフェクトまたはポジティブレセプションの割合,% bước một đánh giá hoàn hảo hay tốt,porcentagem de recepções avaliadas como perfeitas ou positivas,porcentaje de recepciones valoradas como perfectas o positivas,pourcentage de réception de service jugées parfaites ou positives,percentuale di ricezioni valutate come positive/perfette
+percentage of receptions that were rated as perfect or positive,percentage of receptions that were rated as perfect or positive,パーフェクトまたはポジティブレセプションの割合,% bước một đánh giá hoàn hảo hay tốt,porcentagem de recepções avaliadas como perfeitas ou positivas,porcentaje de recepciones valoradas como perfectas o positivas,pourcentage de réception de service jugées parfaites ou positives,percentuale di ricezioni valutate come positive/perfette
+percentage of receptions that were rated positive or perfect,percentage of receptions that were rated positive or perfect,ポジティブまたはパーフェクトレセプションの割合,% bước một đánh giá hoàn hảo hay tốt,porcentagem de recepções avaliadas como perfeitas ou positivas,porcentaje de recepciones valoradas como perfectas o positivas,pourcentage de réception de service jugées parfaites ou positives,percentuale di ricezioni valutate come positive/perfette
 err,err,ミス,err,err,err,err,err
 reception error percentage,reception error percentage,レセプションミス率,% bước một hỏng,porcentagem de recepções avaliadas como erradas,porcentaje de error en recepción,pourcentage d'erreur de réception,percentuale di errori in ricezione
 poor,poor,プア,poor,neg,negativa,mauvaise,negativa
-percentage of serve receptions rated as poor,percentage of serve receptions rated as poor,プアなレセプションの割合,% bước một đánh giá kém,porcentagem de recepções avaliadas como negativas,porcentaje de recepciones valoradas como negativas,pourcentage de mauvaises réceptions,percentuale di ricezioni valutate come negative
+percentage of serve receptions rated as poor,percentage of serve receptions rated as poor,プアレセプションの割合,% bước một đánh giá kém,porcentagem de recepções avaliadas como negativas,porcentaje de recepciones valoradas como negativas,pourcentage de mauvaises réceptions,percentuale di ricezioni valutate come negative
 @ eff as abbrev for efficiency
 eff,eff,効果率,eff,eff,ef,eff,eff
 Serve reception efficiency [(number of receptions rated perfect or positive - number of errors - number of overpasses)/(number of receptions)],Serve reception efficiency [(number of receptions rated perfect or positive - number of errors - number of overpasses)/(number of receptions)],レセプション効果率[(パーフェクトまたはポジティブ評価の本数-ミス数-オーバーネット数)/レセプション総数],Hiệu suất bước 1 = [(số b1 được đánh giá hoàn hảo hoặc tốt - số b1 lỗi - số lần b1 qua lưới)/(tổng số b1)],Eficiência da recepção [(número de recepções avaliadas como perfeitas ou positivas - número de erros - número de xeques)/(número total de recepções)],Eficacia de recepción [(número de recepciones perfectas o positivas - número de errores - número de recepciones al otro campo)/(número de recepciones)],Éfficacité de la réception de service [(nombre de réceptions parfaites ou positives - nombre d'erreurs - nombre de réceptions directement dans le camp adverse)/(nombre de réceptions)],Efficacia di ricezione [(numero di ricezioni perfette o positive - numero di errori – palle slash)/(numero di ricezioni)]
@@ -164,7 +164,7 @@ number of attacks during serve reception phase (i.e. first-ball attack on recept
 attack kill percentage,attack kill percentage,アタック決定率,% tấn công ghi điểm,porcentagem de ataques perfeitos,porcentaje de ataque punto,pourcentage d'attaque gagnante,percentuale di attacco vincente
 Attack efficiency [(number of kills - number of errors and blocked attacks)/(number of attacks)],Attack efficiency [(number of kills - number of errors and blocked attacks)/(number of attacks)],アタック効果率[(決定数-(ミス数+被ブロック数))/アタック総数],Hiệu số tấn công = [(tổng số tân công - số bị chắn và hỏng) / tổng số tấn công],Eficiência do ataque [(número de ataques perfeitos - número de ataques errados e bloqueados)/(número total de ataques)],Eficacia de ataque [(número de ataques punto - número de errores y ataques bloqueados)/(número de ataques)],Éfficacité de l'attaque [(nombre d'attaques gagnantes - nombre d'erreurs et contrées)/(nombre d'attaques)],Efficacia di attacco [(numero di attacchi vincenti - numero di errori e murati)/(numero di attacchi)]
 all receptions,all receptions,すべてのレセプション,tổng số b1,todas as recepções,todas las recepciones,toutes les réceptions,tutte le ricezioni
-receptions rated as perfect/positive/ok (no first tempo attack possible)/negative/poor (no attack possible),receptions rated as perfect/positive/ok (no first tempo attack possible)/negative/poor (no attack possible),パーフェクト/ポジティブ/OK(速攻不可)/ネガティブ/プア(アタック不可)評価のレセプション,B1 đánh giá là hoàn hảo/tốt/ổn (không thể tấn công nhịp đầu)/tiêu cực/kém (không thể tấn công),recepções avaliadas como perfeitas/positivas/regulares (ataque de primeiro tempo não é possível)/negativas/xeque (sem possibilidade de ataque),recepciones valoradas como perfectas/positivas/exclamativas (no es posible ataque de pimer tiempo)/negativas/barra (no es posible atacar),réceptions jugées parfaites/positives/moyennes (pas d'attaque rapide possible)/mauvaises (pas d'attaque possible),ricezioni valutate come perfette/positive/esclamative (non è possibile un primo tempo)/negative/slash (non c'è attacco)
+receptions rated as perfect/positive/ok (no first tempo attack possible)/negative/poor (no attack possible),receptions rated as perfect/positive/ok (no first tempo attack possible)/negative/poor (no attack possible),パーフェクト/ポジティブ/オーケー(速攻不可)/ネガティブ/プア(アタック不可)評価のレセプション,B1 đánh giá là hoàn hảo/tốt/ổn (không thể tấn công nhịp đầu)/tiêu cực/kém (không thể tấn công),recepções avaliadas como perfeitas/positivas/regulares (ataque de primeiro tempo não é possível)/negativas/xeque (sem possibilidade de ataque),recepciones valoradas como perfectas/positivas/exclamativas (no es posible ataque de pimer tiempo)/negativas/barra (no es posible atacar),réceptions jugées parfaites/positives/moyennes (pas d'attaque rapide possible)/mauvaises (pas d'attaque possible),ricezioni valutate come perfette/positive/esclamative (non è possibile un primo tempo)/negative/slash (non c'è attacco)
 
 @@ reception sideout
 reception sideout,reception sideout,レセプション サイドアウト,B1 sideout,sideout por recepção,cambio de saque tras la recepción,sideout sur réception,cambio palla dopo ricezione
@@ -271,7 +271,7 @@ n srv,n srv,サーブ数,n srv,n saq,n saq,n srv,n battute
 n  srv,n  srv,サーブ数,n  srv,n  saq,n  saq,n  srv,n  battute
 P1/P2/etc,P1/P2/etc,P1/P2など,P1/P2/etc,P1/P2/etc,R1/R2/etc,P1/P2/etc,P1/P2/ecc
 setter in position 1/2/etc,setter in position 1/2/etc,セッターがポジション1/2などにいる時,chuyền 2 ở vị trí 1/2 …,levantador na posição 1/2/etc,colocador en posición 1/2/etc,passeur en position 1/2/etc,palleggiatore in posto 1/2/etc
-P([[:digit:]]),P\\1,NA,P\\1,P\\1,R\\1,P\\1,P\\1
+P([[:digit:]]),P\\1,P\\1,P\\1,P\\1,R\\1,P\\1,P\\1
 
 @@ Freeballs
 freeballs,freeballs,フリーボール,freeballs,bolas de graça,free-balls,relances,free balls
@@ -465,7 +465,7 @@ OPP P,OPP P,相手P,OPP P,ADV P,RIV R,ADV P,P AVV
 Opp P,Opp P,相手P,Opp P,Adv P,Riv R,Adv P,P Avv
 error,error,ミス,lỗi,erro,error,erreur,errore
 "negative, opponent free attack",negative,ネガティブ,tiêu cực,negativo,negativa,mauvaise,negativa
-"OK, no first tempo possible",OK,OK,OK,Regular,Regular,Moyenne,Esclamativa
+"OK, no first tempo possible",OK,オーケー,OK,Regular,Regular,Moyenne,Esclamativa
 "positive, opponent some attack (+)",positive (+),ポジティブ(+),tích cực (+),positivo (+),positiva (+),positive (+),positiva (+)
 "positive, no attack",positive,ポジティブ,tích cực,positivo,positiva,positive,positiva
 
@@ -933,20 +933,20 @@ How often does the setter go back to the same attacker on their first transition
 
 @ short-ish descriptions of reception quality
 perf/pos rec,perf/pos rec,パーフェクト/ポジティブなレセプション,hoàn hảo/tốt rec,perf/pos rec,perf/pos rec,parf/pos rec,perf/pos ric
-OK rec,OK rec,OKなレセプション,tạm tốt rec,Reg rec,Reg rec,Moy rec,Esc ric
+OK rec,OK rec,オーケーなレセプション,tạm tốt rec,Reg rec,Reg rec,Moy rec,Esc ric
 poor rec,poor rec,プアなレセプション,không tốt rec,neg rec,neg rec,mauv rec,neg ric
 
 @’of calls’ in the sense of ‘this happened on 80% of setter calls’
 of calls,of calls,コールの,NA,NA,NA,des annonces,NA
 @ from ‘called on 80% of perfect/good receptions’
-called on,called on,コールされた,NA,convocado em,pidió el,appelé sur,chiamato sul
+called on,called on,コール,NA,convocado em,pidió el,appelé sur,chiamato sul
 of perfect/good receptions,of perfect/good receptions,パーフェクト/良いレセプションに占める割合,NA,das recepções perfeitas/positivas,de recepciones perfectas/positivas,des réceptions excellentes/bonnes,delle ricezioni perfette/positiva
 beyond 3m,beyond 3m,アタックラインを越える,vượt quá 3m,além de 3m,más allá de los 3m,plus de 3m,oltre 3m
 Pass from L,Pass from L,左からのパス,Bước 1 từ bên trái,Rec partindo da esq,Rec desde la izquierda,Réc de la gauche,Ric da sinistra
 Pass from M,Pass from M,中央からのパス,Bước 1 từ giữa,Rec partindo do cent,Rec desde el centro,Réc de la centre,Ric dal centro
 Pass from R,Pass from R,右からのパス,Bước 1 từ bên phải,Rec partindo da dir,Rec desde la derecha,Réc de la droite,Ric da destra
 % of passes,% of passes,パスの%,% số bước 1,% de recepções,% de recepción,% de réception,% di ricezioni
-"Setter beyond the 3m line, reception only","Setter beyond the 3m line, reception only",セッターがアタックラインを越えている場合(レセプションのみ),NA,NA,NA,"Passeur au-delà de la ligne des 3 m, réception uniquement",NA
+"Setter beyond the 3m line, reception only","Setter beyond the 3m line, reception only",セッターがアタックラインを越えた場合(レセプションのみ),NA,NA,NA,"Passeur au-delà de la ligne des 3 m, réception uniquement",NA
 
 '1T' are first-tempo (quick) attacks.,'1T' are first-tempo (quick) attacks.,「Q」は速攻(クイック)アタックを指す.,NA,NA,NA,Les « 1T » sont des attaques rapides au premier tempo.,NA
 All first-tempo (quick) attacks are shown in the charts as starting from zone 3,All first-tempo (quick) attacks are shown in the charts as starting from zone 3,すべての速攻(クイック)アタックは、チャート上ではゾーン3から始まるものとして表示される,NA,NA,NA,Toutes les attaques de premier tempo (rapides) sont présentées dans les graphiques comme commençant à partir de la zone 3,NA
@@ -956,7 +956,7 @@ All first-tempo (quick) attacks are shown in the charts as starting from zone 3,
 
 First-tempo (quick) attacks are shown in the charts as starting from their scouted start zone,First-tempo (quick) attacks are shown in the charts as starting from their scouted start zone,Q(クイック)アタックは、チャート上ではスカウティング(データ入力)された開始ゾーンから始まるものとして表示される,NA,NA,NA,Les attaques rapides (premier tempo) sont présentées dans les graphiques comme commençant à partir de leur zone de départ enregistrée,NA
 By setter call,By setter call,セッターコール別,NA,NA,NA,Par annonce du passeur,NA
-% of calls is the percentage of good/perfect receptions on which that setter call was made.,% of calls is the percentage of good/perfect receptions on which that setter call was made.,「コールの%」とは、対象セッターコールが行われた良い/パーフェクトなレセプションの割合を指す.,NA,NA,NA,Le % d'annonce est le pourcentage de réceptions bonnes/parfaites sur lesquelles cette annonce du passeur a été effectué.,NA
+% of calls is the percentage of good/perfect receptions on which that setter call was made.,% of calls is the percentage of good/perfect receptions on which that setter call was made.,「コール%」とは、対象セッターコールが行われた良い/パーフェクトなレセプションの割合を指す.,NA,NA,NA,Le % d'annonce est le pourcentage de réceptions bonnes/parfaites sur lesquelles cette annonce du passeur a été effectué.,NA
 
 "For each attacker, a breakdown by attack codes \\(X5, V5, etc\\) is given for those attack codes for which the player made at least ([[:digit:]]+) attacks","For each attacker, a breakdown by attack codes (X5, V5, etc) is given for those attack codes for which the player made at least \\1 attacks",各アタッカーについて、アタックコード別の内訳は対象となるアタックコード(X5、V5など)が\\1本以上の場合に表示される,NA,NA,NA,"Pour chaque attaquant, une répartition par codes d'attaque (X5, V5, etc) est donnée pour les codes d'attaque pour lesquels le joueur a effectué au moins \\1 attaques",NA
 "Note that each table below is based on all attacks with the given attack code. However, the charts do not necessarily show all attacks","Note that each table below is based on all attacks with the given attack code. However, the charts do not necessarily show all attacks",以下の各表は、該当するアタックコードのすべてのアタックに基づいている.ただし、チャートには必ずしもすべてのアタックが表示されるわけではない,NA,NA,NA,"Notez que chaque tableau ci-dessous est basé sur toutes les attaques associées au code d'attaque donné. Cependant, les graphiques ne représentent pas nécessairement toutes les attaques",NA
@@ -1002,8 +1002,19 @@ League leaderboards,League leaderboards,リーグ順位表,NA,NA,NA,Tables de st
 Game plans,Game plans,ゲームプラン,NA,NA,NA,Plans de jeu,NA
 
 @ additions
-by posture,by posture,NA,NA,NA,NA,NA,NA
-reception side,reception side,NA,NA,NA,NA,NA,NA
+by posture,by posture,姿勢ごと,NA,NA,NA,par la posture,NA
+reception side,reception side,レセプション場所,NA,NA,NA,côté réception,NA
+low,low,低い,không cao,baixo,bajo,bas,basso
+middle line,middle line,中央,trung tâm,centro,centro,central,centro
+on left,on left,左側,ở bên trái,à esquerda,a la izquierda,à gauche,a sinistra
+on right,on right,右側,ở bên phải,à direita,a la derecha,à droite,a destra
+@short word for “middle” as in “centre”
+mid,mid,中央,trung tâm,centro,centro,central,centro
+overhand,overhand,オーバー,NA,NA,NA,NA,NA
+
+
+
+
 players without assigned role,players without assigned role,その他選手,NA,jogadores sem posições,jugadores sin roles,joueurs sans positions,giocatori senza ruolo
 shortace,ace,エース,số ace,ace,ace,SG,ace
 all attackers,all attackers,すべてのアタッカー,NA,todos os atacantes,todos los atacantes,tous les attaquants,tutti gli attaccanti

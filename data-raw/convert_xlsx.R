@@ -103,6 +103,13 @@ for (tgt in "vn") {##setdiff(colnames(x), c("en", "key"))) {
             cat("[", ii, "] en: ", x$en[ii], "\n[", ii, "] ", tgt, ": ", x[[tgt]][ii], "\n\n", sep = "")
         }
     }
+    chk <- is.na(x[[tgt]])
+    if (any(chk)) {
+        cat("Language ", tgt, " has NA entries:\n", sep = "")
+        for (ii in which(chk)) {
+            cat("[", ii, "] en: ", x$en[ii], "\n[", ii, "] ", tgt, ": ", x[[tgt]][ii], "\n\n", sep = "")
+        }
+    }
 
     chk <- grepl("\"", x[[tgt]], fixed = TRUE)
     ## this doesn't work, the double quotes get removed by xlread?
