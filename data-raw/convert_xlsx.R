@@ -129,5 +129,13 @@ for (tgt in "vn") {##setdiff(colnames(x), c("en", "key"))) {
             }
         }
     }
+
+    chk <- grepl("[\n\r]", x[[tgt]])
+    if (any(chk)) {
+        cat("Language", tgt, "has line breaks:\n")
+        for (ii in which(chk)) {
+            cat("[", ii, "] key: ", x$key[ii], "\n[", ii, "] en: ", x$en[ii], "\n[", ii, "] ", tgt, ": ", x[[tgt]][ii], "\n\n", sep = "")
+        }
+    }
 }
 
